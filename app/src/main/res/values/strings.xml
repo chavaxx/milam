@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Milam</string>
+    <string name="welcomeMessage">¡Bienvenid@!</string>
+    <string name="welcomeMessage2">¿Quién va a jugar hoy?</string>
+    <string name="profilePic">profile</string>
+    <string name="imNotHere">No estoy yo</string>
+    <string name="dummy_user">Alex</string>
+    <string name="minigames_screen">Pantalla de minijuegos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
