@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/registro_usuario"
+        android:name="a01730311.tec.milam.registro_usuario"
+        android:label="fragment_registro_usuario"
+        tools:layout="@layout/fragment_registro_usuario">
+        <action
+            android:id="@+id/action_registro_usuario_to_registro_elegir_icono"
+            app:destination="@id/registro_elegir_icono" />
+    </fragment>
+    <fragment
+        android:id="@+id/registro_elegir_icono"
+        android:name="a01730311.tec.milam.registro_elegir_icono"
+        android:label="fragment_registro_elegir_icono"
+        tools:layout="@layout/fragment_registro_elegir_icono">
+        <action
+            android:id="@+id/action_registro_elegir_icono_to_confirmar_perfil"
+            app:destination="@id/confirmar_perfil" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmar_perfil"
+        android:name="a01730311.tec.milam.confirmar_perfil"
+        android:label="fragment_confirmar_perfil"
+        tools:layout="@layout/fragment_confirmar_perfil" >
+        <action
+            android:id="@+id/action_confirmar_perfil_to_homeActivity"
+            app:destination="@id/homeActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="a01730311.tec.milam.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registro_usuario"
+            app:destination="@id/registro_usuario" />
+    </fragment>
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="a01730311.tec.milam.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" />
+</navigation>
