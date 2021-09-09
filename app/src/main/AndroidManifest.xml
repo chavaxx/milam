@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="a01730311.tec.milam">
+    package="a01730311.tec.milam" >
 
     <application
         android:allowBackup="true"
@@ -8,11 +8,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Milam">
+        android:theme="@style/Theme.Milam" >
+        <activity
+            android:name=".find_letter"
+            android:exported="true" />
+        <activity
+            android:name=".find_number"
+            android:exported="true" />
         <activity
             android:name=".HomeActivity"
             android:exported="true" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
