@@ -187,7 +187,7 @@
 
 
         <Button
-            android:id="@+id/button_next"
+            android:id="@+id/button_next_confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#74CFD0"

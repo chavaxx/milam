@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,9 +34,22 @@ class confirmar_perfil : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_confirmar_perfil, container, false)
+        val view: View =  inflater.inflate(R.layout.fragment_confirmar_perfil, container, false)
+
+        setNavigation(view)
+
+        return view
+
+    }
+
+    private fun setNavigation(view: View) {
+        val button: Button = view.findViewById(R.id.button_confirm_profile)
+        button.setOnClickListener{
+            val action = confirmar_perfilDirections.actionConfirmarPerfilToHomeActivity()
+            findNavController().navigate(action)
+        }
     }
 
     companion object {

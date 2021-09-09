@@ -74,7 +74,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <Button
-            android:id="@+id/button_next"
+            android:id="@+id/button_confirm_profile"
             android:layout_width="181dp"
             android:layout_height="99dp"
             android:backgroundTint="#74CFD0"

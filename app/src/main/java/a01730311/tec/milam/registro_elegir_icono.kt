@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,9 +34,22 @@ class registro_elegir_icono : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registro_elegir_icono, container, false)
+        val view: View =  inflater.inflate(R.layout.fragment_registro_elegir_icono, container, false)
+
+        setNavigation(view)
+
+        return view
+
+    }
+
+    private fun setNavigation(view: View) {
+        val button: Button = view.findViewById(R.id.button_next_confirm)
+        button.setOnClickListener{
+            val action = registro_elegir_iconoDirections.actionRegistroElegirIconoToConfirmarPerfil()
+            findNavController().navigate(action)
+        }
     }
 
     companion object {
