@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/rattata.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/drawable/shapes.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.10416666666666667" />
         <entry key="app/src/main/res/layout/find_number_main.xml" value="0.13043478260869565" />
@@ -15,7 +16,7 @@
         <entry key="app/src/main/res/layout/fragment_registro_elegir_icono.xml" value="0.10416666666666667" />
         <entry key="app/src/main/res/layout/fragment_registro_list.xml" value="0.10416666666666667" />
         <entry key="app/src/main/res/layout/fragment_registro_usuario.xml" value="0.13043478260869565" />
-        <entry key="app/src/main/res/layout/game_card.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/game_card.xml" value="0.33" />
         <entry key="app/src/main/res/layout/home_cards.xml" value="0.19858156028368795" />
         <entry key="app/src/main/res/layout/inicio_sesion.xml" value="0.13043478260869565" />
       </map>

@@ -1,12 +1,13 @@
 package a01730311.tec.milam.adapter
 
-import a01730311.tec.milam.GameCard
+import a01730311.tec.milam.components.GameCard
 import a01730311.tec.milam.R
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 
@@ -19,6 +20,8 @@ class GameCardAdapter(private val context: Context, private val dataset: List<Ga
     class GameCardViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val cardView: MaterialCardView = view.findViewById(R.id.game_card)
         val imagePlaceholder: ImageView = view.findViewById(R.id.game_card_image)
+        val title: TextView = view.findViewById(R.id.game_card_title)
+        val description: TextView = view.findViewById(R.id.game_card_description)
     }
 
     /**
@@ -37,7 +40,9 @@ class GameCardAdapter(private val context: Context, private val dataset: List<Ga
     override fun onBindViewHolder(holder: GameCardViewHolder, position: Int) {
         val card = dataset[position]
         holder.cardView.setCardBackgroundColor(context.resources.getInteger(card.backgroundColor))
-       holder.imagePlaceholder.setImageDrawable(context.resources.getDrawable(card.srcCompat))
+        holder.imagePlaceholder.setImageDrawable(context.resources.getDrawable(card.srcCompat))
+        holder.title.text = context.resources.getString(card.labelText)
+        holder.description.text = context.resources.getString(card.descriptionText)
     }
 
     /**

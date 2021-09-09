@@ -14,6 +14,13 @@
     <string name="game2">Sopa de letras</string>
     <string name="game3">Laberinto</string>
     <string name="game4">Pixarte</string>
-    <string name="game5">Encuentra el número</string>
+    <string name="game5">Sumas creativas</string>
     <string name="game6">Simón Dice</string>
+    <string name="description1">Encuentra la pareja de cada tarjeta</string>
+    <string name="description2">Descrubre las palabras ocultas</string>
+    <string name="description3">Localiza la salida del laberinto</string>
+    <string name="description4">Colorea el dibujo pixel por pixel</string>
+    <string name="description5">Suma y selecciona los resultados</string>
+    <string name="description6">Escucha y repite</string>
+    <string name="play">Jugar</string>
 </resources>
