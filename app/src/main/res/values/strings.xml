@@ -10,4 +10,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="encuentra_el_n_mero">Encuentra el número</string>
     <string name="dummyUsername2">Juan</string>
+    <string name="game1">Memorama</string>
+    <string name="game2">Sopa de letras</string>
+    <string name="game3">Laberinto</string>
+    <string name="game4">Pixarte</string>
+    <string name="game5">Encuentra el número</string>
+    <string name="game6">Simón Dice</string>
 </resources>
