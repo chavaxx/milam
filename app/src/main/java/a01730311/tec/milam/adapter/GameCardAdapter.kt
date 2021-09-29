@@ -3,11 +3,15 @@ package a01730311.tec.milam.adapter
 import a01730311.tec.milam.components.GameCard
 import a01730311.tec.milam.R
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 
@@ -22,6 +26,16 @@ class GameCardAdapter(private val context: Context, private val dataset: List<Ga
         val imagePlaceholder: ImageView = view.findViewById(R.id.game_card_image)
         val title: TextView = view.findViewById(R.id.game_card_title)
         val description: TextView = view.findViewById(R.id.game_card_description)
+        private val playButton = itemView.findViewById<Button>(R.id.playButton);
+
+        fun bind(position: Int){
+            playButton.setOnClickListener {
+                println(position)
+                if(position == 5){
+
+                }
+            }
+        }
     }
 
     /**
@@ -43,6 +57,8 @@ class GameCardAdapter(private val context: Context, private val dataset: List<Ga
         holder.imagePlaceholder.setImageDrawable(context.resources.getDrawable(card.srcCompat))
         holder.title.text = context.resources.getString(card.labelText)
         holder.description.text = context.resources.getString(card.descriptionText)
+
+        holder.bind(position)
     }
 
     /**
@@ -51,4 +67,5 @@ class GameCardAdapter(private val context: Context, private val dataset: List<Ga
     override fun getItemCount(): Int {
         return  dataset.size
     }
+
 }

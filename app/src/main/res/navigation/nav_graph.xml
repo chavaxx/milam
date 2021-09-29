@@ -41,9 +41,16 @@
             android:id="@+id/action_loginFragment_to_registro_usuario"
             app:destination="@id/registro_usuario" />
     </fragment>
+    <fragment
+        android:id="@+id/simon_says_preview"
+        android:name="a01730311.tec.milam.simonSays"
+        android:label="fragment_simon"
+        tools:layout="@layout/fragment_simon_says_preview" >
+    </fragment>
     <activity
         android:id="@+id/homeActivity"
         android:name="a01730311.tec.milam.HomeActivity"
         android:label="activity_home"
-        tools:layout="@layout/activity_home" />
+        tools:layout="@layout/activity_home">
+      </activity>
 </navigation>

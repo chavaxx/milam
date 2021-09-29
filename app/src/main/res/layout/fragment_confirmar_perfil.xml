@@ -60,7 +60,7 @@
                     tools:ignore="ImageContrastCheck" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/levelSimon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_black"

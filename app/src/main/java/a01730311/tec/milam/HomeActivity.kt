@@ -7,10 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import android.widget.Button
 import androidx.appcompat.app.ActionBar
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
-    class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -34,4 +37,13 @@ import androidx.recyclerview.widget.RecyclerView
         // in content do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true)
     }
+
+  /**  private fun setNavigation(view: View) {
+        val card: View = view.findViewById(R.id.recycler_view_cards)
+        card.setOnClickListener{
+            val action = registro_usuarioDirections.actionRegistroUsuarioToRegistroElegirIcono()
+            findNavController().navigate(action)
+        }
+    }
+  **/
 }
