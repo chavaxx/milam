@@ -48,7 +48,7 @@ class GameCardAdapter(private val context: HomeFragment, private val dataset: Li
         holder.title.text = context.resources.getString(card.labelText)
         holder.description.text = context.resources.getString(card.descriptionText)
         holder.button.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToPreviewFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToSimonSaysGame2()
             findNavController.navigate(action)
         }
     }

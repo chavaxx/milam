@@ -47,12 +47,16 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_previewFragment"
-            app:destination="@id/previewFragment" />
+            android:id="@+id/action_homeFragment_to_simonSaysGame2"
+            app:destination="@id/simonSaysGame2" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
         android:name="a01730311.tec.milam.games.PreviewFragment"
         android:label="fragment_preview"
         tools:layout="@layout/fragment_preview" />
+    <fragment
+        android:id="@+id/simonSaysGame2"
+        android:name="a01730311.tec.milam.games.simonSays.SimonSaysGame"
+        android:label="SimonSaysGame" />
 </navigation>
