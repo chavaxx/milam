@@ -43,11 +43,16 @@ class registro_usuario : Fragment() {
 
     private fun setNavigation(view: View) {
         val button: Button = view.findViewById(R.id.button_next)
+        val backButton: Button = view.findViewById(R.id.button_back_icons)
         button.setOnClickListener{
             val action = registro_usuarioDirections.actionRegistroUsuarioToRegistroElegirIcono()
             findNavController().navigate(action)
         }
+        backButton.setOnClickListener{
+            findNavController().popBackStack()
+        }
     }
+    
 
     companion object {
         /**

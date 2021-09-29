@@ -46,9 +46,13 @@ class registro_elegir_icono : Fragment() {
 
     private fun setNavigation(view: View) {
         val button: Button = view.findViewById(R.id.button_next_confirm)
+        val backButton: Button = view.findViewById(R.id.button_back_icons)
         button.setOnClickListener{
             val action = registro_elegir_iconoDirections.actionRegistroElegirIconoToConfirmarPerfil()
             findNavController().navigate(action)
+        }
+        backButton.setOnClickListener{
+            findNavController().popBackStack()
         }
     }
 

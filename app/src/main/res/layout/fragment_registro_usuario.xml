@@ -41,6 +41,7 @@
             android:hint="Introduce tu nombre aquí"
             android:inputType="textPersonName"
             android:textAlignment="center"
+            android:textColor="#000000"
             android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +69,7 @@
             app:layout_constraintVertical_bias="0.7" />
 
         <Button
-            android:id="@+id/button_back"
+            android:id="@+id/button_back_icons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#74CFD0"

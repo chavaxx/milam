@@ -10,7 +10,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.RecyclerView
 
-class HomeActivity : AppCompatActivity() {
+    class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -25,6 +25,7 @@ class HomeActivity : AppCompatActivity() {
         }
         // Initialize data.
         val myGameCards = Datasource().loadGameCards()
+
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view_cards)
         recyclerView.adapter = GameCardAdapter(this, myGameCards)

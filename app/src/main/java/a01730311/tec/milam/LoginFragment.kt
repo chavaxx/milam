@@ -1,5 +1,7 @@
 package a01730311.tec.milam
 
+import a01730311.tec.milam.adapter.ProfileAdapter
+import a01730311.tec.milam.data.Datasource
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,11 +29,6 @@ class LoginFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-
 
     }
 
@@ -42,9 +40,20 @@ class LoginFragment : Fragment() {
         val view: View =  inflater.inflate(R.layout.fragment_login, container, false)
 
         setNavigation(view)
+        loadCards(view)
+
 
         return view
+    }
 
+    private fun loadCards(view: View) {
+
+
+        val myProfiles = Datasource().loadProfiles();
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewProfiles)
+        recyclerView.adapter = ProfileAdapter(this, myProfiles)
+        recyclerView.setHasFixedSize(true)
     }
 
     private fun setNavigation(view: View) {

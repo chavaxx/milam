@@ -46,9 +46,13 @@ class confirmar_perfil : Fragment() {
 
     private fun setNavigation(view: View) {
         val button: Button = view.findViewById(R.id.button_confirm_profile)
+        val backButton: Button = view.findViewById(R.id.button_back_icons)
         button.setOnClickListener{
             val action = confirmar_perfilDirections.actionConfirmarPerfilToHomeActivity()
             findNavController().navigate(action)
+        }
+        backButton.setOnClickListener{
+            findNavController().popBackStack()
         }
     }
 
