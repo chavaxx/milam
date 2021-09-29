@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/game_card"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:layout_gravity="center"
     app:cardBackgroundColor="#6D8586"
@@ -63,9 +63,9 @@
             app:layout_constraintVertical_bias="0.068" />
 
         <Button
-            android:id="@+id/playButton"
+            android:id="@+id/game_card_button"
             android:layout_width="135dp"
-            android:layout_height="39dp"
+            android:layout_height="48dp"
             android:layout_marginVertical="10dp"
             android:background="@drawable/shapes"
             android:elevation="10dp"

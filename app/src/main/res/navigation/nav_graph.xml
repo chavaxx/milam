@@ -29,8 +29,8 @@
         android:label="fragment_confirmar_perfil"
         tools:layout="@layout/fragment_confirmar_perfil" >
         <action
-            android:id="@+id/action_confirmar_perfil_to_homeActivity"
-            app:destination="@id/homeActivity" />
+            android:id="@+id/action_confirmar_perfil_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -42,15 +42,17 @@
             app:destination="@id/registro_usuario" />
     </fragment>
     <fragment
-        android:id="@+id/simon_says_preview"
-        android:name="a01730311.tec.milam.simonSays"
-        android:label="fragment_simon"
-        tools:layout="@layout/fragment_simon_says_preview" >
+        android:id="@+id/homeFragment"
+        android:name="a01730311.tec.milam.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_previewFragment"
+            app:destination="@id/previewFragment" />
     </fragment>
-    <activity
-        android:id="@+id/homeActivity"
-        android:name="a01730311.tec.milam.HomeActivity"
-        android:label="activity_home"
-        tools:layout="@layout/activity_home">
-      </activity>
+    <fragment
+        android:id="@+id/previewFragment"
+        android:name="a01730311.tec.milam.games.PreviewFragment"
+        android:label="fragment_preview"
+        tools:layout="@layout/fragment_preview" />
 </navigation>

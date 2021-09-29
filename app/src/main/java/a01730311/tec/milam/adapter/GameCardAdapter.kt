@@ -1,21 +1,20 @@
 package a01730311.tec.milam.adapter
 
+import a01730311.tec.milam.HomeFragment
+import a01730311.tec.milam.HomeFragmentDirections
 import a01730311.tec.milam.components.GameCard
 import a01730311.tec.milam.R
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 
-class GameCardAdapter(private val context: Context, private val dataset: List<GameCard>):RecyclerView.Adapter<GameCardAdapter.GameCardViewHolder>() {
+class GameCardAdapter(private val context: HomeFragment, private val dataset: List<GameCard>, private val findNavController: NavController):RecyclerView.Adapter<GameCardAdapter.GameCardViewHolder>() {
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -26,16 +25,7 @@ class GameCardAdapter(private val context: Context, private val dataset: List<Ga
         val imagePlaceholder: ImageView = view.findViewById(R.id.game_card_image)
         val title: TextView = view.findViewById(R.id.game_card_title)
         val description: TextView = view.findViewById(R.id.game_card_description)
-        private val playButton = itemView.findViewById<Button>(R.id.playButton);
-
-        fun bind(position: Int){
-            playButton.setOnClickListener {
-                println(position)
-                if(position == 5){
-
-                }
-            }
-        }
+        val button: Button = view.findViewById(R.id.game_card_button)
     }
 
     /**
@@ -57,8 +47,10 @@ class GameCardAdapter(private val context: Context, private val dataset: List<Ga
         holder.imagePlaceholder.setImageDrawable(context.resources.getDrawable(card.srcCompat))
         holder.title.text = context.resources.getString(card.labelText)
         holder.description.text = context.resources.getString(card.descriptionText)
-
-        holder.bind(position)
+        holder.button.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToPreviewFragment()
+            findNavController.navigate(action)
+        }
     }
 
     /**

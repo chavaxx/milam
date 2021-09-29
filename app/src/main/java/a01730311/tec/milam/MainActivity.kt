@@ -38,10 +38,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
     }
 
-    fun navigate(view: View) {
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
-    }
 
     /**
      * Enables back button support. Simply navigates one element up on the stack.
