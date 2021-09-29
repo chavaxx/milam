@@ -3,34 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/about_button_style.xml" value="0.20925925925925926" />
-        <entry key="app/src/main/res/drawable/about_icon.xml" value="0.33541666666666664" />
-        <entry key="app/src/main/res/drawable/pause_icon.xml" value="0.18518518518518517" />
-        <entry key="app/src/main/res/drawable/play_icon.xml" value="0.17" />
         <entry key="app/src/main/res/drawable/shapes.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/drawable/square_frame.xml" value="0.33541666666666664" />
-        <entry key="app/src/main/res/layout/activity_find_letter.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/activity_find_number.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.3477751756440281" />
+        <entry key="app/src/main/res/layout/activity_find_letter.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_pixarte.xml" value="0.1118659420289855" />
         <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.10416666666666667" />
         <entry key="app/src/main/res/layout/find_number_main.xml" value="0.13043478260869565" />
         <entry key="app/src/main/res/layout/fragment_cargando.xml" value="0.10416666666666667" />
         <entry key="app/src/main/res/layout/fragment_confirmar_perfil.xml" value="0.10416666666666667" />
-        <entry key="app/src/main/res/layout/fragment_find_letter_preview.xml" value="0.3104166666666667" />
-        <entry key="app/src/main/res/layout/fragment_find_number_preview.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_preview.xml" value="0.3104166666666667" />
+        <entry key="app/src/main/res/layout/fragment_preview.xml" value="0.1118659420289855" />
         <entry key="app/src/main/res/layout/fragment_registro_elegir_icono.xml" value="0.10416666666666667" />
         <entry key="app/src/main/res/layout/fragment_registro_list.xml" value="0.10416666666666667" />
         <entry key="app/src/main/res/layout/fragment_registro_usuario.xml" value="0.13043478260869565" />
-        <entry key="app/src/main/res/layout/fragment_simon_says.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_simon_says_game.xml" value="0.3104166666666667" />
-        <entry key="app/src/main/res/layout/game_card.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/fragment_simon_says_preview.xml" value="0.1118659420289855" />
+        <entry key="app/src/main/res/layout/game_card.xml" value="0.1" />
         <entry key="app/src/main/res/layout/home_cards.xml" value="0.19858156028368795" />
-        <entry key="app/src/main/res/layout/inicio_sesion.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/test.xml" value="0.27445652173913043" />
+        <entry key="app/src/main/res/layout/inicio_sesion.xml" value="0.13043478260869565" />
+        <entry key="app/src/main/res/layout/profile_card.xml" value="0.11775362318840579" />
       </map>
     </option>
   </component>

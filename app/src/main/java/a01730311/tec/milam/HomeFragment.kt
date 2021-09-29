@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
@@ -50,6 +49,7 @@ class HomeFragment : Fragment() {
         val navController = findNavController()
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view_cards)
         recyclerView.adapter = GameCardAdapter(this, myGameCards, navController)
+
 
         // Use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
