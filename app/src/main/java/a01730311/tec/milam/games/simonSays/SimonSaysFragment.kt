@@ -9,6 +9,8 @@ import a01730311.tec.milam.R
 import android.animation.*
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.ColorFilter
+import android.graphics.ColorMatrix
 import android.media.MediaPlayer
 import android.widget.Button
 import android.widget.ImageView
@@ -155,9 +157,11 @@ class SimonSaysFragment : Fragment() {
 
         val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0.95f)
         val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.95f)
-        val alpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0.8f)
+        val alpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0.2f)
+
         val animator = ObjectAnimator.ofPropertyValuesHolder(
-            newButton, scaleX, scaleY, alpha)
+            newButton, scaleX, scaleY, alpha
+        )
 
         animator.duration = 400
         animator.repeatCount = 1
