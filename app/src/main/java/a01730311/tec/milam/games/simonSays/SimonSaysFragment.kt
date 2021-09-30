@@ -152,13 +152,13 @@ class SimonSaysFragment : Fragment() {
 
     private fun flashAndPlay(newPlayer: MediaPlayer, newButton: ImageView, delay: Int) {
         val player: MediaPlayer = newPlayer
-        val animator: ObjectAnimator = ObjectAnimator.ofObject(
-            newButton,
-            "backgroundColor",
-            ArgbEvaluator(),
-            newButton.solidColor,
-            -0x1
-        )
+
+        val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0.95f)
+        val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.95f)
+        val alpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0.8f)
+        val animator = ObjectAnimator.ofPropertyValuesHolder(
+            newButton, scaleX, scaleY, alpha)
+
         animator.duration = 400
         animator.repeatCount = 1
         animator.repeatMode = ValueAnimator.REVERSE
@@ -170,6 +170,7 @@ class SimonSaysFragment : Fragment() {
             }
         })
         animator.start()
+
     }
 
 

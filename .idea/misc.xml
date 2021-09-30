@@ -18,6 +18,8 @@
         <entry key="app/src/main/res/layout/fragment_registro_elegir_icono.xml" value="0.10416666666666667" />
         <entry key="app/src/main/res/layout/fragment_registro_list.xml" value="0.10416666666666667" />
         <entry key="app/src/main/res/layout/fragment_registro_usuario.xml" value="0.13043478260869565" />
+        <entry key="app/src/main/res/layout/fragment_simon_says.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/fragment_simon_says_game.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/fragment_simon_says_preview.xml" value="0.1118659420289855" />
         <entry key="app/src/main/res/layout/game_card.xml" value="0.1" />
         <entry key="app/src/main/res/layout/home_cards.xml" value="0.19858156028368795" />
