@@ -14,14 +14,13 @@
             android:id="@+id/scoreLbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
             android:text="Score: 0"
             android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.798"
+            app:layout_constraintHorizontal_bias="0.824"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.066" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/startBtn"
@@ -41,46 +40,47 @@
             android:id="@+id/greenBtn"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="10dp"
             android:src="@drawable/green_button"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/redBtn"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scoreLbl"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/scoreLbl" />
 
         <ImageView
             android:id="@+id/blueBtn"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="16dp"
             android:src="@drawable/blue_button"
-            android:layout_marginBottom="236dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/redBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/redBtn"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/redBtn"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="16dp"
             android:src="@drawable/red_button"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.659"
-            app:layout_constraintStart_toEndOf="@+id/greenBtn"
-            app:layout_constraintTop_toBottomOf="@+id/scoreLbl"
-            app:layout_constraintVertical_bias="0.017" />
+            app:layout_constraintTop_toBottomOf="@+id/scoreLbl" />
 
         <ImageView
             android:id="@+id/yellowBtn"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="10dp"
             android:src="@drawable/yellow_button"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/blueBtn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/greenBtn"
             app:layout_constraintVertical_bias="0.0" />

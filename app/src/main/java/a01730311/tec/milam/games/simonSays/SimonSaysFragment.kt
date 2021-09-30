@@ -64,12 +64,12 @@ class SimonSaysFragment : Fragment() {
     }
 
     fun loadData(view : View) {
-        data[R.id.greenBtn] = Pair(view.findViewById(R.id.greenBtn), MediaPlayer.create(activity, R.raw.red))
+        data[R.id.greenBtn] = Pair(view.findViewById(R.id.greenBtn), MediaPlayer.create(activity, R.raw.green))
         data[R.id.blueBtn] = Pair(view.findViewById(R.id.blueBtn), MediaPlayer.create(activity, R.raw.blue))
         data[R.id.yellowBtn] =
             Pair(view.findViewById(R.id.yellowBtn), MediaPlayer.create(activity, R.raw.yellow))
-        data[R.id.blueBtn] =
-            Pair(view.findViewById(R.id.blueBtn), MediaPlayer.create(activity, R.raw.green))
+        data[R.id.redBtn] =
+            Pair(view.findViewById(R.id.redBtn), MediaPlayer.create(activity, R.raw.red))
 
         data[R.id.greenBtn]?.first?.setOnClickListener{
             onTap(R.id.greenBtn)
