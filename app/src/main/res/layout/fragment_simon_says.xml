@@ -10,82 +10,115 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/scoreLbl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Score: 0"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.798"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.066" />
 
-        <Button
-            android:id="@+id/startBtn"
+        <TableLayout
+            android:id="@+id/tableLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/greenBtn"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:src="@drawable/green_button" />
+
+                <ImageView
+                    android:id="@+id/redBtn"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:src="@drawable/red_button" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/yellowBtn"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:src="@drawable/yellow_button" />
+
+                <ImageView
+                    android:id="@+id/blueBtn"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:src="@drawable/blue_button" />
+
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/darker_gray"
-            android:text="START"
+            android:text="@string/game6"
+            android:textAlignment="center"
+            android:textColor="#47525E"
+            android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scoreLbl"
-            app:layout_constraintVertical_bias="0.812" />
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
+            app:layout_constraintVertical_bias="0.418" />
 
-
-        <ImageView
-            android:id="@+id/greenBtn"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/green_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scoreLbl"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/blueBtn"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="236dp"
-            android:src="@drawable/blue_button"
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:text="Nivel 1"
+            android:textAlignment="center"
+            android:textColor="#47525E"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/yellowBtn"
-            app:layout_constraintTop_toBottomOf="@+id/redBtn" />
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.217" />
 
-        <ImageView
-            android:id="@+id/redBtn"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_marginTop="12dp"
-            android:src="@drawable/red_button"
+        <ImageButton
+            android:id="@+id/pauseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shapes"
+            android:backgroundTint="#7DD7DB"
+            android:elevation="10dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:src="@android:drawable/ic_media_pause"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.659"
-            app:layout_constraintStart_toEndOf="@+id/greenBtn"
-            app:layout_constraintTop_toBottomOf="@+id/scoreLbl"
-            app:layout_constraintVertical_bias="0.017" />
-
-        <ImageView
-            android:id="@+id/yellowBtn"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/yellow_button"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.955"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/greenBtn"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.023"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/turnLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/font"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.141" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

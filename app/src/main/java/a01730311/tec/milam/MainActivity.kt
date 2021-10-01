@@ -1,12 +1,12 @@
 package a01730311.tec.milam
 
-import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -18,15 +18,11 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         // hides action bar
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         val actionBar: ActionBar? = supportActionBar
         actionBar?.hide()
         // sets translucent status bar
-        this.window.apply {
-            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-            statusBarColor = Color.TRANSPARENT
-        }
+
 
 
         // Get the navigation host fragment from this Activity

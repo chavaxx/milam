@@ -1,14 +1,13 @@
-package a01730311.tec.milam
+package a01730311.tec.milam.screens.signup
 
-import a01730311.tec.milam.adapter.GameCardAdapter
-import a01730311.tec.milam.data.Datasource
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import a01730311.tec.milam.R
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,17 +16,20 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
+ * Use the [registro_elegir_icono.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
+class registro_elegir_icono : Fragment() {
     // TODO: Rename and change types of parameters
-
-
+    private var param1: String? = null
+    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
     }
 
     override fun onCreateView(
@@ -35,28 +37,25 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val view: View =  inflater.inflate(R.layout.fragment_home, container, false)
+        val view: View =  inflater.inflate(R.layout.fragment_registro_elegir_icono, container, false)
 
-        loadGameCards(view)
+        setNavigation(view)
 
         return view
+
     }
 
-    private fun loadGameCards(view: View) {
-
-        val myGameCards = Datasource().loadGameCards()
-
-        val navController = findNavController()
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view_cards)
-        recyclerView.adapter = GameCardAdapter(this, myGameCards, navController)
-
-
-        // Use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        recyclerView.setHasFixedSize(true)
+    private fun setNavigation(view: View) {
+        val button: Button = view.findViewById(R.id.button_next_confirm)
+        val backButton: Button = view.findViewById(R.id.button_back_icons)
+        button.setOnClickListener{
+            val action = registro_elegir_iconoDirections.actionRegistroElegirIconoToConfirmarPerfil()
+            findNavController().navigate(action)
+        }
+        backButton.setOnClickListener{
+            findNavController().popBackStack()
+        }
     }
-
-
 
     companion object {
         /**
@@ -65,12 +64,12 @@ class HomeFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
+         * @return A new instance of fragment registro_elegir_icono.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
+            registro_elegir_icono().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

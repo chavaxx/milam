@@ -5,10 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    android:background="#F6F6F6"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".HomeFragment">
+    tools:context=".screens.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

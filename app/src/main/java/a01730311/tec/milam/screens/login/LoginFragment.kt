@@ -1,5 +1,8 @@
-package a01730311.tec.milam
+package a01730311.tec.milam.screens.login
 
+import a01730311.tec.milam.adapter.ProfileAdapter
+import a01730311.tec.milam.data.Datasource
+import a01730311.tec.milam.R
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -15,20 +19,18 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [confirmar_perfil.newInstance] factory method to
+ * Use the [LoginFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class confirmar_perfil : Fragment() {
+class LoginFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -36,23 +38,30 @@ class confirmar_perfil : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val view: View =  inflater.inflate(R.layout.fragment_confirmar_perfil, container, false)
+        val view: View =  inflater.inflate(R.layout.fragment_login, container, false)
 
         setNavigation(view)
+        loadCards(view)
+
 
         return view
+    }
 
+    private fun loadCards(view: View) {
+
+
+        val myProfiles = Datasource().loadProfiles();
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewProfiles)
+        recyclerView.adapter = ProfileAdapter(this, myProfiles)
+        recyclerView.setHasFixedSize(true)
     }
 
     private fun setNavigation(view: View) {
-        val button: Button = view.findViewById(R.id.button_confirm_profile)
-        val backButton: Button = view.findViewById(R.id.button_back_icons)
-        button.setOnClickListener{
-            val action = confirmar_perfilDirections.actionConfirmarPerfilToHomeFragment()
+        val signupButton: Button = view.findViewById(R.id.signup_button)
+        signupButton.setOnClickListener{
+            val action = LoginFragmentDirections.actionLoginFragmentToRegistroUsuario()
             findNavController().navigate(action)
-        }
-        backButton.setOnClickListener{
-            findNavController().popBackStack()
         }
     }
 
@@ -63,12 +72,12 @@ class confirmar_perfil : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment confirmar_perfil.
+         * @return A new instance of fragment LoginFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            confirmar_perfil().apply {
+            LoginFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

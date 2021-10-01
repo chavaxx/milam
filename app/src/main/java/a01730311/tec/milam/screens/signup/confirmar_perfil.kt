@@ -1,12 +1,21 @@
-package a01730311.tec.milam
+package a01730311.tec.milam.screens.signup
 
+import android.graphics.Color
 import android.os.Bundle
+import a01730311.tec.milam.R
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Button
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -15,17 +24,20 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [registro_usuario.newInstance] factory method to
+ * Use the [confirmar_perfil.newInstance] factory method to
  * create an instance of this fragment.
  */
-class registro_usuario : Fragment() {
+class confirmar_perfil : Fragment() {
+    // TODO: Rename and change types of parameters
+    private var param1: String? = null
+    private var param2: String? = null
 
-    private var _binding: registro_usuario? = null
-
-    private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
     }
 
     override fun onCreateView(
@@ -33,7 +45,7 @@ class registro_usuario : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val view: View =  inflater.inflate(R.layout.fragment_registro_usuario, container, false)
+        val view: View =  inflater.inflate(R.layout.fragment_confirmar_perfil, container, false)
 
         setNavigation(view)
 
@@ -42,17 +54,17 @@ class registro_usuario : Fragment() {
     }
 
     private fun setNavigation(view: View) {
-        val button: Button = view.findViewById(R.id.button_next)
+        val button: Button = view.findViewById(R.id.button_confirm_profile)
         val backButton: Button = view.findViewById(R.id.button_back_icons)
         button.setOnClickListener{
-            val action = registro_usuarioDirections.actionRegistroUsuarioToRegistroElegirIcono()
+            val action = confirmar_perfilDirections.actionConfirmarPerfilToHomeFragment()
             findNavController().navigate(action)
+            WindowCompat.setDecorFitsSystemWindows(requireActivity().window, true)
         }
         backButton.setOnClickListener{
             findNavController().popBackStack()
         }
     }
-    
 
     companion object {
         /**
@@ -61,12 +73,12 @@ class registro_usuario : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment registro_usuario.
+         * @return A new instance of fragment confirmar_perfil.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            registro_usuario().apply {
+            confirmar_perfil().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
@@ -74,3 +86,4 @@ class registro_usuario : Fragment() {
             }
     }
 }
+

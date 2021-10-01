@@ -10,16 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Milam">
         <activity
-            android:name=".games.pixarte.PixarteActivity"
-            android:exported="true" />
-        <activity
             android:name=".find_letter"
             android:exported="true" />
         <activity
             android:name=".find_number"
-            android:exported="true" />
-        <activity
-            android:name=".HomeActivity"
             android:exported="true" />
         <activity android:name=".MainActivity">
             <intent-filter>

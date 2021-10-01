@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/registro_usuario"
-        android:name="a01730311.tec.milam.registro_usuario"
+        android:name="a01730311.tec.milam.screens.signup.registro_usuario"
         android:label="fragment_registro_usuario"
         tools:layout="@layout/fragment_registro_usuario">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/registro_elegir_icono"
-        android:name="a01730311.tec.milam.registro_elegir_icono"
+        android:name="a01730311.tec.milam.screens.signup.registro_elegir_icono"
         android:label="fragment_registro_elegir_icono"
         tools:layout="@layout/fragment_registro_elegir_icono">
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/confirmar_perfil"
-        android:name="a01730311.tec.milam.confirmar_perfil"
+        android:name="a01730311.tec.milam.screens.signup.confirmar_perfil"
         android:label="fragment_confirmar_perfil"
         tools:layout="@layout/fragment_confirmar_perfil" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="a01730311.tec.milam.LoginFragment"
+        android:name="a01730311.tec.milam.screens.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="a01730311.tec.milam.HomeFragment"
+        android:name="a01730311.tec.milam.screens.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action

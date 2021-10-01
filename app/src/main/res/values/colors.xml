@@ -16,4 +16,5 @@
     <color name="game_card5">#F879EB</color>
     <color name="game_card6">#77D353</color>
     <color name="blue_buttons">#7DD7DB</color>
+    <color name="gray_background">#F6F6F6</color>
 </resources>

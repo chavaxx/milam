@@ -1,6 +1,6 @@
 package a01730311.tec.milam.adapter
 
-import a01730311.tec.milam.LoginFragment
+import a01730311.tec.milam.screens.login.LoginFragment
 import a01730311.tec.milam.R
 import a01730311.tec.milam.components.Profile
 import android.view.LayoutInflater

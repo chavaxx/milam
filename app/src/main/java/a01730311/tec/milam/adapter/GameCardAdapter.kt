@@ -1,7 +1,7 @@
 package a01730311.tec.milam.adapter
 
-import a01730311.tec.milam.HomeFragment
-import a01730311.tec.milam.HomeFragmentDirections
+import a01730311.tec.milam.screens.home.HomeFragment
+import a01730311.tec.milam.screens.home.HomeFragmentDirections
 import a01730311.tec.milam.components.GameCard
 import a01730311.tec.milam.R
 import android.view.LayoutInflater

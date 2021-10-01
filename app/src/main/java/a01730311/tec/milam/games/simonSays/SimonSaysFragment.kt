@@ -9,12 +9,16 @@ import a01730311.tec.milam.R
 import android.animation.*
 import android.content.Context
 import android.content.SharedPreferences
-import android.graphics.ColorFilter
-import android.graphics.ColorMatrix
 import android.media.MediaPlayer
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,9 +36,10 @@ class SimonSaysFragment : Fragment() {
     private var param2: String? = null
 
     private var data : HashMap<Int, Pair<ImageView, MediaPlayer>> = HashMap()
-    private lateinit var scoreLbl : TextView
+    private lateinit var turnLabel : TextView
     private var game : simonSaysModel = simonSaysModel()
     private lateinit var maxScore : SharedPreferences
+    private var animationsRunning: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,20 +54,46 @@ class SimonSaysFragment : Fragment() {
                               savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
         val view: View =  inflater.inflate(R.layout.fragment_simon_says, container, false)
-        val startButton : Button = view.findViewById(R.id.startBtn)
-        startButton.setOnClickListener{
-            onTap(R.id.startBtn)
-        }
+
+        turnLabel = view.findViewById(R.id.turnLabel)
+        turnLabel.text = "Espera..."
         loadData(view)
         maxScore = activity?.getPreferences(Context.MODE_PRIVATE)!!
         game.setScore(maxScore.getInt("savedScore",0))
         enableButtons(false)
 
-        scoreLbl = view.findViewById(R.id.scoreLbl)
-        scoreLbl.text = "Max score: " + game.getScore()
+        initGame()
 
+
+
+
+        val pauseButton : ImageButton = view.findViewById(R.id.pauseButton)
+        pauseButton.setOnClickListener{
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Pausa")
+                .setNegativeButton("Salir del juego") { dialog, which ->
+                    findNavController().popBackStack()
+                }
+                .setNeutralButton("Reintentar")  { dialog, which ->
+                    initGame()
+                }
+                .show()
+
+        }
 
         return view
+    }
+
+    fun onFailSequence() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Intenta de nuevo")
+            .setNegativeButton("Salir del juego") { dialog, which ->
+                findNavController().popBackStack()
+            }
+            .setPositiveButton("Reintentar") { dialog, which ->
+                initGame()
+            }
+            .show()
     }
 
     fun loadData(view : View) {
@@ -87,12 +118,23 @@ class SimonSaysFragment : Fragment() {
         }
     }
 
-    fun onTap(id : Int) {
-        var buttonID: Int = id
-        if (buttonID == R.id.startBtn) {
-            scoreLbl.text = "Puntuación: " + game.getScore()
-            buttonID = game.startGame()
-            println(buttonID)
+    fun initGame() {
+
+        val buttonID: Int = game.startGame()
+
+        data[buttonID]?.let {
+            flashAndPlay(
+                it.second,
+                it.first,
+                0
+            )
+        }
+        animationsRunning = 0
+        enableButtons(true)
+    }
+
+    fun onTap(buttonID : Int) {
+
             data[buttonID]?.let {
                 flashAndPlay(
                     it.second,
@@ -100,17 +142,15 @@ class SimonSaysFragment : Fragment() {
                     0
                 )
             }
-            enableButtons(true)
-        } else {
             game.validateButton(buttonID)
             if (game.getIsCorrect()) {
                 executeSequence()
-                enableButtons(true)
             } else if (!game.getInGame()) {
                 SaveState()
-                scoreLbl.text = "Has pérdido..."
+                onFailSequence()
+                //scoreLbl.text = "Has pérdido..."
             }
-        }
+
     }
 
     override fun onDestroy() {
@@ -136,34 +176,42 @@ class SimonSaysFragment : Fragment() {
     }
 
     private fun executeSequence() {
-        val sequence: ArrayList<Int>? = game.getSequence()
-        enableButtons(false)
-        if (sequence != null) {
-            for (i in 0 until sequence.size) {
-                data[sequence[i]]?.let {
-                    flashAndPlay(
-                        it.second,
-                        it.first,
-                        1000 * (i + 1)
-                    )
 
+        runBlocking {
+            val sequence: ArrayList<Int>? = game.getSequence()
+            animationsRunning = sequence!!.size
+                turnLabel.text = "Espera..."
+                enableButtons(false)
+                if (sequence != null) {
+                    for (i in 0 until sequence.size) {
+                        data[sequence[i]]?.let {
+                            flashAndPlay(
+                                it.second,
+                                it.first,
+                                1000 * (i + 1)
+                            )
+                        }
+                    }
                 }
-            }
+
+
         }
+
     }
+
 
     private fun flashAndPlay(newPlayer: MediaPlayer, newButton: ImageView, delay: Int) {
         val player: MediaPlayer = newPlayer
 
         val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0.95f)
         val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.95f)
-        val alpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0.2f)
+        val alpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0.3f)
 
         val animator = ObjectAnimator.ofPropertyValuesHolder(
             newButton, scaleX, scaleY, alpha
         )
 
-        animator.duration = 400
+        animator.duration = 300
         animator.repeatCount = 1
         animator.repeatMode = ValueAnimator.REVERSE
         animator.startDelay = delay.toLong()
@@ -172,8 +220,20 @@ class SimonSaysFragment : Fragment() {
                 super.onAnimationStart(animation)
                 player.start()
             }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                super.onAnimationEnd(animation)
+
+
+                if (animationsRunning == delay/1000) {
+                    animationsRunning = 0
+                    turnLabel.text = "Tu turno"
+                    enableButtons(true)
+                }
+            }
         })
         animator.start()
+
 
     }
 

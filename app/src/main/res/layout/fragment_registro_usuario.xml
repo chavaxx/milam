@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#74CFD0"
     android:theme="@style/Profiles"
-    tools:context=".registro_usuario">
+    tools:context=".screens.signup.registro_usuario">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
