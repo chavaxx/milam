@@ -49,6 +49,12 @@
         <action
             android:id="@+id/action_homeFragment_to_simonSaysFragment"
             app:destination="@id/simonSaysFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_progressFragment"
+            app:destination="@id/progressFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
@@ -60,4 +66,18 @@
         android:name="a01730311.tec.milam.games.simonSays.SimonSaysFragment"
         android:label="fragment_simon_says"
         tools:layout="@layout/fragment_simon_says" />
+    <fragment
+        android:id="@+id/progressFragment"
+        android:name="a01730311.tec.milam.screens.home.ProgressFragment"
+        android:label="fragment_progress"
+        tools:layout="@layout/fragment_progress" >
+        <action
+            android:id="@+id/action_progressFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="a01730311.tec.milam.screens.home.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

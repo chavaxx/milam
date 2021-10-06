@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.view.WindowCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
@@ -24,6 +27,9 @@ private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
 
+    lateinit var progressLabel: TextView;
+    lateinit var userAvatar: ImageView;
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +45,9 @@ class HomeFragment : Fragment() {
         val view: View =  inflater.inflate(R.layout.fragment_home, container, false)
 
         loadGameCards(view)
+        setControls(view)
 
+        WindowCompat.setDecorFitsSystemWindows(requireActivity().window, true)
         return view
     }
 
@@ -57,6 +65,19 @@ class HomeFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
     }
 
+
+    private fun setControls(view: View) {
+        progressLabel = view.findViewById(R.id.progressLabel)
+        progressLabel.setOnClickListener{
+            val action = HomeFragmentDirections.actionHomeFragmentToProgressFragment()
+            findNavController().navigate(action)
+        }
+        userAvatar = view.findViewById(R.id.userAvatar)
+        userAvatar.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
+            findNavController().navigate(action)
+        }
+    }
 
 
     companion object {
