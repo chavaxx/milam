@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.view.WindowCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
@@ -40,9 +41,9 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         val view: View =  inflater.inflate(R.layout.fragment_login, container, false)
 
+        WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false)
         setNavigation(view)
         loadCards(view)
-
 
         return view
     }

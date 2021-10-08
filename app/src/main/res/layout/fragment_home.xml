@@ -43,9 +43,13 @@
 
                 <TextView
                     android:id="@+id/progressLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
                     android:text="Progreso"
+                    android:background="?android:selectableItemBackground"
+                    android:focusable="true"
+                    android:clickable="true"
                     android:textColor="@color/blue_buttons"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +63,9 @@
                     android:layout_gravity="center"
                     android:scaleType="fitCenter"
                     android:src="@drawable/pikachu"
+                    android:background="?android:selectableItemBackground"
+                    android:focusable="true"
+                    android:clickable="true"
                     android:layout_marginVertical="@dimen/cardview_default_elevation"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/left_guideline"
@@ -81,19 +88,6 @@
                     android:orientation="vertical"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="¡Hola de nuevo, Alex!"
-            android:textAlignment="center"
-            android:textColor="?attr/font"
-            app:layout_constraintBottom_toTopOf="@+id/top_guideline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -127,6 +121,33 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bottom_guideline">
+
+            <TextView
+                android:id="@+id/labelUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¡Hola de nuevo, Alex!"
+                android:textAlignment="center"
+                android:textColor="?attr/font" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿Qué quieres jugar hoy?"
+                android:textAlignment="center"
+                android:textColor="?attr/font"/>
         </LinearLayout>
 
 

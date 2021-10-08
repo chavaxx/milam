@@ -25,9 +25,8 @@ class ProgressFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    lateinit var goBackButton: LinearLayout
-
-    lateinit var avatar: ImageView
+    private lateinit var goBackButton: LinearLayout
+    private lateinit var avatar: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

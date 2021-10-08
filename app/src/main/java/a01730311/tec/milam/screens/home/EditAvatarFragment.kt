@@ -6,10 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
-import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,16 +16,15 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [SettingsFragment.newInstance] factory method to
+ * Use the [EditAvatarFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SettingsFragment : Fragment() {
+class EditAvatarFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
     private lateinit var goBackButton: LinearLayout;
-    private lateinit var editProfilePicture: FloatingActionButton;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,22 +39,14 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_settings, container, false)
-
-        setNavigation(view)
-        return view;
+        val view = inflater.inflate(R.layout.fragment_edit_avatar, container, false)
+        setNavigation(view);
+        return view
     }
-
-
     private fun setNavigation(view: View) {
-        goBackButton = view.findViewById(R.id.goBackHomeFromSettings)
-        editProfilePicture = view.findViewById(R.id.edit_profile_picture)
+        goBackButton = view.findViewById(R.id.goBackSettingsFromSettings)
         goBackButton.setOnClickListener{
             findNavController().popBackStack()
-        }
-        editProfilePicture.setOnClickListener {
-            val action = SettingsFragmentDirections.actionSettingsFragmentToEditAvatarFragment()
-            findNavController().navigate(action)
         }
 
     }
@@ -69,12 +58,12 @@ class SettingsFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment SettingsFragment.
+         * @return A new instance of fragment EditAvatarFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            SettingsFragment().apply {
+            EditAvatarFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

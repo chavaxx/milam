@@ -47,7 +47,6 @@ class HomeFragment : Fragment() {
         loadGameCards(view)
         setControls(view)
 
-        WindowCompat.setDecorFitsSystemWindows(requireActivity().window, true)
         return view
     }
 

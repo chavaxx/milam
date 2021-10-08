@@ -79,5 +79,14 @@
         android:id="@+id/settingsFragment"
         android:name="a01730311.tec.milam.screens.home.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_editAvatarFragment"
+            app:destination="@id/editAvatarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editAvatarFragment"
+        android:name="a01730311.tec.milam.screens.home.EditAvatarFragment"
+        android:label="fragment_edit_avatar"
+        tools:layout="@layout/fragment_edit_avatar" />
 </navigation>
