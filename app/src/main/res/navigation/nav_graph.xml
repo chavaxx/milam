@@ -48,7 +48,7 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_simonSaysFragment"
-            app:destination="@id/simonSaysFragment" />
+            app:destination="@id/mazeFragment" />
         <action
             android:id="@+id/action_homeFragment_to_progressFragment"
             app:destination="@id/progressFragment" />
@@ -89,4 +89,9 @@
         android:name="a01730311.tec.milam.screens.home.EditAvatarFragment"
         android:label="fragment_edit_avatar"
         tools:layout="@layout/fragment_edit_avatar" />
+    <fragment
+        android:id="@+id/mazeFragment"
+        android:name="a01730311.tec.milam.games.maze.MazeFragment"
+        android:label="fragment_maze"
+        tools:layout="@layout/fragment_maze" />
 </navigation>
