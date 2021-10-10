@@ -55,6 +55,7 @@ class SettingsFragment : Fragment() {
         goBackButton.setOnClickListener{
             findNavController().popBackStack()
         }
+
         editProfilePicture.setOnClickListener {
             val action = SettingsFragmentDirections.actionSettingsFragmentToEditAvatarFragment()
             findNavController().navigate(action)

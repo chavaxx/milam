@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#74CFD0"
-    android:theme="@style/Profiles"
     tools:context=".screens.signup.registro_usuario">
 
 
@@ -21,7 +20,7 @@
             android:fontFamily="@font/lato_black"
             android:text="¿Cómo te llamas?"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="?attr/colorSecondary"
             android:textSize="35sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +41,7 @@
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +57,7 @@
             android:stateListAnimator="@null"
             android:text="Siguiente"
             android:textSize="18sp"
+            android:textColor="?attr/colorSecondary"
             app:icon="@drawable/right_arrow"
             app:iconGravity="end"
             app:iconSize="18dp"
@@ -71,7 +71,9 @@
         <Button
             android:id="@+id/button_back_icons"
             android:layout_width="wrap_content"
+            android:textColor="?attr/colorSecondary"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_black"
             android:backgroundTint="#74CFD0"
             android:stateListAnimator="@null"
             android:text="Regresar"

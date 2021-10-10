@@ -26,7 +26,6 @@ class ProgressFragment : Fragment() {
     private var param2: String? = null
 
     private lateinit var goBackButton: LinearLayout
-    private lateinit var avatar: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,11 +51,7 @@ class ProgressFragment : Fragment() {
         goBackButton.setOnClickListener{
             findNavController().popBackStack()
         }
-        avatar = view.findViewById(R.id.userAvatarProgress)
-        avatar.setOnClickListener {
-            val action = ProgressFragmentDirections.actionProgressFragmentToSettingsFragment()
-            findNavController().navigate(action)
-        }
+
     }
 
     companion object {

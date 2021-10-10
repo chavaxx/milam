@@ -24,4 +24,15 @@ class Datasource {
             Profile("Bryan", R.drawable.eevee)
         )
     }
+
+    fun loadAvatars(): List<Profile> {
+        return listOf(
+            Profile("Pikachu", R.drawable.pikachu),
+            Profile("Squirtle", R.drawable.squirtle),
+            Profile("Pato", R.drawable.psyduck),
+            Profile("Ratata", R.drawable.rattata),
+            Profile("Eevee", R.drawable.eevee),
+            Profile("Snorlax", R.drawable.snorlax)
+        )
+    }
 }

@@ -6,8 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
+import a01730311.tec.milam.adapter.AvatarAdapter
+import a01730311.tec.milam.adapter.ProfileAdapter
+import a01730311.tec.milam.data.Datasource
+import android.os.Build
 import android.widget.LinearLayout
+import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,6 +32,7 @@ class EditAvatarFragment : Fragment() {
     private var param2: String? = null
 
     private lateinit var goBackButton: LinearLayout;
+    private lateinit var saveButton: MaterialCardView;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +49,34 @@ class EditAvatarFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_edit_avatar, container, false)
         setNavigation(view);
+        loadAvatars(view);
+
         return view
     }
+
     private fun setNavigation(view: View) {
         goBackButton = view.findViewById(R.id.goBackSettingsFromSettings)
         goBackButton.setOnClickListener{
             findNavController().popBackStack()
         }
 
+        saveButton = view.findViewById(R.id.save_avatar)
+        saveButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+    }
+
+    private fun loadAvatars(view: View) {
+
+
+        val myAvatars = Datasource().loadAvatars();
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewAvatars)
+
+        recyclerView.adapter = AvatarAdapter(this, myAvatars)
+
+        recyclerView.setHasFixedSize(true)
     }
 
     companion object {

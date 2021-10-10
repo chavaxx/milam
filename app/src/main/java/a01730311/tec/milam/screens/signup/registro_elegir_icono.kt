@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import a01730311.tec.milam.R
+import a01730311.tec.milam.adapter.AvatarAdapter
+import a01730311.tec.milam.data.Datasource
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,9 +43,22 @@ class registro_elegir_icono : Fragment() {
         val view: View =  inflater.inflate(R.layout.fragment_registro_elegir_icono, container, false)
 
         setNavigation(view)
+        loadAvatars(view);
 
         return view
 
+    }
+
+    private fun loadAvatars(view: View) {
+
+
+        val myAvatars = Datasource().loadAvatars();
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewAvatars)
+
+        recyclerView.adapter = AvatarAdapter(this, myAvatars)
+
+        recyclerView.setHasFixedSize(true)
     }
 
     private fun setNavigation(view: View) {

@@ -28,7 +28,7 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
 
     lateinit var progressLabel: TextView;
-    lateinit var userAvatar: ImageView;
+    lateinit var userAvatar: TextView;
 
 
 

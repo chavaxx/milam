@@ -26,7 +26,7 @@ class MazeModel(metrics: DisplayMetrics) {
         screenHeight = metrics.heightPixels.toFloat()
 
         //map of the maze
-        mazeMap = MazeMaps.values()[4].getLvl()
+        mazeMap = MazeMaps.values()[3].getLvl()
 
         //dimensions square and ball
         widthSquare = this.screenWidth / this.mazeMap[0].size

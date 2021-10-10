@@ -3,6 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android/milam/app/src/main/res/drawable/save_avatar_styles.xml" value="0.240625" />
+        <entry key="..\:/android/milam/app/src/main/res/drawable/shapes.xml" value="0.240625" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/avatar_card.xml" value="0.22447916666666667" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/fragment_confirmar_perfil.xml" value="0.22447916666666667" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/fragment_edit_avatar.xml" value="0.33" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/fragment_login.xml" value="0.16621376811594202" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/fragment_maze.xml" value="0.22447916666666667" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/fragment_preview.xml" value="0.22447916666666667" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/fragment_progress.xml" value="0.22447916666666667" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/fragment_registro_elegir_icono.xml" value="0.25" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/fragment_registro_usuario.xml" value="0.22447916666666667" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/fragment_settings.xml" value="0.22447916666666667" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/game_card.xml" value="0.16621376811594202" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/profile_card.xml" value="0.16621376811594202" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/test.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/drawable/shapes.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/activity_find_letter.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />

@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#74CFD0"
     tools:context=".screens.home.EditAvatarFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -87,9 +88,106 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent=".23" />
-¿
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/middle_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".25" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/last_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".8" />
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sized_guideline"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".1"
+            />
 
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewAvatars"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="@id/last_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/sized_guideline"
+            app:layout_constraintTop_toTopOf="@+id/middle_guideline"
+            app:spanCount="2" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="¡Elige tu icono!"
+            android:textColor="?attr/colorSecondary"
+            android:fontFamily="@font/lato_black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/middle_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bottom_guideline" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/save_avatar"
+            app:cardElevation="10dp"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/right_button_guideline"
+            app:layout_constraintStart_toStartOf="@+id/left_button_guideline"
+            app:layout_constraintTop_toTopOf="@+id/last_guideline"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Guardar"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/lato_black"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/blue_buttons"/>
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:tint="@color/blue_buttons"
+                    android:src="@android:drawable/ic_menu_save" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/left_button_guideline"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".25"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/right_button_guideline"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".75"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

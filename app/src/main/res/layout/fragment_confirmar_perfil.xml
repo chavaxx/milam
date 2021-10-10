@@ -10,7 +10,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/half_guideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".5"/>
 
         <TextView
             android:id="@+id/textView8"
@@ -19,7 +24,7 @@
             android:fontFamily="@font/lato_bold"
             android:text="¡Tu nuevo perfil!"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="?attr/colorSecondary"
             android:textSize="45sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +38,6 @@
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:layout_margin="8dp"
-            app:cardBackgroundColor="#6D8586"
             app:cardCornerRadius="25dp"
             app:cardElevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -66,7 +70,6 @@
                     android:fontFamily="@font/lato_black"
                     android:text="Pepillo"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
                     android:textSize="45sp" />
 
             </LinearLayout>
@@ -82,33 +85,32 @@
             android:stateListAnimator="@null"
             android:text="Confimar Perfil"
             android:textAlignment="center"
+            android:textColor="?attr/colorSecondary"
             android:textSize="18sp"
             app:icon="@drawable/check"
             app:iconGravity="end"
             app:iconSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.90"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/icon1"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintStart_toStartOf="@+id/half_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/icon1" />
 
         <Button
             android:id="@+id/button_back_icons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#74CFD0"
+            android:fontFamily="@font/lato_black"
             android:stateListAnimator="@null"
             android:text="Regresar"
+            android:textColor="?attr/colorSecondary"
             android:textSize="18sp"
             app:icon="@drawable/left_arrow"
             app:iconSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintEnd_toStartOf="@+id/half_guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/icon1"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintTop_toBottomOf="@+id/icon1"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
