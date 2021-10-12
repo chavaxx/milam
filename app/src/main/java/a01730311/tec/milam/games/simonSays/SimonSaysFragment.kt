@@ -173,6 +173,7 @@ class SimonSaysFragment : Fragment() {
         val editor: SharedPreferences.Editor = maxScore.edit()
         editor.putInt("savedScore", game.getScore())
         editor.apply()
+
     }
 
     private fun executeSequence() {

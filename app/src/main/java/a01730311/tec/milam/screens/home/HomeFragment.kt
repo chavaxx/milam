@@ -3,14 +3,15 @@ package a01730311.tec.milam.screens.home
 import a01730311.tec.milam.adapter.GameCardAdapter
 import a01730311.tec.milam.data.Datasource
 import a01730311.tec.milam.R
+import a01730311.tec.milam.screens.login.UserViewModel
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.WindowCompat
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
@@ -27,15 +28,11 @@ private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
 
-    lateinit var progressLabel: TextView;
-    lateinit var userAvatar: TextView;
+    private lateinit var progressLabel: TextView
+    private lateinit var userAvatar: TextView
+    private lateinit var labelUsername: TextView
+    private val viewModel: UserViewModel by activityViewModels()
 
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +42,7 @@ class HomeFragment : Fragment() {
         val view: View =  inflater.inflate(R.layout.fragment_home, container, false)
 
         loadGameCards(view)
+        WindowCompat.setDecorFitsSystemWindows(requireActivity().window, true)
         setControls(view)
 
         return view
@@ -66,6 +64,8 @@ class HomeFragment : Fragment() {
 
 
     private fun setControls(view: View) {
+        labelUsername = view.findViewById(R.id.labelUsername)
+        labelUsername.text = "¡Hola de nuevo, " + viewModel.getUsername() + "!"
         progressLabel = view.findViewById(R.id.progressLabel)
         progressLabel.setOnClickListener{
             val action = HomeFragmentDirections.actionHomeFragmentToProgressFragment()

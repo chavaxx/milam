@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import a01730311.tec.milam.R
 import a01730311.tec.milam.adapter.AvatarAdapter
+import a01730311.tec.milam.components.Profile
 import a01730311.tec.milam.data.Datasource
+import a01730311.tec.milam.screens.login.UserViewModel
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
@@ -26,6 +30,11 @@ class registro_elegir_icono : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private var selectedAvatar: Int = -1
+    private lateinit var myAvatars: List<Profile>
+
+    private val viewModel: UserViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,11 +61,12 @@ class registro_elegir_icono : Fragment() {
     private fun loadAvatars(view: View) {
 
 
-        val myAvatars = Datasource().loadAvatars();
+        myAvatars = Datasource().loadAvatars();
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewAvatars)
 
-        recyclerView.adapter = AvatarAdapter(this, myAvatars)
+        recyclerView.adapter = AvatarAdapter(this, myAvatars, ::selectedAvatar)
+
 
         recyclerView.setHasFixedSize(true)
     }
@@ -65,8 +75,16 @@ class registro_elegir_icono : Fragment() {
         val button: Button = view.findViewById(R.id.button_next_confirm)
         val backButton: Button = view.findViewById(R.id.button_back_icons)
         button.setOnClickListener{
-            val action = registro_elegir_iconoDirections.actionRegistroElegirIconoToConfirmarPerfil()
-            findNavController().navigate(action)
+            if (selectedAvatar == -1) {
+                val text = "Selecciona un icono de arriba"
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(activity, text, duration)
+                toast.show()
+            } else {
+                viewModel.setAvatarID(myAvatars[selectedAvatar].iconID)
+                val action = registro_elegir_iconoDirections.actionRegistroElegirIconoToConfirmarPerfil()
+                findNavController().navigate(action)
+            }
         }
         backButton.setOnClickListener{
             findNavController().popBackStack()

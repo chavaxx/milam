@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".games.findLetters.FindLetterFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/matrixLetters"
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="400dp"
         android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"

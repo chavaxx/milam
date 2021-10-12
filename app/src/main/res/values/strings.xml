@@ -54,4 +54,8 @@
     <string name="description5">Suma y selecciona los resultados</string>
     <string name="description6">Escucha y repite</string>
     <string name="play">Jugar</string>
+    <string name="username_input_hint">Introduce tu nombre aquí</string>
+    <string name="new_username_label">¿Cómo te llamas?</string>
+    <string name="next_label">Siguiente</string>
+    <string name="back_level">Regresar</string>
 </resources>

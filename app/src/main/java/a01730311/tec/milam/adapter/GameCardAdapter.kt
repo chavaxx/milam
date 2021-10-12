@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 
@@ -43,13 +44,13 @@ class GameCardAdapter(private val context: HomeFragment, private val dataset: Li
      */
     override fun onBindViewHolder(holder: GameCardViewHolder, position: Int) {
         val card = dataset[position]
+        val nameOfGame = context.resources.getString(card.labelText)
         holder.cardView.setCardBackgroundColor(context.resources.getInteger(card.backgroundColor))
         holder.imagePlaceholder.setImageDrawable(context.resources.getDrawable(card.srcCompat))
-        holder.title.text = context.resources.getString(card.labelText)
+        holder.title.text = nameOfGame
         holder.description.text = context.resources.getString(card.descriptionText)
         holder.button.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToSimonSaysFragment()
-            findNavController.navigate(action)
+            findNavController.navigate(card.directions)
         }
     }
 

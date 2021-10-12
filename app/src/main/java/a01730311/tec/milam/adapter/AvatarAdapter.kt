@@ -12,11 +12,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
+import kotlin.reflect.KMutableProperty0
 
-class AvatarAdapter(private val context: Fragment, private val dataset: List<Profile>):RecyclerView.Adapter<AvatarAdapter.AvatarViewHolder>() {
+class AvatarAdapter(private val context: Fragment, private val dataset: List<Profile>, private val intReference: KMutableProperty0<Int> ):RecyclerView.Adapter<AvatarAdapter.AvatarViewHolder>() {
 
 
-    private var selectedAvatar: Int = -1
+    private var selectedAvatar: Int = intReference.get()
+
 
     class AvatarViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val avatar: ImageView = view.findViewById(R.id.avatar_image)
@@ -42,6 +44,7 @@ class AvatarAdapter(private val context: Fragment, private val dataset: List<Pro
         } else {
             holder.card.strokeWidth = 0
         }
+
         holder.card.setOnClickListener{
             if (selectedAvatar >= 0)
                 notifyItemChanged(selectedAvatar);
@@ -53,11 +56,13 @@ class AvatarAdapter(private val context: Fragment, private val dataset: List<Pro
                 selectedAvatar = holder.adapterPosition;
                 notifyItemChanged(selectedAvatar);
             }
-
+            intReference.set(selectedAvatar)
         }
+
     }
 
     override fun getItemCount(): Int {
         return  dataset.size
     }
+
 }

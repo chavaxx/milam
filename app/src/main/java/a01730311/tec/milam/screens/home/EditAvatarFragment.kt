@@ -32,7 +32,8 @@ class EditAvatarFragment : Fragment() {
     private var param2: String? = null
 
     private lateinit var goBackButton: LinearLayout;
-    private lateinit var saveButton: MaterialCardView;
+    private lateinit var saveButton: MaterialCardView
+    private var selectedAvatar: Int = -1;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +75,7 @@ class EditAvatarFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewAvatars)
 
-        recyclerView.adapter = AvatarAdapter(this, myAvatars)
+        recyclerView.adapter = AvatarAdapter(this, myAvatars, ::selectedAvatar)
 
         recyclerView.setHasFixedSize(true)
     }

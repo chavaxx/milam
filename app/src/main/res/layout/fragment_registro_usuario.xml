@@ -18,7 +18,7 @@
             android:layout_width="292dp"
             android:layout_height="79dp"
             android:fontFamily="@font/lato_black"
-            android:text="¿Cómo te llamas?"
+            android:text="@string/new_username_label"
             android:textAlignment="center"
             android:textColor="?attr/colorSecondary"
             android:textSize="35sp"
@@ -30,23 +30,27 @@
             app:layout_constraintVertical_bias="0.245" />
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/username_input"
             android:layout_width="215dp"
             android:layout_height="53dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/white_text_view"
-            android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="Introduce tu nombre aquí"
-            android:inputType="textPersonName"
+            android:hapticFeedbackEnabled="true"
+            android:fontFamily="@font/lato_regular"
+            android:hint="@string/username_input_hint"
+            android:inputType="textCapSentences"
             android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="12sp"
+            android:textColor="?font"
+            android:textColorHint="?font"
+            android:maxLength="12"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
-            app:layout_constraintVertical_bias="0.076" />
+            app:layout_constraintVertical_bias="0.076"
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/button_next"
@@ -55,7 +59,7 @@
             android:backgroundTint="#74CFD0"
             android:fontFamily="@font/lato_black"
             android:stateListAnimator="@null"
-            android:text="Siguiente"
+            android:text="@string/next_label"
             android:textSize="18sp"
             android:textColor="?attr/colorSecondary"
             app:icon="@drawable/right_arrow"
@@ -65,7 +69,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username"
+            app:layout_constraintTop_toBottomOf="@+id/username_input"
             app:layout_constraintVertical_bias="0.7" />
 
         <Button
@@ -76,7 +80,7 @@
             android:fontFamily="@font/lato_black"
             android:backgroundTint="#74CFD0"
             android:stateListAnimator="@null"
-            android:text="Regresar"
+            android:text="@string/back_level"
             android:textSize="18sp"
             app:icon="@drawable/left_arrow"
             app:iconSize="18dp"
@@ -84,7 +88,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username"
+            app:layout_constraintTop_toBottomOf="@+id/username_input"
             app:layout_constraintVertical_bias="0.7" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

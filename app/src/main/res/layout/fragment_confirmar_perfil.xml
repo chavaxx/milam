@@ -55,6 +55,7 @@
                 <!-- Media -->
 
                 <ImageView
+                    android:id="@+id/confirm_profile_avatar"
                     android:layout_width="170dp"
                     android:layout_height="170dp"
                     android:layout_gravity="center"
@@ -64,7 +65,7 @@
                     tools:ignore="ImageContrastCheck" />
 
                 <TextView
-                    android:id="@+id/levelSimon"
+                    android:id="@+id/confirm_profile_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_black"

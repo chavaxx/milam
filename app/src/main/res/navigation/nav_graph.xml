@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registro_usuario"
             app:destination="@id/registro_usuario" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -47,14 +50,23 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_simonSaysFragment"
-            app:destination="@id/findLetterFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_progressFragment"
             app:destination="@id/progressFragment" />
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_simonSaysFragment"
+            app:destination="@id/simonSaysFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mazeFragment"
+            app:destination="@id/mazeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_magicNumberFragment"
+            app:destination="@id/magicNumberFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_findLetterFragment"
+            app:destination="@id/findLetterFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
@@ -95,7 +107,13 @@
         android:label="fragment_maze"
         tools:layout="@layout/fragment_maze" />
     <fragment
+        android:id="@+id/magicNumberFragment"
+        android:name="a01730311.tec.milam.games.magicNumber.magicNumberFragment"
+        android:label="fragment_magic_number"
+        tools:layout="@layout/fragment_magic_number" />
+    <fragment
         android:id="@+id/findLetterFragment"
         android:name="a01730311.tec.milam.games.findLetters.FindLetterFragment"
-        android:label="FindLetterFragment" />
+        android:label="fragment_find_letter"
+        tools:layout="@layout/fragment_find_letter" />
 </navigation>

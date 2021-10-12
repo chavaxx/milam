@@ -3,15 +3,21 @@ package a01730311.tec.milam.screens.signup
 import android.graphics.Color
 import android.os.Bundle
 import a01730311.tec.milam.R
+import a01730311.tec.milam.screens.login.UserViewModel
+import android.media.Image
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -28,16 +34,15 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class confirmar_perfil : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+
+    private val viewModel: UserViewModel by activityViewModels()
+    private lateinit var avatar: ImageView;
+    private lateinit var username: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -48,6 +53,7 @@ class confirmar_perfil : Fragment() {
         val view: View =  inflater.inflate(R.layout.fragment_confirmar_perfil, container, false)
 
         setNavigation(view)
+        setProfileInfo(view)
 
         return view
 
@@ -57,6 +63,7 @@ class confirmar_perfil : Fragment() {
         val button: Button = view.findViewById(R.id.button_confirm_profile)
         val backButton: Button = view.findViewById(R.id.button_back_icons)
         button.setOnClickListener{
+            viewModel.saveProfile()
             val action = confirmar_perfilDirections.actionConfirmarPerfilToHomeFragment()
             findNavController().navigate(action)
             WindowCompat.setDecorFitsSystemWindows(requireActivity().window, true)
@@ -66,24 +73,13 @@ class confirmar_perfil : Fragment() {
         }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment confirmar_perfil.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            confirmar_perfil().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun setProfileInfo(view: View) {
+        avatar = view.findViewById(R.id.confirm_profile_avatar)
+        username = view.findViewById(R.id.confirm_profile_username)
+        val selectedAvatar = viewModel.getAvatarID()
+        avatar.setImageDrawable(ContextCompat.getDrawable(requireContext(), selectedAvatar))
+        username.text = viewModel.getUsername()
     }
+
 }
 
