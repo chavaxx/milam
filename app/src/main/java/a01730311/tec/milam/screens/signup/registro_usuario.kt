@@ -3,6 +3,7 @@ package a01730311.tec.milam.screens.signup
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import a01730311.tec.milam.R
+import a01730311.tec.milam.components.MyToast
 import a01730311.tec.milam.screens.login.UserViewModel
 import android.view.LayoutInflater
 import android.view.View
@@ -21,9 +22,7 @@ class registro_usuario : Fragment() {
     private val binding get() = _binding!!
     private lateinit var usernameInput: EditText
 
-    private var toastText: String = ""
-    private val toastDuration: Int = Toast.LENGTH_SHORT
-
+    private lateinit var toast: MyToast
     private val viewModel: UserViewModel by activityViewModels()
 
 
@@ -39,6 +38,7 @@ class registro_usuario : Fragment() {
         // Inflate the layout for this fragment
         val view: View =  inflater.inflate(R.layout.fragment_registro_usuario, container, false)
 
+        toast = MyToast(activity)
         setInputText(view)
         setNavigation(view)
 
@@ -57,14 +57,11 @@ class registro_usuario : Fragment() {
                     val action = registro_usuarioDirections.actionRegistroUsuarioToRegistroElegirIcono()
                     findNavController().navigate(action)
                 } else {
-                    toastText = "Intenta con un nombre distinto"
-                    val toast = Toast.makeText(activity, toastText, toastDuration)
-                    toast.show()
+                    toast.showMessage("Intenta con un nombre distinto")
+
                 }
             } else {
-                toastText = "Introduce tu nombre con al menos 2 letras"
-                val toast = Toast.makeText(activity, toastText, toastDuration)
-                toast.show()
+                toast.showMessage("Introduce tu nombre con al menos 2 letras")
                 usernameInput.requestFocus()
             }
 

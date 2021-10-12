@@ -40,7 +40,9 @@ class UserViewModel: ViewModel() {
         profilesPreferences = activity?.getPreferences(Context.MODE_PRIVATE)!!
         profilesSet = profilesPreferences.getStringSet("profiles", profilesSet) as MutableSet<String>
         for (user in profilesSet) {
-            profiles.add(Profile(user, profilesPreferences.getInt(user, R.drawable.pikachu)))
+            val newProfile = Profile(user, profilesPreferences.getInt(user, R.drawable.pikachu))
+            if (!profiles.contains(newProfile))
+                profiles.add(newProfile)
         }
     }
 
@@ -48,10 +50,19 @@ class UserViewModel: ViewModel() {
         return !profilesSet.contains(username)
     }
 
-    fun saveProfile() {
+    fun saveAvatar(newAvatarID: Int) {
+        setAvatarID(newAvatarID)
+        editor.putInt(username, newAvatarID)
+        editor.apply()
+    }
+
+    fun edit() {
         editor = profilesPreferences.edit()
+    }
+
+    fun saveProfile() {
         profilesSet.add(username)
-        editor.putInt(username, avatarID)
+        saveAvatar(avatarID)
         editor.putStringSet("profiles", profilesSet)
         editor.apply()
     }

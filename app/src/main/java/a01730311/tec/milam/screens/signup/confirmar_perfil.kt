@@ -63,6 +63,7 @@ class confirmar_perfil : Fragment() {
         val button: Button = view.findViewById(R.id.button_confirm_profile)
         val backButton: Button = view.findViewById(R.id.button_back_icons)
         button.setOnClickListener{
+            viewModel.edit()
             viewModel.saveProfile()
             val action = confirmar_perfilDirections.actionConfirmarPerfilToHomeFragment()
             findNavController().navigate(action)
