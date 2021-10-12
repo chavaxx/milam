@@ -58,4 +58,5 @@
     <string name="new_username_label">¿Cómo te llamas?</string>
     <string name="next_label">Siguiente</string>
     <string name="back_level">Regresar</string>
+    <string name="nombre_de_usuario">Nombre de usuario</string>
 </resources>

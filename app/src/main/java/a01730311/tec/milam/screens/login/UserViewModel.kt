@@ -56,15 +56,31 @@ class UserViewModel: ViewModel() {
         editor.apply()
     }
 
+    private fun editProfiles() {
+        editor.putStringSet("profiles", profilesSet)
+    }
+
+    fun editUsername(newUsername: String) {
+        // removing from user preferences
+        editor.remove(username)
+        profilesSet.remove(username)
+
+
+        // saving new username
+        setUsername(newUsername)
+        profilesSet.add(newUsername)
+        editProfiles()
+        saveAvatar(avatarID)
+    }
+
     fun edit() {
         editor = profilesPreferences.edit()
     }
 
     fun saveProfile() {
         profilesSet.add(username)
+        editProfiles()
         saveAvatar(avatarID)
-        editor.putStringSet("profiles", profilesSet)
-        editor.apply()
     }
 
 }

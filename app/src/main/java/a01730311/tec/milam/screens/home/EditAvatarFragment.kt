@@ -76,6 +76,7 @@ class EditAvatarFragment : Fragment() {
                 viewModel.edit()
                 viewModel.saveAvatar(myAvatars[selectedAvatar].iconID)
                 findNavController().popBackStack()
+                toast.showMessage("¡Listo! Tu nuevo icono ha sido guardado :)")
             } else {
                 toast.showMessage("Selecciona un icono")
             }
