@@ -48,7 +48,7 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_simonSaysFragment"
-            app:destination="@id/mazeFragment" />
+            app:destination="@id/findLetterFragment" />
         <action
             android:id="@+id/action_homeFragment_to_progressFragment"
             app:destination="@id/progressFragment" />
@@ -94,4 +94,8 @@
         android:name="a01730311.tec.milam.games.maze.MazeFragment"
         android:label="fragment_maze"
         tools:layout="@layout/fragment_maze" />
+    <fragment
+        android:id="@+id/findLetterFragment"
+        android:name="a01730311.tec.milam.games.findLetters.FindLetterFragment"
+        android:label="FindLetterFragment" />
 </navigation>
