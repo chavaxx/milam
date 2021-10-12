@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 
 
@@ -58,7 +59,6 @@ class registro_usuario : Fragment() {
                     findNavController().navigate(action)
                 } else {
                     toast.showMessage("Intenta con un nombre distinto")
-
                 }
             } else {
                 toast.showMessage("Introduce tu nombre con al menos 2 letras")

@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 
@@ -43,8 +44,9 @@ class ProfileAdapter(private val context: LoginFragment, private val dataset: Li
         holder.card.setOnClickListener {
             viewModel.setAvatarID(card.iconID)
             viewModel.setUsername(card.username)
+            val navOptions = NavOptions.Builder().setPopUpTo(navController.graph.startDestination, true).build()
             val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
-            navController.navigate(action)
+            navController.navigate(action, navOptions)
         }
 
     }

@@ -43,7 +43,7 @@
             android:textAlignment="center"
             android:textColor="?font"
             android:textColorHint="?font"
-            android:maxLength="12"
+            android:maxLength="10"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
