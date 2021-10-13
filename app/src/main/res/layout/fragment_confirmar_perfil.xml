@@ -65,40 +65,59 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/icon1"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:cardCornerRadius="25dp"
             app:cardElevation="10dp"
             app:layout_constraintBottom_toTopOf="@+id/middle_guideline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+            app:layout_constraintStart_toStartOf="@+id/left_guideline"
             app:layout_constraintTop_toTopOf="@+id/top_guideline">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+
                 android:orientation="vertical">
 
                 <!-- Media -->
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    />
                 <ImageView
                     android:id="@+id/confirm_profile_avatar"
-                    android:layout_width="170dp"
-                    android:layout_height="170dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="10"
+                    android:scaleType="fitCenter"
                     android:layout_gravity="center"
                     android:contentDescription="@string/profilePic"
-                    android:scaleType="centerCrop"
                     app:srcCompat="@drawable/pikachu"
                     tools:ignore="ImageContrastCheck" />
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
                 <TextView
                     android:id="@+id/confirm_profile_username"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
                     android:fontFamily="@font/lato_black"
                     android:text="Pepillo"
                     android:textAlignment="center"
-                    android:textSize="45sp" />
+                    android:textColor="?attr/font"
+                    app:autoSizeTextType="uniform"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    />
 
             </LinearLayout>
 

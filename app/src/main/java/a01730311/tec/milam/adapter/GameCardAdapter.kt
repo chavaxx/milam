@@ -26,7 +26,7 @@ class GameCardAdapter(private val context: HomeFragment, private val dataset: Li
         val imagePlaceholder: ImageView = view.findViewById(R.id.game_card_image)
         val title: TextView = view.findViewById(R.id.game_card_title)
         val description: TextView = view.findViewById(R.id.game_card_description)
-        val button: Button = view.findViewById(R.id.game_card_button)
+        val button: MaterialCardView = view.findViewById(R.id.game_card_button)
     }
 
     /**

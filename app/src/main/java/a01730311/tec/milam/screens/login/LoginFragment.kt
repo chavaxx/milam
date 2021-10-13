@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 
 
 /**
@@ -57,7 +58,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun setNavigation(view: View) {
-        val signupButton: Button = view.findViewById(R.id.signup_button)
+        val signupButton: MaterialCardView = view.findViewById(R.id.signup_button)
         signupButton.setOnClickListener{
             val action = LoginFragmentDirections.actionLoginFragmentToRegistroUsuario()
             findNavController().navigate(action)
