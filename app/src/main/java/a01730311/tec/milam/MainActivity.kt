@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         // hides action bar
-        WindowCompat.setDecorFitsSystemWindows(window, true)
         val actionBar: ActionBar? = supportActionBar
         actionBar?.hide()
         // sets translucent status bar

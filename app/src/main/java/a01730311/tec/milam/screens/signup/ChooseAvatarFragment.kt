@@ -12,13 +12,12 @@ import a01730311.tec.milam.data.Datasource
 import a01730311.tec.milam.screens.login.UserViewModel
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 
-class registro_elegir_icono : Fragment() {
+class ChooseAvatarFragment : Fragment() {
 
 
     private var selectedAvatar: Int = -1
@@ -36,7 +35,7 @@ class registro_elegir_icono : Fragment() {
 
         toast = MyToast(activity)
         setNavigation(view)
-        loadAvatars(view);
+        loadAvatars(view)
 
         return view
 
@@ -45,7 +44,7 @@ class registro_elegir_icono : Fragment() {
     private fun loadAvatars(view: View) {
 
 
-        myAvatars = Datasource().loadAvatars();
+        myAvatars = Datasource().loadAvatars()
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewAvatars)
 
@@ -63,7 +62,7 @@ class registro_elegir_icono : Fragment() {
                 toast.showMessage("Selecciona un icono de arriba")
             } else {
                 viewModel.setAvatarID(myAvatars[selectedAvatar].iconID)
-                val action = registro_elegir_iconoDirections.actionRegistroElegirIconoToConfirmarPerfil()
+                val action = ChooseAvatarFragmentDirections.actionRegistroElegirIconoToConfirmarPerfil()
                 findNavController().navigate(action)
             }
         }

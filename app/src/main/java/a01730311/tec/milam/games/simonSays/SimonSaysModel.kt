@@ -1,18 +1,16 @@
 package a01730311.tec.milam.games.simonSays
 
 import a01730311.tec.milam.R
-import android.content.SharedPreferences
 import kotlin.random.Random
 
 
-class simonSaysModel {
+class SimonSaysModel {
 
-    private var buttonID = arrayOf<Int>(R.id.redBtn, R.id.blueBtn, R.id.yellowBtn, R.id.greenBtn)
+    private var buttonID = arrayOf(R.id.redBtn, R.id.blueBtn, R.id.yellowBtn, R.id.greenBtn)
     private lateinit var sequence: ArrayList<Int>
     private var inGame = false
     private var isCorrect = false
     private var score = 0
-    private lateinit var maxScore: SharedPreferences
     private var currentButton = 0
 
     fun getInGame(): Boolean {
@@ -27,7 +25,7 @@ class simonSaysModel {
         return isCorrect
     }
 
-    fun getSequence(): ArrayList<Int>? {
+    fun getSequence(): ArrayList<Int> {
         isCorrect = false
         return sequence
     }
@@ -38,17 +36,16 @@ class simonSaysModel {
     }
 
     fun startGame(): Int {
-        val newButton: Int
         inGame = true
         sequence = ArrayList()
         currentButton = 0
-        newButton = getNewButton()
-        sequence!!.add(newButton)
+        val newButton: Int = getNewButton()
+        sequence.add(newButton)
         return newButton
     }
 
 
-    fun getNewButton(): Int {
+    private fun getNewButton(): Int {
         val rand = Random
         val randomIndex: Int = rand.nextInt(4)
         return buttonID[randomIndex]
@@ -69,7 +66,7 @@ class simonSaysModel {
     }
 
 
-    fun increaseLevel() {
+    private fun increaseLevel() {
         isCorrect = true
         currentButton = 0
         val button = getNewButton()

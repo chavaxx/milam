@@ -10,17 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 
 
-class registro_usuario : Fragment() {
+class SignupFragment : Fragment() {
 
-    private var _binding: registro_usuario? = null
 
-    private val binding get() = _binding!!
     private lateinit var usernameInput: EditText
 
     private lateinit var toast: MyToast
@@ -55,7 +51,7 @@ class registro_usuario : Fragment() {
             if (username.length > 1) {
                 viewModel.setUsername(username.toString())
                 if (viewModel.isValidUsername()) {
-                    val action = registro_usuarioDirections.actionRegistroUsuarioToRegistroElegirIcono()
+                    val action = SignupFragmentDirections.actionRegistroUsuarioToRegistroElegirIcono()
                     findNavController().navigate(action)
                 } else {
                     toast.showMessage("Intenta con un nombre distinto")

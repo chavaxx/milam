@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
@@ -37,8 +38,8 @@ class AvatarAdapter(private val context: Fragment, private val dataset: List<Pro
 
     override fun onBindViewHolder(holder: AvatarViewHolder, position: Int) {
         val card = dataset[position]
-        holder.avatar.setImageDrawable(context.resources.getDrawable(card.iconID))
-
+        holder.avatar.setImageDrawable(
+            ContextCompat.getDrawable(context.requireContext(), card.iconID ))
         if (selectedAvatar == position) {
             holder.card.strokeWidth = 5
         } else {

@@ -37,7 +37,7 @@ class SimonSaysFragment : Fragment() {
 
     private var data : HashMap<Int, Pair<ImageView, MediaPlayer>> = HashMap()
     private lateinit var turnLabel : TextView
-    private var game : simonSaysModel = simonSaysModel()
+    private var game : SimonSaysModel = SimonSaysModel()
     private lateinit var maxScore : SharedPreferences
     private var animationsRunning: Int = 0
 

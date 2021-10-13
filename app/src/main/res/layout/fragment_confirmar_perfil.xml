@@ -5,47 +5,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#74CFD0"
-    tools:context=".screens.signup.confirmar_perfil">
+    tools:context=".screens.signup.ConfirmProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/half_guideline"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".5"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/half_guideline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".5"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/top_guideline"
+            app:layout_constraintGuide_percent=".25"
+            android:orientation="horizontal"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/left_guideline"
+            app:layout_constraintGuide_percent=".15"
+            android:orientation="vertical"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/right_guideline"
+            app:layout_constraintGuide_percent=".85"
+            android:orientation="vertical"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/last_guideline"
+            app:layout_constraintGuide_percent=".85"
+            android:orientation="horizontal"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/middle_guideline"
+            app:layout_constraintGuide_percent=".75"
+            android:orientation="horizontal"/>
 
         <TextView
             android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_bold"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/lato_black"
             android:text="¡Tu nuevo perfil!"
             android:textAlignment="center"
             android:textColor="?attr/colorSecondary"
-            android:textSize="45sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.522"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.183" />
+            android:lines="1"
+            android:gravity="center"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+            app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+            app:layout_constraintStart_toStartOf="@+id/left_guideline"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/icon1"
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:layout_margin="8dp"
             app:cardCornerRadius="25dp"
             app:cardElevation="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/middle_guideline"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8"
-            app:layout_constraintVertical_bias="0.209">
+            app:layout_constraintTop_toTopOf="@+id/top_guideline">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -79,39 +106,37 @@
 
         <Button
             android:id="@+id/button_confirm_profile"
-            android:layout_width="181dp"
-            android:layout_height="99dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:backgroundTint="#74CFD0"
             android:fontFamily="@font/lato_black"
             android:stateListAnimator="@null"
             android:text="Confimar Perfil"
-            android:textAlignment="center"
             android:textColor="?attr/colorSecondary"
-            android:textSize="18sp"
             app:icon="@drawable/check"
-            app:iconGravity="end"
-            app:iconSize="30dp"
+            app:iconGravity="textEnd"
+            app:iconSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/half_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/icon1" />
+            app:layout_constraintTop_toTopOf="@+id/last_guideline" />
 
         <Button
             android:id="@+id/button_back_icons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:backgroundTint="#74CFD0"
             android:fontFamily="@font/lato_black"
             android:stateListAnimator="@null"
-            android:text="Regresar"
+            android:text="@string/back_level"
             android:textColor="?attr/colorSecondary"
-            android:textSize="18sp"
             app:icon="@drawable/left_arrow"
-            app:iconSize="18dp"
+            app:iconGravity="textStart"
+            app:iconSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/half_guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/icon1"/>
+            app:layout_constraintTop_toTopOf="@+id/last_guideline" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
