@@ -41,7 +41,7 @@ class UserViewModel: ViewModel() {
         profilesSet = profilesPreferences.getStringSet("profiles", profilesSet) as MutableSet<String>
         for (user in profilesSet) {
             val newProfile = Profile(user, profilesPreferences.getInt(user, R.drawable.pikachu))
-            if (!profiles.contains(newProfile))
+            if (!profilesSet.contains(user))
                 profiles.add(newProfile)
         }
     }

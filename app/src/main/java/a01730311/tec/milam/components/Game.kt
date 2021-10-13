@@ -1,4 +1,3 @@
 package a01730311.tec.milam.components
 
-class Game {
-}
+data class Game(val name: String, val scores: HashMap<String, Int>)
