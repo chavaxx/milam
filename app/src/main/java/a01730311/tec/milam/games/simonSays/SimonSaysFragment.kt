@@ -15,6 +15,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -67,7 +68,7 @@ class SimonSaysFragment : Fragment() {
 
 
 
-        val pauseButton : ImageButton = view.findViewById(R.id.pauseButton)
+        val pauseButton : FloatingActionButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener{
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle("Pausa")

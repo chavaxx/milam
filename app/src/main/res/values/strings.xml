@@ -67,4 +67,10 @@
     <string name="minigames">Minijuegos</string>
     <string name="progress">Progreso</string>
     <string name="profile">Mi perfil</string>
+    <string name="red">rojo</string>
+    <string name="green">verde</string>
+    <string name="yellow">amarillo</string>
+    <string name="blue">azul</string>
+    <string name="level">Nivel 1</string>
+    <string name="help">Ayuda</string>
 </resources>

@@ -46,8 +46,8 @@ class UserViewModel: ViewModel() {
         }
     }
 
-    fun isValidUsername():Boolean {
-        return !profilesSet.contains(username)
+    fun isValidUsername(user: String):Boolean {
+        return !profilesSet.contains(user)
     }
 
     fun saveAvatar(newAvatarID: Int) {
@@ -81,6 +81,11 @@ class UserViewModel: ViewModel() {
         profilesSet.add(username)
         editProfiles()
         saveAvatar(avatarID)
+    }
+
+    fun logout() {
+        username = ""
+        avatarID = 0
     }
 
 

@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/background"
     tools:context=".screens.home.SettingsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,6 +41,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
+                    android:id="@+id/logout"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:background="?android:selectableItemBackground"
@@ -58,29 +60,30 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:src="@drawable/right_arrow"
+                        android:src="@drawable/logout"
+                        android:scaleType="center"
                         app:tint="@color/blue_buttons" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/goBackHomeFromSettings"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
+                    android:id="@+id/goBackHomeFromSettings"
                     android:background="?android:selectableItemBackground"
                     android:focusable="true"
                     android:clickable="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/left_guideline"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/imageView3"
+                        android:layout_height="wrap_content"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
                         android:layout_weight="2"
                         android:src="@drawable/left_arrow"
                         app:tint="@color/blue_buttons" />
@@ -92,7 +95,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"
-                        android:text="Regresar"
+                        android:text="@string/back_level"
                         android:textColor="@color/blue_buttons" />
 
 
@@ -111,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_percent=".92" />
+                    app:layout_constraintGuide_percent=".85" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -141,7 +144,7 @@
             app:layout_constraintGuide_percent=".7" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/avatarLayout"
             android:layout_width="220dp"
             android:layout_height="220dp"
             android:background="@drawable/circle"
@@ -164,12 +167,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:tint="@color/blue_buttons"
-            android:src="@android:drawable/ic_menu_myplaces"
+            android:src="@drawable/user"
             app:layout_constraintBottom_toBottomOf="@id/delimiter_guideline_bottom"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/delimiter_guideline" />
+            app:layout_constraintTop_toTopOf="@+id/delimiter_guideline"
+
+            app:tint="@color/blue_buttons" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -206,15 +210,15 @@
             android:id="@+id/save_new_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_save"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/save"
             app:layout_constraintBottom_toBottomOf="@id/delimiter_guideline_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/linearLayout2"
             app:layout_constraintTop_toTopOf="@+id/delimiter_guideline"
-            android:layout_gravity="end|bottom"
-            app:tint="@color/blue_buttons"
-            android:contentDescription="Guardar"
-            android:layout_margin="16dp" />
+            app:srcCompat="@drawable/save"
+            app:tint="@color/blue_buttons" />
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_profile_picture"
             android:layout_width="wrap_content"

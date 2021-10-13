@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -21,6 +22,7 @@ class SettingsFragment : Fragment() {
 
 
     private lateinit var goBackButton: LinearLayout
+    private lateinit var logoutButton: LinearLayout
     private lateinit var editProfilePicture: FloatingActionButton
     private lateinit var usernameEditText: EditText
     private lateinit var avatarImageView: ImageView
@@ -53,6 +55,7 @@ class SettingsFragment : Fragment() {
         goBackButton = view.findViewById(R.id.goBackHomeFromSettings)
         editProfilePicture = view.findViewById(R.id.edit_profile_picture)
         saveNewUsername = view.findViewById(R.id.save_new_username)
+        logoutButton = view.findViewById(R.id.logout)
 
         goBackButton.setOnClickListener{
             findNavController().popBackStack()
@@ -64,9 +67,21 @@ class SettingsFragment : Fragment() {
         }
 
         saveNewUsername.setOnClickListener {
-            viewModel.edit()
-            viewModel.editUsername(usernameEditText.text.toString())
-            toast.showMessage("¡Listo! Tu nuevo nombre está listo :)")
+            if (viewModel.isValidUsername(usernameEditText.text.toString())) {
+                viewModel.edit()
+                viewModel.editUsername(usernameEditText.text.toString())
+                toast.showMessage("¡Listo! Tu nuevo nombre está listo :)")
+            } else {
+                toast.showMessage("Alguien más tiene ese nombre :(")
+            }
+
+        }
+
+        logoutButton.setOnClickListener {
+            viewModel.logout()
+            val navOptions = NavOptions.Builder().setPopUpTo(findNavController().graph.id, true).build()
+            val action = SettingsFragmentDirections.actionSettingsFragmentToLoginFragment()
+            findNavController().navigate(action, navOptions)
         }
     }
 

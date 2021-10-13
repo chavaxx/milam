@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +25,10 @@ class HomeFragment : Fragment() {
     private lateinit var labelUsername: TextView
     private val viewModel: UserViewModel by activityViewModels()
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        ViewCompat.setTranslationZ(requireView(), 100f)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
