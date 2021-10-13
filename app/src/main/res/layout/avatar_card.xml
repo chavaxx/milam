@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/avatar_card"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_margin="8dp"
+        android:layout_gravity="center"
+        app:strokeColor="?attr/font"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="10dp">
+
+        <ImageView
+            android:id="@+id/avatar_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/profilePic"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/pikachu"/>
+
+    </com.google.android.material.card.MaterialCardView>

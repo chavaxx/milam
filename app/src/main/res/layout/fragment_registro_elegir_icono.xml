@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#74CFD0"
+    tools:context=".screens.signup.ChooseAvatarFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".25" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/middle_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".8" />
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sized_guideline"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".1"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/last_guideline"
+            app:layout_constraintGuide_percent=".85"
+            android:orientation="horizontal"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewAvatars"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/middle_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/sized_guideline"
+            app:layout_constraintTop_toTopOf="@+id/top_guideline"
+            app:spanCount="2" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/lato_black"
+            android:gravity="center"
+            android:text="¡Elige tu icono!"
+            android:lines="1"
+            android:textColor="?attr/colorSecondary"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+            app:layout_constraintEnd_toStartOf="@+id/right_button_guideline"
+            app:layout_constraintStart_toStartOf="@+id/left_button_guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/left_button_guideline"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".2"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/right_button_guideline"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".8"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/half_guideline"
+            app:layout_constraintGuide_percent=".5"
+            android:orientation="vertical"/>
+
+
+        <Button
+            android:id="@+id/button_next_confirm"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="#74CFD0"
+            android:fontFamily="@font/lato_black"
+            android:stateListAnimator="@null"
+            android:text="Siguiente"
+            android:textColor="?attr/colorSecondary"
+            app:icon="@drawable/right_arrow"
+            app:iconGravity="textEnd"
+            app:iconSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/half_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/last_guideline" />
+
+        <Button
+            android:id="@+id/button_back_icons"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="#74CFD0"
+            android:fontFamily="@font/lato_black"
+            android:stateListAnimator="@null"
+            android:text="Regresar"
+            app:iconGravity="textStart"
+            android:textColor="?attr/colorSecondary"
+            app:icon="@drawable/left_arrow"
+            app:iconSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/half_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/last_guideline" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

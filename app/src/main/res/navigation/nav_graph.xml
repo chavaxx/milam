@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/registro_usuario"
+        android:name="a01730311.tec.milam.screens.signup.SignupFragment"
+        android:label="fragment_registro_usuario"
+        tools:layout="@layout/fragment_registro_usuario">
+        <action
+            android:id="@+id/action_registro_usuario_to_registro_elegir_icono"
+            app:destination="@id/registro_elegir_icono" />
+    </fragment>
+    <fragment
+        android:id="@+id/registro_elegir_icono"
+        android:name="a01730311.tec.milam.screens.signup.ChooseAvatarFragment"
+        android:label="fragment_registro_elegir_icono"
+        tools:layout="@layout/fragment_registro_elegir_icono">
+        <action
+            android:id="@+id/action_registro_elegir_icono_to_confirmar_perfil"
+            app:destination="@id/confirmar_perfil" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmar_perfil"
+        android:name="a01730311.tec.milam.screens.signup.ConfirmProfileFragment"
+        android:label="fragment_confirmar_perfil"
+        tools:layout="@layout/fragment_confirmar_perfil" >
+        <action
+            android:id="@+id/action_confirmar_perfil_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="a01730311.tec.milam.screens.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registro_usuario"
+            app:destination="@id/registro_usuario" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="a01730311.tec.milam.screens.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_progressFragment"
+            app:destination="@id/progressFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_simonSaysFragment"
+            app:destination="@id/simonSaysFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mazeFragment"
+            app:destination="@id/mazeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_magicNumberFragment"
+            app:destination="@id/magicNumberFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_findLetterFragment"
+            app:destination="@id/findLetterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/previewFragment"
+        android:name="a01730311.tec.milam.games.PreviewFragment"
+        android:label="fragment_preview"
+        tools:layout="@layout/fragment_preview" />
+    <fragment
+        android:id="@+id/simonSaysFragment"
+        android:name="a01730311.tec.milam.games.simonSays.SimonSaysFragment"
+        android:label="fragment_simon_says"
+        tools:layout="@layout/fragment_simon_says" />
+    <fragment
+        android:id="@+id/progressFragment"
+        android:name="a01730311.tec.milam.screens.home.ProgressFragment"
+        android:label="fragment_progress"
+        tools:layout="@layout/fragment_progress" >
+        <action
+            android:id="@+id/action_progressFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="a01730311.tec.milam.screens.home.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_editAvatarFragment"
+            app:destination="@id/editAvatarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editAvatarFragment"
+        android:name="a01730311.tec.milam.screens.home.EditAvatarFragment"
+        android:label="fragment_edit_avatar"
+        tools:layout="@layout/fragment_edit_avatar" />
+    <fragment
+        android:id="@+id/mazeFragment"
+        android:name="a01730311.tec.milam.games.maze.MazeFragment"
+        android:label="fragment_maze"
+        tools:layout="@layout/fragment_maze" />
+    <fragment
+        android:id="@+id/magicNumberFragment"
+        android:name="a01730311.tec.milam.games.magicNumber.magicNumberFragment"
+        android:label="fragment_magic_number"
+        tools:layout="@layout/fragment_magic_number" />
+    <fragment
+        android:id="@+id/findLetterFragment"
+        android:name="a01730311.tec.milam.games.findLetters.FindLetterFragment"
+        android:label="fragment_find_letter"
+        tools:layout="@layout/fragment_find_letter" />
+</navigation>

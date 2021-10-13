@@ -8,4 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#6D8586</color>
+    <color name="aboutButtonGrey">#B6CECF</color>
+    <color name="game_card1">#F95F62</color>
+    <color name="game_card2">#FFBA5C</color>
+    <color name="game_card3">#976DD0</color>
+    <color name="game_card4">#B8977E</color>
+    <color name="game_card5">#F879EB</color>
+    <color name="game_card6">#77D353</color>
+    <color name="blue_buttons">#74CFD0</color>
+    <color name="gray_background">#F6F6F6</color>
 </resources>
