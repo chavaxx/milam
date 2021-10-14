@@ -58,23 +58,34 @@
             android:id="@+id/action_homeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_simonSaysFragment"
-            app:destination="@id/simonSaysFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_mazeFragment"
-            app:destination="@id/mazeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_magicNumberFragment"
-            app:destination="@id/magicNumberFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_findLetterFragment"
-            app:destination="@id/findLetterFragment" />
+            android:id="@+id/action_homeFragment_to_previewFragment"
+            app:destination="@id/previewFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
         android:name="a01730311.tec.milam.games.PreviewFragment"
         android:label="fragment_preview"
-        tools:layout="@layout/fragment_preview" />
+
+        tools:layout="@layout/fragment_preview" >
+        <action
+            android:id="@+id/action_previewFragment_to_simonSaysFragment"
+            app:destination="@id/simonSaysFragment" />
+        <action
+            android:id="@+id/action_previewFragment_to_findLetterFragment"
+            app:destination="@id/findLetterFragment" />
+        <action
+            android:id="@+id/action_previewFragment_to_magicNumberFragment"
+            app:destination="@id/magicNumberFragment" />
+        <action
+            android:id="@+id/action_previewFragment_to_mazeFragment"
+            app:destination="@id/mazeFragment" />
+        <action
+            android:id="@+id/action_previewFragment_to_pixartFragment"
+            app:destination="@id/pixartFragment" />
+        <action
+            android:id="@+id/action_previewFragment_to_memoFragment"
+            app:destination="@id/memoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/simonSaysFragment"
         android:name="a01730311.tec.milam.games.simonSays.SimonSaysFragment"
@@ -121,4 +132,14 @@
         android:name="a01730311.tec.milam.games.findLetters.FindLetterFragment"
         android:label="fragment_find_letter"
         tools:layout="@layout/fragment_find_letter" />
+    <fragment
+        android:id="@+id/pixartFragment"
+        android:name="a01730311.tec.milam.games.pixart.PixartFragment"
+        android:label="fragment_pixart"
+        tools:layout="@layout/fragment_pixart" />
+    <fragment
+        android:id="@+id/memoFragment"
+        android:name="a01730311.tec.milam.games.memo.MemoFragment"
+        android:label="fragment_memo"
+        tools:layout="@layout/fragment_memo" />
 </navigation>

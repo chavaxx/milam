@@ -1,10 +1,11 @@
-package a01730311.tec.milam
+package a01730311.tec.milam.games.memo
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import a01730311.tec.milam.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -13,10 +14,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [find_letter_preview.newInstance] factory method to
+ * Use the [MemoFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class find_letter_preview : Fragment() {
+class MemoFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +35,7 @@ class find_letter_preview : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_find_letter_preview, container, false)
+        return inflater.inflate(R.layout.fragment_memo, container, false)
     }
 
     companion object {
@@ -44,12 +45,12 @@ class find_letter_preview : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment find_letter_preview.
+         * @return A new instance of fragment MemoFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            find_letter_preview().apply {
+            MemoFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

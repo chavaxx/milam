@@ -21,7 +21,7 @@ class ChooseAvatarFragment : Fragment() {
 
 
     private var selectedAvatar: Int = -1
-    private lateinit var myAvatars: List<Profile>
+    private lateinit var myAvatars: List<Int>
     private lateinit var toast: MyToast
     private val viewModel: UserViewModel by activityViewModels()
 
@@ -61,7 +61,7 @@ class ChooseAvatarFragment : Fragment() {
             if (selectedAvatar == -1) {
                 toast.showMessage("Selecciona un icono de arriba")
             } else {
-                viewModel.setAvatarID(myAvatars[selectedAvatar].iconID)
+                viewModel.avatarChosen = myAvatars[selectedAvatar]
                 val action = ChooseAvatarFragmentDirections.actionRegistroElegirIconoToConfirmarPerfil()
                 findNavController().navigate(action)
             }

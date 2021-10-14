@@ -73,8 +73,7 @@ class EditAvatarFragment : Fragment() {
         saveButton = view.findViewById(R.id.save_avatar)
         saveButton.setOnClickListener {
             if (selectedAvatar != -1) {
-                viewModel.edit()
-                viewModel.saveAvatar(myAvatars[selectedAvatar].iconID)
+                viewModel.editAvatar(myAvatars[selectedAvatar])
                 findNavController().popBackStack()
                 toast.showMessage("¡Listo! Tu nuevo icono ha sido guardado :)")
             } else {

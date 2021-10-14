@@ -6,55 +6,60 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
+import a01730311.tec.milam.screens.home.ProgressViewModel
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_GAME = "Pixarte"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [PreviewFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PreviewFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var game: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            game = it.getString(ARG_GAME)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var imagePreview: ImageView
+    private lateinit var gameTitle: TextView
+    private lateinit var goBack: LinearLayout
+    private lateinit var scoreLabel: TextView
+    private lateinit var levelLabel: TextView
+    private lateinit var helpButton: FloatingActionButton
+    private lateinit var playButton: FloatingActionButton
+    private val gameViewModel: GameViewModel  by activityViewModels()
+    private val progressViewModel: ProgressViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_preview, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PreviewFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PreviewFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_GAME, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        bindViews(view)
     }
+
+    private fun bindViews(view: View) {
+        imagePreview = view.findViewById(R.id.game_preview_placeholder)
+        imagePreview.setImageDrawable(ContextCompat.getDrawable(requireContext(), gameViewModel.getImage()))
+        gameTitle = view.findViewById(R.id.game_title_preview)
+        gameTitle.text = getString(gameViewModel.getName())
+        goBack = view.findViewById(R.id.goBackHomeFromPreview)
+        goBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        scoreLabel = view.findViewById(R.id.game_score_preview)
+        scoreLabel.text = gameViewModel.getScore(progressViewModel)
+        levelLabel = view.findViewById(R.id.game_level_preview)
+        levelLabel.text = gameViewModel.getLevel(progressViewModel)
+        helpButton = view.findViewById(R.id.help_button)
+        playButton = view.findViewById(R.id.start_game)
+        playButton.setOnClickListener {
+            findNavController().navigate(gameViewModel.getDirections())
+        }
+    }
+
 }

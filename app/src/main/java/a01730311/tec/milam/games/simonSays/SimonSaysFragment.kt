@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
-import a01730311.tec.milam.games.ProgressViewModel
+import a01730311.tec.milam.screens.home.ProgressViewModel
 import android.animation.*
 import android.media.MediaPlayer
 import android.widget.ImageView

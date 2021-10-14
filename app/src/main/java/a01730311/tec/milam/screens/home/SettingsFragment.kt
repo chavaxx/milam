@@ -47,7 +47,7 @@ class SettingsFragment : Fragment() {
         usernameEditText = view.findViewById(R.id.editUsername)
         usernameEditText.setText(viewModel.getUsername())
         avatarImageView = view.findViewById(R.id.avatarImageView)
-        avatarImageView.setImageDrawable(ContextCompat.getDrawable(requireContext(), viewModel.getAvatarID()))
+        avatarImageView.setImageDrawable(ContextCompat.getDrawable(requireContext(), viewModel.getIconID()))
     }
 
 
@@ -68,7 +68,6 @@ class SettingsFragment : Fragment() {
 
         saveNewUsername.setOnClickListener {
             if (viewModel.isValidUsername(usernameEditText.text.toString())) {
-                viewModel.edit()
                 viewModel.editUsername(usernameEditText.text.toString())
                 toast.showMessage("¡Listo! Tu nuevo nombre está listo :)")
             } else {

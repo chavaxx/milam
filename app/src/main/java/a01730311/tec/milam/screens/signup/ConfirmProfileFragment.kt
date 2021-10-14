@@ -41,8 +41,7 @@ class ConfirmProfileFragment : Fragment() {
         val button: Button = view.findViewById(R.id.button_confirm_profile)
         val backButton: Button = view.findViewById(R.id.button_back_icons)
         button.setOnClickListener{
-            viewModel.edit()
-            viewModel.saveProfile()
+            viewModel.signup()
             val navOptions = NavOptions.Builder().setPopUpTo(findNavController().graph.startDestination, true).build()
             val action = ConfirmProfileFragmentDirections.actionConfirmarPerfilToHomeFragment()
             findNavController().navigate(action, navOptions)
@@ -55,9 +54,9 @@ class ConfirmProfileFragment : Fragment() {
     private fun setProfileInfo(view: View) {
         avatar = view.findViewById(R.id.confirm_profile_avatar)
         username = view.findViewById(R.id.confirm_profile_username)
-        val selectedAvatar = viewModel.getAvatarID()
+        val selectedAvatar = viewModel.avatarChosen
         avatar.setImageDrawable(ContextCompat.getDrawable(requireContext(), selectedAvatar))
-        username.text = viewModel.getUsername()
+        username.text = viewModel.userChosen
     }
 
 }

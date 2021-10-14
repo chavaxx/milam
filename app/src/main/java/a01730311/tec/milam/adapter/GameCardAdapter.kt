@@ -4,6 +4,7 @@ import a01730311.tec.milam.screens.home.HomeFragment
 import a01730311.tec.milam.screens.home.HomeFragmentDirections
 import a01730311.tec.milam.components.GameCard
 import a01730311.tec.milam.R
+import a01730311.tec.milam.games.GameViewModel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,7 @@ import androidx.navigation.NavDirections
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 
-class GameCardAdapter(private val context: HomeFragment, private val dataset: List<GameCard>, private val findNavController: NavController):RecyclerView.Adapter<GameCardAdapter.GameCardViewHolder>() {
+class GameCardAdapter(private val context: HomeFragment, private val dataset: List<GameCard>, private val findNavController: NavController, private val viewModel: GameViewModel):RecyclerView.Adapter<GameCardAdapter.GameCardViewHolder>() {
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -50,7 +51,9 @@ class GameCardAdapter(private val context: HomeFragment, private val dataset: Li
         holder.title.text = nameOfGame
         holder.description.text = context.resources.getString(card.descriptionText)
         holder.button.setOnClickListener {
-            findNavController.navigate(card.directions)
+            viewModel.setGame(card)
+            val action = HomeFragmentDirections.actionHomeFragmentToPreviewFragment()
+            findNavController.navigate(action)
         }
     }
 

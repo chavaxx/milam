@@ -29,15 +29,17 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val view: View =  inflater.inflate(R.layout.fragment_login, container, false)
 
+        return  inflater.inflate(R.layout.fragment_login, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         //WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false)
         val window = activity?.window
         window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.blue_buttons )
         setNavigation(view)
         loadCards(view)
-
-        return view
     }
 
     private fun loadCards(view: View) {
@@ -47,7 +49,7 @@ class LoginFragment : Fragment() {
         val navController = findNavController()
         val myProfiles = viewModel.getProfiles()
 
-        if (myProfiles.size == 0 ) {
+        if (myProfiles.isEmpty()) {
             val action = LoginFragmentDirections.actionLoginFragmentToRegistroUsuario()
             navController.navigate(action)
         }
