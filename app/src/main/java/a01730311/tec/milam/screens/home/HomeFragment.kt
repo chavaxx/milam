@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val window = activity?.window
-        window?.statusBarColor = MaterialColors.getColor(view, R.attr.colorSecondary)
+        window?.statusBarColor = MaterialColors.getColor(view, R.attr.statusBarBackground)
         loadGameCards(view)
         setControls(view)
         progressViewModel.getDataFromPreferences(activity, userViewModel.getID())

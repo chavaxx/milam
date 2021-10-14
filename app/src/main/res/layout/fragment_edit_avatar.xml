@@ -145,7 +145,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/save_avatar"
-            app:cardElevation="10dp"
+            app:cardElevation="12dp"
             android:layout_width="0dp"
             android:layout_height="55dp"
             app:cardCornerRadius="15dp"
@@ -166,9 +166,8 @@
                 android:text="@string/save"
                 android:textColor="@color/blue_buttons"
                 android:textSize="20sp"
-                app:drawableEndCompat="@android:drawable/ic_menu_save"
-                app:drawableTint="@color/blue_buttons"
-                app:drawableTintMode="multiply" />
+                app:drawableEndCompat="@drawable/palomita"
+                app:drawableTint="@color/blue_buttons"/>
 
 
         </com.google.android.material.card.MaterialCardView>

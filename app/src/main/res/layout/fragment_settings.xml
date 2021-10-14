@@ -40,31 +40,24 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <LinearLayout
+                <TextView
                     android:id="@+id/logout"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="?android:selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:layout_marginEnd="5dp"
                     android:gravity="center"
-                    android:orientation="horizontal"
+                    android:text="Salir"
+                    android:background="?android:selectableItemBackground"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:textColor="@color/blue_buttons"
+                    android:fontFamily="@font/lato_black"
+                    app:drawableTint="@color/blue_buttons"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/right_guideline"
+                    app:layout_constraintStart_toStartOf="@+id/right_guideline"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="SpeakableTextPresentCheck">
-
-                    <ImageView
-                        android:id="@+id/logoutLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:src="@drawable/logout"
-                        android:scaleType="center"
-                        app:tint="@color/blue_buttons" />
-
-                </LinearLayout>
+                    app:drawableEndCompat="@drawable/logout" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -114,7 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_percent=".85" />
+                    app:layout_constraintGuide_percent=".78" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -143,13 +136,28 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent=".7" />
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".1" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".9" />
+
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/avatarLayout"
             android:layout_width="220dp"
             android:layout_height="220dp"
-            android:background="@drawable/circle"
+            app:cardCornerRadius="300dp"
             android:gravity="center"
             android:orientation="vertical"
+            app:cardBackgroundColor="@color/blue_buttons"
+            app:cardElevation="10dp"
             app:layout_constraintBottom_toBottomOf="@id/delimiter_guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -157,83 +165,57 @@
 
             <ImageView
                 android:id="@+id/avatarImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="center"
                 android:src="@drawable/pikachu" />
-        </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_field_user"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/user"
-            app:layout_constraintBottom_toBottomOf="@id/delimiter_guideline_bottom"
-            app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
-            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center"
+            android:hint="Nombre de usuario"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:endIconDrawable="@drawable/palomita"
+            app:endIconMode="custom"
+            app:boxBackgroundColor="?attr/background"
+            app:elevation="12dp"
+
+            app:endIconTint="@color/blue_buttons"
+            app:layout_constraintBottom_toTopOf="@+id/delimiter_guideline_bottom"
+            app:layout_constraintEnd_toStartOf="@+id/right"
+            app:layout_constraintStart_toStartOf="@+id/left"
             app:layout_constraintTop_toTopOf="@+id/delimiter_guideline"
+            app:startIconDrawable="@drawable/user">
 
-            app:tint="@color/blue_buttons" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="@id/delimiter_guideline_bottom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/delimiter_guideline">
-
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_username"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/lato_bold"
-                android:text="@string/nombre_de_usuario" />
+                android:inputType="textCapSentences" />
 
-            <EditText
-                android:id="@+id/editUsername"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="@string/nombre_de_usuario"
-                android:inputType="textPersonName"
-                android:minHeight="48dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="Pepillo" />
-        </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/save_new_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="16dp"
-            android:contentDescription="@string/save"
-            app:layout_constraintBottom_toBottomOf="@id/delimiter_guideline_bottom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout2"
-            app:layout_constraintTop_toTopOf="@+id/delimiter_guideline"
-            app:srcCompat="@drawable/save"
-            app:tint="@color/blue_buttons" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_profile_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/delimiter_guideline_bottom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bottom_guideline"
-            app:layout_constraintVertical_bias="0.55"
             android:layout_gravity="end|bottom"
-            app:tint="@color/blue_buttons"
-            app:srcCompat="@android:drawable/ic_menu_edit"
             android:contentDescription="Editar"
-            android:layout_margin="16dp" />
+            app:elevation="11dp"
+            app:layout_constraintBottom_toBottomOf="@+id/avatarLayout"
+            app:layout_constraintEnd_toEndOf="@+id/avatarLayout"
+            app:layout_constraintStart_toStartOf="@+id/avatarLayout"
+            app:layout_constraintVertical_bias="0.95"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintTop_toTopOf="@+id/avatarLayout"
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            app:tint="@color/blue_buttons" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

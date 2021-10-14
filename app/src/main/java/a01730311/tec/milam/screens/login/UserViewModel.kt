@@ -44,8 +44,11 @@ class UserViewModel: ViewModel() {
         identifiers = profilesPreferences.getStringSet("profiles", identifiers) as MutableSet<String>
 
         for (id in identifiers) {
-            val newProfile = Profile(id, profilesPreferences.getString(id + "_username","")!!, profilesPreferences.getInt(id + "_avatar", R.drawable.pikachu))
+            val username = profilesPreferences.getString(id + "_username","")!!
+            val newProfile = Profile(id, username, profilesPreferences.getInt(id + "_avatar", R.drawable.pikachu))
+
             profiles[id] = newProfile
+            profilesSet.add(username)
         }
     }
 
@@ -77,27 +80,6 @@ class UserViewModel: ViewModel() {
     }
 
 
-    private fun edit() {
-        editor = profilesPreferences.edit()
-    }
-
-    private fun saveID():String {
-        val id = UUID.randomUUID().toString()
-        identifiers.add(id)
-        editor.putStringSet("profiles", identifiers)
-
-        return id
-    }
-
-    private fun saveUsername(id: String) {
-        editor.putString(id + "_username", userChosen)
-        profilesSet.add(userChosen)
-    }
-
-    private fun saveAvatar(id: String) {
-        editor.putInt(id + "_avatar", avatarChosen)
-    }
-
     fun signup() {
         edit()
 
@@ -118,4 +100,25 @@ class UserViewModel: ViewModel() {
     }
 
 
+
+    private fun edit() {
+        editor = profilesPreferences.edit()
+    }
+
+    private fun saveID():String {
+        val id = UUID.randomUUID().toString()
+        identifiers.add(id)
+        editor.putStringSet("profiles", identifiers)
+
+        return id
+    }
+
+    private fun saveUsername(id: String) {
+        editor.putString(id + "_username", userChosen)
+        profilesSet.add(userChosen)
+    }
+
+    private fun saveAvatar(id: String) {
+        editor.putInt(id + "_avatar", avatarChosen)
+    }
 }

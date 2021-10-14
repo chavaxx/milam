@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -58,6 +59,8 @@ class PreviewFragment : Fragment() {
         helpButton = view.findViewById(R.id.help_button)
         playButton = view.findViewById(R.id.start_game)
         playButton.setOnClickListener {
+            val window = activity?.window
+            window?.statusBarColor = MaterialColors.getColor(view, R.attr.statusBarForeground)
             findNavController().navigate(gameViewModel.getDirections())
         }
     }

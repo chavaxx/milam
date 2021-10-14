@@ -65,8 +65,8 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/icon1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             app:cardCornerRadius="25dp"
             app:cardElevation="10dp"
             app:layout_constraintBottom_toTopOf="@+id/middle_guideline"
@@ -85,7 +85,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="1.5"
                     />
                 <ImageView
                     android:id="@+id/confirm_profile_avatar"
@@ -116,7 +116,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="1.5"
                     />
 
             </LinearLayout>

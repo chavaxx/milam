@@ -73,4 +73,5 @@
     <string name="blue">azul</string>
     <string name="level">Nivel 1</string>
     <string name="help">Ayuda</string>
+    <string name="initial_score">Puntuación actual: 0</string>
 </resources>

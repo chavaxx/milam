@@ -16,7 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.runBlocking
-
+import org.w3c.dom.Text
 
 
 class SimonSaysFragment : Fragment() {
@@ -27,6 +27,7 @@ class SimonSaysFragment : Fragment() {
     private var game : SimonSaysModel = SimonSaysModel()
     private var animationsRunning: Int = 0
     private val progressViewModel: ProgressViewModel by activityViewModels()
+    private lateinit var currentScore: TextView
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -36,9 +37,10 @@ class SimonSaysFragment : Fragment() {
 
         turnLabel = view.findViewById(R.id.turnLabel)
         turnLabel.text = "Espera..."
+        currentScore = view.findViewById(R.id.simon_current_score)
         loadData(view)
 
-        game.setScore(progressViewModel.getScore("simon_says")!!)
+        game.setMaxScore(progressViewModel.getScore("simon_says")!!)
 
         enableButtons(false)
 
@@ -122,11 +124,15 @@ class SimonSaysFragment : Fragment() {
                     0
                 )
             }
+
             game.validateButton(buttonID)
+
             if (game.getIsCorrect()) {
+                currentScore.text = "Puntuación actual: " + game.getCurrentScore()
                 executeSequence()
+
             } else if (!game.getInGame()) {
-                progressViewModel.setScore("simon_says",game.getScore())
+                progressViewModel.setScore("simon_says",game.getMaxScore())
                 onFailSequence()
                 //scoreLbl.text = "Has pérdido..."
             }
