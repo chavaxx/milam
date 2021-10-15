@@ -40,25 +40,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/logout"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginEnd="5dp"
-                    android:gravity="center"
-                    android:text="Salir"
-                    android:background="?android:selectableItemBackground"
-                    android:focusable="true"
-                    android:clickable="true"
-                    android:textColor="@color/blue_buttons"
-                    android:fontFamily="@font/lato_black"
-                    app:drawableTint="@color/blue_buttons"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/right_guideline"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:drawableEndCompat="@drawable/logout" />
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -135,6 +116,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent=".7" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/delimiter_bottons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".85" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/left"
@@ -216,6 +204,64 @@
             app:layout_constraintTop_toTopOf="@+id/avatarLayout"
             app:srcCompat="@android:drawable/ic_menu_edit"
             app:tint="@color/blue_buttons" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/delete_account_button"
+            app:cardElevation="12dp"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/right"
+            app:layout_constraintStart_toStartOf="@+id/left"
+            app:layout_constraintTop_toTopOf="@+id/delimiter_bottons"
+
+            >
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/lato_black"
+                android:gravity="center"
+                android:text="Eliminar perfil"
+                android:textColor="@color/blue_buttons"
+                android:textSize="20sp"
+                app:drawableEndCompat="@android:drawable/ic_delete"
+                app:drawableTint="@color/blue_buttons"/>
+
+
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/logout_account_button"
+            app:cardElevation="12dp"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/delimiter_bottons"
+            app:layout_constraintEnd_toStartOf="@+id/right"
+            app:layout_constraintStart_toStartOf="@+id/left"
+            app:layout_constraintTop_toTopOf="@+id/delimiter_guideline_bottom"
+            >
+
+            <TextView
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/lato_black"
+                android:gravity="center"
+                android:text="Cerrar sesión"
+                android:textColor="@color/blue_buttons"
+                android:textSize="20sp"
+                app:drawableEndCompat="@drawable/logout"
+                app:drawableTint="@color/blue_buttons"/>
+
+
+        </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

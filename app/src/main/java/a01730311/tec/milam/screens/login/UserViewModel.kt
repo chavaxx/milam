@@ -99,6 +99,19 @@ class UserViewModel: ViewModel() {
         profile = Profile("","",0)
     }
 
+    fun deleteProfile() {
+        edit()
+
+        editor.remove(profile.id + "_username")
+        profilesSet.remove(profile.username)
+        identifiers.remove(profile.id)
+        profiles.remove(profile.id)
+        editor.putStringSet("profiles", identifiers)
+
+        editor.apply()
+        logout()
+    }
+
 
 
     private fun edit() {

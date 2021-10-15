@@ -26,6 +26,8 @@ class SimonSaysFragment : Fragment() {
     private lateinit var turnLabel : TextView
     private var game : SimonSaysModel = SimonSaysModel()
     private var animationsRunning: Int = 0
+
+    // TODO: MANEJA EL PROGRESO DE LOS USUARIOS
     private val progressViewModel: ProgressViewModel by activityViewModels()
     private lateinit var currentScore: TextView
 

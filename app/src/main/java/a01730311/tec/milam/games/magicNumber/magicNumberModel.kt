@@ -9,8 +9,8 @@ import kotlin.random.Random
 class magicNumberModel{
     private var buttonID = arrayOf<Int>(R.id.number1,R.id.number2,R.id.number3,R.id.number4,R.id.number5,R.id.number6,R.id.number7,R.id.number8,R.id.number9 )
     private val colors = arrayOf(
-        Color.parseColor("#FFFFFF"),
-        Color.parseColor("#000000"),
+        Color.parseColor("#D98A29"),
+        Color.parseColor("#0CB485"),
         Color.parseColor("#FF8F00"),
         Color.parseColor("#EF6C00"),
         Color.parseColor("#D84315"),

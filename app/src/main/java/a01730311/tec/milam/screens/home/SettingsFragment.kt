@@ -26,7 +26,8 @@ class SettingsFragment : Fragment() {
 
 
     private lateinit var goBackButton: LinearLayout
-    private lateinit var logoutButton: TextView
+    private lateinit var logoutButton: MaterialCardView
+    private lateinit var deleteProfileButton: MaterialCardView
     private lateinit var avatarLayout: MaterialCardView
     private lateinit var editProfilePicture: FloatingActionButton
     private lateinit var usernameEditText: TextInputEditText
@@ -63,7 +64,8 @@ class SettingsFragment : Fragment() {
 
         usernameEditText.setText(viewModel.getUsername())
         editProfilePicture = view.findViewById(R.id.edit_profile_picture)
-        logoutButton = view.findViewById(R.id.logout)
+        logoutButton = view.findViewById(R.id.logout_account_button)
+        deleteProfileButton = view.findViewById(R.id.delete_account_button)
 
         goBackButton.setOnClickListener{
             findNavController().popBackStack()
@@ -72,6 +74,13 @@ class SettingsFragment : Fragment() {
         editProfilePicture.setOnClickListener {
             val action = SettingsFragmentDirections.actionSettingsFragmentToEditAvatarFragment()
             findNavController().navigate(action)
+        }
+
+        deleteProfileButton.setOnClickListener {
+            viewModel.deleteProfile()
+            val navOptions = NavOptions.Builder().setPopUpTo(findNavController().graph.id, true).build()
+            val action = SettingsFragmentDirections.actionSettingsFragmentToLoginFragment()
+            findNavController().navigate(action, navOptions)
         }
 
         avatarLayout.setOnClickListener {
