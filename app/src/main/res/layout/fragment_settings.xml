@@ -215,7 +215,6 @@
             app:layout_constraintEnd_toStartOf="@+id/right"
             app:layout_constraintStart_toStartOf="@+id/left"
             app:layout_constraintTop_toTopOf="@+id/delimiter_bottons"
-
             >
 
             <TextView

@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/android/milam/app/src/main/res/drawable/circle.xml" value="0.240625" />
+        <entry key="..\:/android/milam/app/src/main/res/drawable/menu_card.xml" value="0.240625" />
+        <entry key="..\:/android/milam/app/src/main/res/drawable/overbox.xml" value="0.240625" />
         <entry key="..\:/android/milam/app/src/main/res/drawable/save_avatar_styles.xml" value="0.240625" />
         <entry key="..\:/android/milam/app/src/main/res/drawable/shapes.xml" value="0.240625" />
         <entry key="..\:/android/milam/app/src/main/res/drawable/white_text_view.xml" value="0.240625" />
@@ -27,6 +29,8 @@
         <entry key="..\:/android/milam/app/src/main/res/layout/fragment_settings.xml" value="0.2696629213483146" />
         <entry key="..\:/android/milam/app/src/main/res/layout/fragment_simon_says.xml" value="0.1417763157894737" />
         <entry key="..\:/android/milam/app/src/main/res/layout/game_card.xml" value="0.33" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/menu_card.xml" value="0.33" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/pause_dialog.xml" value="0.18" />
         <entry key="..\:/android/milam/app/src/main/res/layout/profile_card.xml" value="0.5" />
         <entry key="..\:/android/milam/app/src/main/res/layout/test.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/drawable/shapes.xml" value="0.21145833333333333" />
