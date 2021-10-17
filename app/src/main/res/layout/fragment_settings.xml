@@ -245,19 +245,40 @@
             app:layout_constraintTop_toTopOf="@+id/delimiter_guideline_bottom"
             >
 
-            <TextView
-                android:id="@+id/close"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/lato_black"
-                android:gravity="center"
-                android:text="Cerrar sesión"
-                android:textColor="@color/blue_buttons"
-                android:textSize="20sp"
-                app:drawableEndCompat="@drawable/logout"
-                app:drawableTint="@color/blue_buttons"/>
+
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:layout_gravity="center"
+               android:gravity="center">
+
+               <TextView
+                   android:id="@+id/close"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:fontFamily="@font/lato_black"
+                   android:gravity="center"
+                   android:text="Cerrar sesión"
+                   android:layout_marginRight="10dp"
+                   android:textColor="@color/blue_buttons"
+                   android:textSize="20sp"/>
+
+               <ImageView
+                   android:id="@+id/imageView2"
+                   android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:layout_gravity="center"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintVertical_bias="0.225"
+                   app:srcCompat="@drawable/logout"
+                   android:scaleType="fitCenter"
+                   app:tint="@color/blue_buttons" />
+           </LinearLayout>
 
 
         </com.google.android.material.card.MaterialCardView>
