@@ -1,11 +1,11 @@
 package a01730311.tec.milam.games.pixart
 
 enum class PixarteLevels(val numPixels : Int) {
-    LVL1(20);
+    LVL1(99);
 
     fun getWidth(): Int {
         return when (this) {
-            LVL1 -> 5
+            LVL1 -> 11
         }
     }
 
@@ -16,10 +16,16 @@ enum class PixarteLevels(val numPixels : Int) {
     fun getPixelBoard(): IntArray {
         return when (this) {
             LVL1 -> intArrayOf(
-                2,2,2,2,2,
-                2,1,1,1,2,
-                2,1,1,1,1,
-                2,2,2,2,2,)
+                1,1,1,1,1,1,1,1,1,1,1,
+                1,1,2,2,1,1,1,2,2,1,1,
+                1,2,2,2,2,1,2,2,2,2,1,
+                1,2,2,2,2,2,2,2,2,2,1,
+                1,1,2,2,2,2,2,2,2,1,1,
+                1,1,1,2,2,2,2,2,1,1,1,
+                1,1,1,1,2,2,2,1,1,1,1,
+                1,1,1,1,1,2,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,
+                )
         }
     }
 
