@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
+import a01730311.tec.milam.components.Modal
 import a01730311.tec.milam.screens.home.ProgressViewModel
 import android.animation.*
 import android.media.MediaPlayer
@@ -26,6 +27,8 @@ class SimonSaysFragment : Fragment() {
     private lateinit var turnLabel : TextView
     private var game : SimonSaysModel = SimonSaysModel()
     private var animationsRunning: Int = 0
+    private lateinit var modal: Modal
+
 
     // TODO: MANEJA EL PROGRESO DE LOS USUARIOS
     private val progressViewModel: ProgressViewModel by activityViewModels()
@@ -37,6 +40,8 @@ class SimonSaysFragment : Fragment() {
         // Inflate the layout for this fragment
         val view: View =  inflater.inflate(R.layout.fragment_simon_says, container, false)
 
+
+        modal = Modal(requireContext(), R.id.simonSaysFragment, findNavController(), progressViewModel, 1)
         turnLabel = view.findViewById(R.id.turnLabel)
         turnLabel.text = "Espera..."
         currentScore = view.findViewById(R.id.simon_current_score)
@@ -53,34 +58,15 @@ class SimonSaysFragment : Fragment() {
 
         val pauseButton : FloatingActionButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener{
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Pausa")
-                .setNegativeButton("Salir del juego") { dialog, which ->
-                    findNavController().popBackStack()
-                }
-                .setNeutralButton("Reintentar")  { dialog, which ->
-                    initGame()
-                }
-                .show()
+
+            modal.showPauseMenu()
 
         }
 
         return view
     }
 
-    fun onFailSequence() {
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Intenta de nuevo")
-            .setNegativeButton("Salir del juego") { dialog, which ->
-                findNavController().popBackStack()
-            }
-            .setPositiveButton("Reintentar") { dialog, which ->
-                initGame()
-            }
-            .show()
-    }
-
-    fun loadData(view : View) {
+    private fun loadData(view : View) {
         data[R.id.greenBtn] = Pair(view.findViewById(R.id.greenBtn), MediaPlayer.create(activity, R.raw.green))
         data[R.id.blueBtn] = Pair(view.findViewById(R.id.blueBtn), MediaPlayer.create(activity, R.raw.blue))
         data[R.id.yellowBtn] =
@@ -117,7 +103,7 @@ class SimonSaysFragment : Fragment() {
         enableButtons(true)
     }
 
-    fun onTap(buttonID : Int) {
+    private fun onTap(buttonID : Int) {
 
             data[buttonID]?.let {
                 flashAndPlay(
@@ -135,8 +121,7 @@ class SimonSaysFragment : Fragment() {
 
             } else if (!game.getInGame()) {
                 progressViewModel.setScore("simon_says",game.getMaxScore())
-                onFailSequence()
-                //scoreLbl.text = "Has pérdido..."
+                modal.showFailureMenu()
             }
 
     }

@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Button
 import kotlin.random.Random
 
-class magicNumberModel{
+class MagicNumberModel{
     private var buttonID = arrayOf<Int>(R.id.number1,R.id.number2,R.id.number3,R.id.number4,R.id.number5,R.id.number6,R.id.number7,R.id.number8,R.id.number9 )
     private val colors = arrayOf(
         Color.parseColor("#D98A29"),

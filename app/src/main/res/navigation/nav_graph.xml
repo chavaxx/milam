@@ -124,7 +124,7 @@
         tools:layout="@layout/fragment_maze" />
     <fragment
         android:id="@+id/magicNumberFragment"
-        android:name="a01730311.tec.milam.games.magicNumber.magicNumberFragment"
+        android:name="a01730311.tec.milam.games.magicNumber.MagicNumberFragment"
         android:label="fragment_magic_number"
         tools:layout="@layout/fragment_magic_number" />
     <fragment

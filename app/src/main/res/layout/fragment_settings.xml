@@ -261,7 +261,7 @@
                    android:fontFamily="@font/lato_black"
                    android:gravity="center"
                    android:text="Cerrar sesión"
-                   android:layout_marginRight="10dp"
+                   android:layout_marginEnd="10dp"
                    android:textColor="@color/blue_buttons"
                    android:textSize="20sp"/>
 
@@ -270,11 +270,6 @@
                    android:layout_width="30dp"
                    android:layout_height="30dp"
                    android:layout_gravity="center"
-                   app:layout_constraintBottom_toBottomOf="parent"
-                   app:layout_constraintEnd_toEndOf="parent"
-                   app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintTop_toTopOf="parent"
-                   app:layout_constraintVertical_bias="0.225"
                    app:srcCompat="@drawable/logout"
                    android:scaleType="fitCenter"
                    app:tint="@color/blue_buttons" />

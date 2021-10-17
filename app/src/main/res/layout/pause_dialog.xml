@@ -23,7 +23,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:cardBackgroundColor="@color/blue_buttons"
             app:cardCornerRadius="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline13"
@@ -46,6 +45,7 @@
                             android:layout_width="120dp"
                             android:layout_height="160dp"
                             android:layout_marginVertical="50dp"
+                            app:cardBackgroundColor="@android:color/holo_red_light"
                             app:cardCornerRadius="30dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +68,7 @@
                                             app:layout_constraintTop_toTopOf="parent"
                                             app:layout_constraintVertical_bias="0.225"
                                             app:srcCompat="@drawable/logout"
-                                            app:tint="@android:color/holo_red_light" />
+                                            app:tint="?statusBarBackground" />
 
                                         <TextView
                                             android:id="@+id/textView8"
@@ -77,7 +77,7 @@
                                             android:gravity="center"
                                             android:fontFamily="@font/lato_black"
                                             android:text="Salir del juego"
-                                            android:textColor="@android:color/holo_red_light"
+                                            android:textColor="?statusBarBackground"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
@@ -90,6 +90,7 @@
                             android:layout_width="120dp"
                             android:layout_height="160dp"
                             app:cardCornerRadius="30dp"
+                            app:cardBackgroundColor="@color/blue_buttons"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/guideline10"
                             app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +112,7 @@
                                             app:layout_constraintTop_toTopOf="parent"
                                             app:layout_constraintVertical_bias="0.225"
                                             app:srcCompat="@drawable/reload"
-                                            app:tint="@color/cool_orange" />
+                                            app:tint="?statusBarBackground" />
 
                                         <TextView
                                             android:id="@+id/textView7"
@@ -120,7 +121,7 @@
                                             android:gravity="center"
                                             android:text="Reintentar"
                                             android:fontFamily="@font/lato_black"
-                                            android:textColor="@color/cool_orange"
+                                            android:textColor="?statusBarBackground"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
@@ -133,13 +134,16 @@
                             android:id="@+id/close_pause_dialog"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
+                            android:background="?android:selectableItemBackground"
+                            android:focusable="true"
+                            android:clickable="true"
                             android:src="@android:drawable/ic_menu_close_clear_cancel"
                             app:layout_constraintBottom_toTopOf="@+id/exit_game_button"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="@+id/guideline10"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:tint="?attr/colorSecondary" />
+                            app:tint="?attr/font" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>

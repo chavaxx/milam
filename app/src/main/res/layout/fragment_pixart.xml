@@ -16,11 +16,18 @@
 
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".75" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".2" />
+        app:layout_constraintGuide_percent=".25" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -105,9 +112,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutPixels"
-        android:layout_width="406dp"
-        android:layout_height="397dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/top_guideline">
@@ -115,7 +123,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/pixels"
             android:layout_width="match_parent"
-            android:layout_height="397dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:foregroundGravity="center"
             android:overScrollMode="never" />
@@ -128,7 +136,6 @@
         android:overScrollMode="never"
         app:layout_constraintBottom_toTopOf="@+id/middle_guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutPixels"
         app:layout_constraintVertical_bias="1.0" />
