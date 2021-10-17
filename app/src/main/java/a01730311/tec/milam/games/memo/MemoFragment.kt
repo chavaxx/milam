@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
+import a01730311.tec.milam.components.Modal
 import a01730311.tec.milam.screens.home.ProgressViewModel
 import android.app.Dialog
 import android.graphics.Color
@@ -28,23 +29,21 @@ class MemoFragment : Fragment() {
     private lateinit var clRoot: ConstraintLayout
     private lateinit var currentLevel: TextView
     private lateinit var pauseButton: FloatingActionButton
-    private lateinit var pauseDialog: Dialog
-    private lateinit var closeDialogButton: ImageView
-    private lateinit var retryButton: MaterialCardView
-    private lateinit var exitGameButton: MaterialCardView
-    private lateinit var nextLevelButton: MaterialCardView
+
+    private lateinit var modal: Modal
+
     private val level: ProgressViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val memoryLevels: MemoryLevels= MemoryLevels.values()[level.getMaxLevel("memorandum").toInt() -1]
+        val memoryLevels: MemoryLevels= MemoryLevels.values()[level.getMaxLevel("memorandum").toInt() - 1]
         currentLevel = view.findViewById(R.id.levelLabel)
 
         // pause binding
-        pauseDialog = Dialog(requireContext())
+        modal = Modal(requireContext(), R.id.memoFragment, findNavController(), level, 11)
         pauseButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
-            onPressPause()
+            modal.showPauseMenu()
         }
 
         if (level.getMaxLevel("memorandum").toInt() <11) {
@@ -64,8 +63,8 @@ class MemoFragment : Fragment() {
             override fun onCardClicked(position: Int) {
                 updateGameWithFlip(position)
                 if(memoryGame.haveWonGame()){
-                    Snackbar.make(clRoot, "¡Ganaste, Felicidades!",Snackbar.LENGTH_SHORT).show()
-                    showSuccessMenu()
+                    //Snackbar.make(clRoot, "¡Ganaste, Felicidades!",Snackbar.LENGTH_SHORT).show()
+                    modal.showSuccessMenu("memorandum", 0)
                 }
 
             }
@@ -75,68 +74,6 @@ class MemoFragment : Fragment() {
         board.layoutManager = GridLayoutManager(requireContext(),memoryLevels.getWidth())
     }
 
-    private fun bindCommonButtons() {
-        pauseDialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-        pauseDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        // bind buttons
-        closeDialogButton = pauseDialog.findViewById(R.id.close_pause_dialog)
-        retryButton = pauseDialog.findViewById(R.id.retry_button)
-        exitGameButton = pauseDialog.findViewById(R.id.exit_game_button)
-
-
-        // close dialog
-        closeDialogButton.setOnClickListener {
-            pauseDialog.hide()
-        }
-
-        // reload game
-        retryButton.setOnClickListener {
-            pauseDialog.hide()
-            findNavController().run {
-                popBackStack()
-                navigate(R.id.memoFragment)
-            }
-        }
-
-        //exit game
-        exitGameButton.setOnClickListener {
-
-            pauseDialog.hide()
-
-            findNavController().popBackStack()
-
-        }
-    }
-
-    private fun onPressPause() {
-        //build dialog
-        pauseDialog.setContentView(R.layout.pause_dialog)
-        bindCommonButtons()
-        pauseDialog.show()
-    }
-
-
-    private fun showSuccessMenu() {
-        //build dialog
-        pauseDialog.setContentView(R.layout.success_dialog)
-
-        bindCommonButtons()
-
-        nextLevelButton = pauseDialog.findViewById(R.id.success_game_button)
-        nextLevelButton.setOnClickListener {
-            findNavController().run {
-                if(level.getMaxLevel("memorandum").toInt() <11) {
-                    level.setScore("memorandum",0,(level.getMaxLevel("memorandum").toInt()+1).toString())
-                }
-                pauseDialog.hide()
-                popBackStack()
-                navigate(R.id.memoFragment)
-            }
-        }
-
-        pauseDialog.show()
-    }
 
     private fun updateGameWithFlip(position: Int) {
 
@@ -146,6 +83,7 @@ class MemoFragment : Fragment() {
             return
         }
         if(memoryGame.isCardFaceUp(position)){
+            //TODO: CHANGE TO RESPOND BETTER INTERACTIONS
             Snackbar.make(clRoot, "Esa carta ya esta volteada, movimiento no válido",Snackbar.LENGTH_SHORT).show()
             return
         }

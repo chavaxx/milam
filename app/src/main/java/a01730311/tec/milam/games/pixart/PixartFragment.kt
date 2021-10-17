@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
+import a01730311.tec.milam.components.Modal
 import a01730311.tec.milam.screens.home.ProgressViewModel
 import android.app.Dialog
 import android.graphics.Color
@@ -15,7 +16,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -29,19 +29,18 @@ class PixartFragment : Fragment() {
     private lateinit var colorPickerAdapter : ColorPickerAdapter
 
     private lateinit var pauseButton: FloatingActionButton
-    private lateinit var pauseDialog: Dialog
-    private lateinit var closeDialogButton: ImageView
-    private lateinit var retryButton: MaterialCardView
-    private lateinit var exitGameButton: MaterialCardView
-    private val level: ProgressViewModel by activityViewModels()
+    private lateinit var modal: Modal
+
+    private val progress: ProgressViewModel by activityViewModels()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        pauseDialog = Dialog(requireContext())
+        modal = Modal(requireContext(), R.id.pixartFragment, findNavController(), progress, 1)
         pauseButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
-            onPressPause()
+            modal.showPauseMenu()
         }
 
         val levelProgressViewModel = level.getMaxLevel("pix_art").toInt() -1
@@ -77,38 +76,6 @@ class PixartFragment : Fragment() {
 
     }
 
-    private fun onPressPause() {
-        //build dialog
-        pauseDialog.setContentView(R.layout.pause_dialog)
-        pauseDialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-        pauseDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        // bind buttons
-        closeDialogButton = pauseDialog.findViewById(R.id.close_pause_dialog)
-        retryButton = pauseDialog.findViewById(R.id.retry_button)
-        exitGameButton = pauseDialog.findViewById(R.id.exit_game_button)
-
-        // close dialog
-        closeDialogButton.setOnClickListener {
-            pauseDialog.hide()
-        }
-
-        // reload game
-        retryButton.setOnClickListener {
-            //reload game
-        }
-
-        //exit game
-        exitGameButton.setOnClickListener {
-
-            pauseDialog.hide()
-
-            findNavController().popBackStack()
-
-        }
-
-        pauseDialog.show()
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

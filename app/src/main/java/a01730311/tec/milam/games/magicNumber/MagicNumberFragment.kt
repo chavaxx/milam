@@ -6,28 +6,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
+import a01730311.tec.milam.components.Modal
+import a01730311.tec.milam.screens.home.ProgressViewModel
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 
 
-class magicNumberFragment : Fragment() {
-    private val game = magicNumberModel()
+class MagicNumberFragment : Fragment() {
+    private val game = MagicNumberModel()
     private lateinit var question: TextView
     private lateinit var score: TextView
-    fun startGame(view: View){
+
+
+    private lateinit var pauseButton: FloatingActionButton
+
+    private lateinit var modal: Modal
+
+    private val progress: ProgressViewModel by activityViewModels()
+
+    private fun startGame(view: View){
         game.getOperationToSolve()
-        var correctNumber = game.getCorrectNumber(game.getNumber1(),game.getNumber2(),game.getOperation())
-        var correctButton = game.getRandom().nextInt(0,8)
-        var colors = game.getColors()
+        val correctNumber = game.getCorrectNumber(game.getNumber1(),game.getNumber2(),game.getOperation())
+        val correctButton = game.getRandom().nextInt(0,8)
+        val colors = game.getColors()
         score.text = "Ejercicios resueltos: " + (game.getLevel()-1).toString()
         var sign = ""
         if(game.getOperation()) sign = "+"
         else sign = "-"
-        question.text = game.getNumber1().toString() + " " + sign + " " + game.getNumber2().toString() + "___?"
+        question.text = game.getNumber1().toString() + " " + sign + " " + game.getNumber2().toString() + " = ___"
         for(i in game.getButtonID().indices){
-            var currentButton: Button
-            currentButton = view.findViewById(game.getButtonID()[i])
+            val currentButton: Button = view.findViewById(game.getButtonID()[i])
             if(i == correctButton){
                 currentButton.text = correctNumber.toString()
                 currentButton.setTextColor(colors[game.getRandom().nextInt(0,14)])
@@ -39,18 +52,30 @@ class magicNumberFragment : Fragment() {
             }
         }
     }
-    fun correctAnswer(view: View){
+
+    private fun correctAnswer(view: View){
         Toast.makeText(activity, "Respuesta correcta, muy bien!", Toast.LENGTH_SHORT).show()
+        if (progress.getScore("magic_number")!! < game.getLevel()) {
+            progress.setScore("magic_number", game.getLevel())
+        }
         game.setLevel()
         startGame(view)
     }
 
-    fun wrongAnswer(){
-        Toast.makeText(activity, "Respuesta incorrecta, intenta nuevamente", Toast.LENGTH_SHORT).show()
+    private fun wrongAnswer(){
+        modal.showFailureMenu()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        modal = Modal(requireContext(), R.id.magicNumberFragment, findNavController(), progress, 1)
+        pauseButton = view.findViewById(R.id.pauseButton)
+        pauseButton.setOnClickListener {
+            modal.showPauseMenu()
+        }
     }
 
     override fun onCreateView(

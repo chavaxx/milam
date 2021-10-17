@@ -155,21 +155,33 @@
             app:layout_constraintTop_toTopOf="@+id/last_guideline"
             >
 
-            <TextView
-                android:id="@+id/textView22"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/lato_black"
-                android:gravity="center"
-                android:text="@string/save"
-                android:textColor="@color/blue_buttons"
-                android:textSize="20sp"
-                app:drawableEndCompat="@drawable/palomita"
-                app:drawableTint="@color/blue_buttons"/>
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/save"
+                    android:gravity="center"
+                    android:layout_weight="3"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/lato_black"
+                    android:textColor="@color/blue_buttons"/>
 
-
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/palomita"
+                    app:tint="@color/blue_buttons" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <androidx.constraintlayout.widget.Guideline

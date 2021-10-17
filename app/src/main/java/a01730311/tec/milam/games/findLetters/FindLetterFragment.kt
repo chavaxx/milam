@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
+import a01730311.tec.milam.components.Modal
 import a01730311.tec.milam.screens.home.ProgressViewModel
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
 class FindLetterFragment : Fragment() {
@@ -22,8 +25,20 @@ class FindLetterFragment : Fragment() {
     private val level: ProgressViewModel by activityViewModels()
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private lateinit var pauseButton: FloatingActionButton
+
+    private lateinit var modal: Modal
+
+    private val progress: ProgressViewModel by activityViewModels()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        modal = Modal(requireContext(), R.id.findLetterFragment, findNavController(), progress, 1)
+        pauseButton = view.findViewById(R.id.pauseButton)
+        pauseButton.setOnClickListener {
+            modal.showPauseMenu()
+        }
     }
 
     override fun onCreateView(

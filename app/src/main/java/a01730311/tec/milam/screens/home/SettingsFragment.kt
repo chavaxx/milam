@@ -17,15 +17,18 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import org.w3c.dom.Text
 
 
 class SettingsFragment : Fragment() {
 
 
     private lateinit var goBackButton: LinearLayout
+    private lateinit var goCreditsButton: TextView
     private lateinit var logoutButton: MaterialCardView
     private lateinit var deleteProfileButton: MaterialCardView
     private lateinit var avatarLayout: MaterialCardView
@@ -66,6 +69,12 @@ class SettingsFragment : Fragment() {
         editProfilePicture = view.findViewById(R.id.edit_profile_picture)
         logoutButton = view.findViewById(R.id.logout_account_button)
         deleteProfileButton = view.findViewById(R.id.delete_account_button)
+        goCreditsButton = view.findViewById(R.id.creditsLabel)
+
+        goCreditsButton.setOnClickListener{
+            val action = SettingsFragmentDirections.actionSettingsFragmentToCreditsFragment()
+            findNavController().navigate(action)
+        }
 
         goBackButton.setOnClickListener{
             findNavController().popBackStack()
@@ -77,10 +86,21 @@ class SettingsFragment : Fragment() {
         }
 
         deleteProfileButton.setOnClickListener {
-            viewModel.deleteProfile()
-            val navOptions = NavOptions.Builder().setPopUpTo(findNavController().graph.id, true).build()
-            val action = SettingsFragmentDirections.actionSettingsFragmentToLoginFragment()
-            findNavController().navigate(action, navOptions)
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Eliminar perfil ")
+                .setMessage("Tus datos serán eliminados")
+                .setNegativeButton("Cancelar") { dialog, _ ->
+                    dialog.cancel()
+                }
+                .setPositiveButton("Aceptar") { dialog, _ ->
+                    dialog.dismiss()
+                    viewModel.deleteProfile()
+                    val navOptions = NavOptions.Builder().setPopUpTo(findNavController().graph.id, true).build()
+                    val action = SettingsFragmentDirections.actionSettingsFragmentToLoginFragment()
+                    findNavController().navigate(action, navOptions)
+                }
+                .show()
+
         }
 
         avatarLayout.setOnClickListener {
