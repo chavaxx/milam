@@ -12,7 +12,7 @@ class Datasource {
             GameCard("letters", R.string.game2, R.string.description2, R.color.game_card2, R.drawable.puzzle, PreviewFragmentDirections.actionPreviewFragmentToFindLetterFragment()),
             GameCard("maze", R.string.game3, R.string.description3, R.color.game_card3, R.drawable.maze, PreviewFragmentDirections.actionPreviewFragmentToMazeFragment()),
             GameCard("pix_art", R.string.game4, R.string.description4, R.color.game_card4, R.drawable.pixart, PreviewFragmentDirections.actionPreviewFragmentToPixartFragment()),
-            GameCard("magic_number", R.string.game5, R.string.description5, R.color.game_card5, R.drawable.memory, PreviewFragmentDirections.actionPreviewFragmentToMagicNumberFragment()),
+            GameCard("magic_number", R.string.game5, R.string.description5, R.color.game_card5, R.drawable.maths, PreviewFragmentDirections.actionPreviewFragmentToMagicNumberFragment()),
             GameCard("simon_says", R.string.game6, R.string.description6, R.color.game_card6, R.drawable.simon_says, PreviewFragmentDirections.actionPreviewFragmentToSimonSaysFragment()),
         )
     }

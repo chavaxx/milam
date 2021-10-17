@@ -36,6 +36,8 @@ class MemoFragment : Fragment() {
             override fun onCardClicked(position: Int) {
                 updateGameWithFlip(position)
                 if(memoryGame.haveWonGame())Snackbar.make(clRoot, "¡Ganaste, Felicidades!",Snackbar.LENGTH_SHORT).show()
+                level.setScore("memorandum",0,(level.getMaxLevel("memorandum").toInt()+1).toString())
+                if(memoryGame.haveWonGame())Snackbar.make(clRoot, "¡Ganaste, Felicidades!",Snackbar.LENGTH_SHORT).show()
             }
         })
         board.adapter = adapter
