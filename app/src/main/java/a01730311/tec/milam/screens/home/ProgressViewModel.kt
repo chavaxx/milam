@@ -45,7 +45,10 @@ class ProgressViewModel:ViewModel() {
 
         if (gamesScore[game]?.size!! < level.toInt()) {
             val levels = mutableSetOf<String>()
-            for (i in 1..level.toInt()) levels.add(i.toString())
+            for (i in 1..level.toInt()){
+                gamesScore[game]?.add(0)
+                levels.add(i.toString())
+            }
             editor.putStringSet(userID + "_" + game + "_levels", levels)
         }
 

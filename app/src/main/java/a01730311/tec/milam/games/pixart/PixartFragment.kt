@@ -10,6 +10,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.widget.ImageView
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -29,20 +30,42 @@ class PixartFragment : Fragment() {
         pauseDialog = Dialog(requireContext())
         pauseButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
-            pauseDialog.setContentView(R.layout.pause_dialog)
-            pauseDialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-            pauseDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-            closeDialogButton = pauseDialog.findViewById(R.id.close_pause_dialog)
-            retryButton = pauseDialog.findViewById(R.id.retry_button)
-            exitGameButton = pauseDialog.findViewById(R.id.exit_game_button)
-            exitGameButton.setOnClickListener {
-                pauseDialog.hide()
-            }
-            pauseDialog.show()
+            onPressPause()
         }
     }
 
+    private fun onPressPause() {
+        //build dialog
+        pauseDialog.setContentView(R.layout.pause_dialog)
+        pauseDialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        pauseDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        // bind buttons
+        closeDialogButton = pauseDialog.findViewById(R.id.close_pause_dialog)
+        retryButton = pauseDialog.findViewById(R.id.retry_button)
+        exitGameButton = pauseDialog.findViewById(R.id.exit_game_button)
+
+        // close dialog
+        closeDialogButton.setOnClickListener {
+            pauseDialog.hide()
+        }
+
+        // reload game
+        retryButton.setOnClickListener {
+            //reload game
+        }
+
+        //exit game
+        exitGameButton.setOnClickListener {
+
+            pauseDialog.hide()
+
+            findNavController().popBackStack()
+
+        }
+
+        pauseDialog.show()
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
