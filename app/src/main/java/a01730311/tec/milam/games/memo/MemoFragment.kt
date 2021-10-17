@@ -40,18 +40,23 @@ class MemoFragment : Fragment() {
         val memoryLevels: MemoryLevels= MemoryLevels.values()[level.getMaxLevel("memorandum").toInt() -1]
         currentLevel = view.findViewById(R.id.levelLabel)
 
-        if (level.getMaxLevel("memorandum").toInt() <11) showSuccessMenu() else currentLevel.setText("Nivel max")
-
-        clRoot = view.findViewById(R.id.clRoot)
-        board = view.findViewById(R.id.board)
-        board.setHasFixedSize(true)
-
         // pause binding
         pauseDialog = Dialog(requireContext())
         pauseButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
             onPressPause()
         }
+
+        if (level.getMaxLevel("memorandum").toInt() <11) {
+            currentLevel.text = "Nivel: " + (level.getMaxLevel("memorandum").toInt()).toString()
+        } else {
+            currentLevel.text = "Nivel max"
+        }
+
+        clRoot = view.findViewById(R.id.clRoot)
+        board = view.findViewById(R.id.board)
+        board.setHasFixedSize(true)
+
 
         memoryGame = MemoryGame(memoryLevels)
         //currentLevel.setText("Nivel de Memorama: $memoryGame.")
@@ -60,11 +65,7 @@ class MemoFragment : Fragment() {
                 updateGameWithFlip(position)
                 if(memoryGame.haveWonGame()){
                     Snackbar.make(clRoot, "¡Ganaste, Felicidades!",Snackbar.LENGTH_SHORT).show()
-                    if(level.getMaxLevel("memorandum").toInt() <11)level.setScore("memorandum",0,(level.getMaxLevel("memorandum").toInt()+1).toString())
-                    findNavController().run {
-                        popBackStack()
-                        navigate(R.id.memoFragment)
-                    }
+                    showSuccessMenu()
                 }
 
             }
@@ -124,7 +125,14 @@ class MemoFragment : Fragment() {
 
         nextLevelButton = pauseDialog.findViewById(R.id.success_game_button)
         nextLevelButton.setOnClickListener {
-          currentLevel.text = "Nivel: " + (level.getMaxLevel("memorandum").toInt()).toString()
+            findNavController().run {
+                if(level.getMaxLevel("memorandum").toInt() <11) {
+                    level.setScore("memorandum",0,(level.getMaxLevel("memorandum").toInt()+1).toString())
+                }
+                pauseDialog.hide()
+                popBackStack()
+                navigate(R.id.memoFragment)
+            }
         }
 
         pauseDialog.show()
