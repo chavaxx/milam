@@ -27,7 +27,7 @@ class MemoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val memoryLevels: MemoryLevels= MemoryLevels.values()[level.getMaxLevel("memorandum").toInt() -1]
         currentLevel = view.findViewById(R.id.levelLabel)
-        currentLevel.setText("Nivel: "+ (level.getMaxLevel("memorandum").toInt() -1).toString())
+        if(level.getMaxLevel("memorandum").toInt() <11)currentLevel.setText("Nivel: "+ (level.getMaxLevel("memorandum").toInt()).toString()) else currentLevel.setText("Nivel max")
         clRoot = view.findViewById(R.id.clRoot)
         board = view.findViewById(R.id.board)
         board.setHasFixedSize(true)
@@ -39,7 +39,7 @@ class MemoFragment : Fragment() {
                 updateGameWithFlip(position)
                 if(memoryGame.haveWonGame()){
                     Snackbar.make(clRoot, "¡Ganaste, Felicidades!",Snackbar.LENGTH_SHORT).show()
-                    level.setScore("memorandum",0,(level.getMaxLevel("memorandum").toInt()+1).toString())
+                    if(level.getMaxLevel("memorandum").toInt() <11)level.setScore("memorandum",0,(level.getMaxLevel("memorandum").toInt()+1).toString())
                     findNavController().run {
                         popBackStack()
                         navigate(R.id.memoFragment)
