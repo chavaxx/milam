@@ -53,8 +53,9 @@ class PixartFragment : Fragment() {
         pixelsAdapter = PixelsAdapter(requireActivity(), pixarteLevels, pixarteGame.getPixels(), object: PixelsAdapter.PixelClickListener{
             override fun onPixelClicked(position: Int) {
                 updateGame(position)
+
                 if(pixarteGame.getHasWon()){
-                    //TODO: CHANGE OF LEVEL
+                    modal.showSuccessMenu("pix_art", 12)
                 }
             }
 

@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/top_guideline">
         <a01730311.tec.milam.games.maze.Maze
-            android:id="@+id/maze"
+            android:id="@+id/mazeBoard"
             android:layout_width="match_parent"
             android:layout_gravity="center"
             android:layout_height="match_parent"
