@@ -103,8 +103,33 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
+    <LinearLayout
+        android:id="@+id/linearLayoutPixels"
+        android:layout_width="398dp"
+        android:layout_height="354dp"
+        android:layout_gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pixels"
+            android:layout_width="match_parent"
+            android:layout_height="345dp"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            android:overScrollMode="never" />
+    </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/colorPicker"
+        android:layout_width="333dp"
+        android:layout_height="54dp"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toTopOf="@+id/middle_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutPixels" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
