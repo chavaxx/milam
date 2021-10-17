@@ -7,12 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
 import a01730311.tec.milam.screens.home.ProgressViewModel
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
 class MemoFragment : Fragment() {
@@ -21,16 +27,29 @@ class MemoFragment : Fragment() {
     private lateinit var board:RecyclerView
     private lateinit var clRoot: ConstraintLayout
     private lateinit var currentLevel: TextView
+    private lateinit var pauseButton: FloatingActionButton
+    private lateinit var pauseDialog: Dialog
+    private lateinit var closeDialogButton: ImageView
+    private lateinit var retryButton: MaterialCardView
+    private lateinit var exitGameButton: MaterialCardView
+    private lateinit var nextLevelButton: MaterialCardView
     private val level: ProgressViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val memoryLevels: MemoryLevels= MemoryLevels.values()[level.getMaxLevel("memorandum").toInt() -1]
         currentLevel = view.findViewById(R.id.levelLabel)
-        currentLevel.setText("Nivel: "+ (level.getMaxLevel("memorandum").toInt() -1).toString())
+        currentLevel.text = "Nivel: "+ (level.getMaxLevel("memorandum").toInt() -1).toString()
         clRoot = view.findViewById(R.id.clRoot)
         board = view.findViewById(R.id.board)
         board.setHasFixedSize(true)
+
+        // pause binding
+        pauseDialog = Dialog(requireContext())
+        pauseButton = view.findViewById(R.id.pauseButton)
+        pauseButton.setOnClickListener {
+            onPressPause()
+        }
 
         memoryGame = MemoryGame(memoryLevels)
         //currentLevel.setText("Nivel de Memorama: $memoryGame.")
@@ -52,6 +71,63 @@ class MemoFragment : Fragment() {
         board.setHasFixedSize(true)
         board.layoutManager = GridLayoutManager(requireContext(),memoryLevels.getWidth())
     }
+
+    private fun bindCommonButtons() {
+        pauseDialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        pauseDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        // bind buttons
+        closeDialogButton = pauseDialog.findViewById(R.id.close_pause_dialog)
+        retryButton = pauseDialog.findViewById(R.id.retry_button)
+        exitGameButton = pauseDialog.findViewById(R.id.exit_game_button)
+
+
+        // close dialog
+        closeDialogButton.setOnClickListener {
+            pauseDialog.hide()
+        }
+
+        // reload game
+        retryButton.setOnClickListener {
+            pauseDialog.hide()
+            findNavController().run {
+                popBackStack()
+                navigate(R.id.memoFragment)
+            }
+        }
+
+        //exit game
+        exitGameButton.setOnClickListener {
+
+            pauseDialog.hide()
+
+            findNavController().popBackStack()
+
+        }
+    }
+
+    private fun onPressPause() {
+        //build dialog
+        pauseDialog.setContentView(R.layout.pause_dialog)
+        bindCommonButtons()
+        pauseDialog.show()
+    }
+
+
+    private fun showSuccessMenu() {
+        //build dialog
+        pauseDialog.setContentView(R.layout.success_dialog)
+
+        bindCommonButtons()
+
+        nextLevelButton = pauseDialog.findViewById(R.id.success_game_button)
+        nextLevelButton.setOnClickListener {
+
+        }
+
+        pauseDialog.show()
+    }
+
     private fun updateGameWithFlip(position: Int) {
 
         if(memoryGame.haveWonGame()){
