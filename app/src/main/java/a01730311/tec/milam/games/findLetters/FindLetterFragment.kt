@@ -22,7 +22,6 @@ class FindLetterFragment : Fragment() {
     private lateinit var punctuationTxt : TextView
     private lateinit var findLetterGame: FindLetterModel
     private lateinit var adapter: MatrixLettersAdapter
-    private val level: ProgressViewModel by activityViewModels()
 
 
     private lateinit var pauseButton: FloatingActionButton
@@ -34,7 +33,8 @@ class FindLetterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        modal = Modal(requireContext(), R.id.findLetterFragment, findNavController(), progress, 1)
+        //TODO: DEFINE NUMBER OF LEVELS
+        modal = Modal(requireContext(), R.id.findLetterFragment, findNavController(), progress, 5)
         pauseButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
             modal.showPauseMenu()
@@ -52,19 +52,19 @@ class FindLetterFragment : Fragment() {
         punctuationTxt = view.findViewById(R.id.punctuationTxt)
         matrixLetters = view.findViewById(R.id.matrixLetters)
 
-        findLetterGame = FindLetterModel(level.getMaxLevel("letters").toInt() -1)
+        findLetterGame = FindLetterModel(progress.getMaxLevel("letters").toInt() -1)
 
         val txtToRender : String = findLetterGame.renderPunctuation()
-        punctuationTxt.setText(txtToRender)
+        punctuationTxt.text = txtToRender
 
         val letterToFind : String = findLetterGame.getLetterToFind()
-        viewLetterToFind.setText(letterToFind)
+        viewLetterToFind.text = letterToFind
 
         adapter = MatrixLettersAdapter(requireActivity(), findLetterGame.getLvl(), findLetterGame.getChosenLetters(), object : MatrixLettersAdapter.LetterClickListener{
             override fun onLetterClicked(position: Int) {
                 updateGame(position)
                 if(findLetterGame.getHasWon()){
-                    //TODO: CHANGE OF LEVEL
+                    modal.showSuccessMenu("letters", 0)
                 }
             }
 

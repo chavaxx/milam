@@ -43,7 +43,7 @@ class PixartFragment : Fragment() {
             modal.showPauseMenu()
         }
 
-        val levelProgressViewModel = level.getMaxLevel("pix_art").toInt() -1
+        val levelProgressViewModel = progress.getMaxLevel("pix_art").toInt() -1
         pixarteGame = PixarteModel(levelProgressViewModel)
 
         pixels = view.findViewById(R.id.pixels)

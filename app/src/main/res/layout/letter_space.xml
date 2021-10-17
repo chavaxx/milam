@@ -12,6 +12,6 @@
         android:layout_height="60dp"
         app:autoSizeTextType="uniform"
         android:background="@android:color/transparent"
-        android:textColor="@color/black"
+        android:textColor="?font"
         android:textStyle="bold"/>
 </LinearLayout>
