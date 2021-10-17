@@ -103,7 +103,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/levelLabel"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fontFamily="@font/lato_regular"

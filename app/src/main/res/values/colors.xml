@@ -9,6 +9,7 @@
     <color name="night">#121212</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#6D8586</color>
+    <color name="color_gray">#E0E0E0</color>
     <color name="aboutButtonGrey">#B6CECF</color>
     <color name="game_card1">#F95F62</color>
     <color name="game_card2">#FFBA5C</color>
