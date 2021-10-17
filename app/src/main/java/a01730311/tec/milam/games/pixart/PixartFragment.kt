@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import a01730311.tec.milam.R
 import a01730311.tec.milam.components.Modal
 import a01730311.tec.milam.screens.home.ProgressViewModel
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.widget.ImageView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,12 +24,11 @@ class PixartFragment : Fragment() {
     private lateinit var pixels : RecyclerView
     private lateinit var colorPicker : RecyclerView
 
-    private val pixarteGame : PixarteModel = PixarteModel()
+    private lateinit var pixarteGame : PixarteModel
     private lateinit var pixelsAdapter : PixelsAdapter
     private lateinit var colorPickerAdapter : ColorPickerAdapter
 
     private lateinit var pauseButton: FloatingActionButton
-
     private lateinit var modal: Modal
 
     private val progress: ProgressViewModel by activityViewModels()
@@ -40,6 +43,9 @@ class PixartFragment : Fragment() {
             modal.showPauseMenu()
         }
 
+        val levelProgressViewModel = level.getMaxLevel("pix_art").toInt() -1
+        pixarteGame = PixarteModel(levelProgressViewModel)
+
         pixels = view.findViewById(R.id.pixels)
         colorPicker = view.findViewById(R.id.colorPicker)
         val pixarteLevels = pixarteGame.getLevel()
@@ -47,6 +53,9 @@ class PixartFragment : Fragment() {
         pixelsAdapter = PixelsAdapter(requireActivity(), pixarteLevels, pixarteGame.getPixels(), object: PixelsAdapter.PixelClickListener{
             override fun onPixelClicked(position: Int) {
                 updateGame(position)
+                if(pixarteGame.getHasWon()){
+                    //TODO: CHANGE OF LEVEL
+                }
             }
 
         })
