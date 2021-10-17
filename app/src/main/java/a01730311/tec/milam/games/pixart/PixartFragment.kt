@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
+import a01730311.tec.milam.screens.home.ProgressViewModel
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.widget.ImageView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +24,7 @@ class PixartFragment : Fragment() {
     private lateinit var pixels : RecyclerView
     private lateinit var colorPicker : RecyclerView
 
-    private val pixarteGame : PixarteModel = PixarteModel()
+    private lateinit var pixarteGame : PixarteModel
     private lateinit var pixelsAdapter : PixelsAdapter
     private lateinit var colorPickerAdapter : ColorPickerAdapter
 
@@ -31,7 +33,7 @@ class PixartFragment : Fragment() {
     private lateinit var closeDialogButton: ImageView
     private lateinit var retryButton: MaterialCardView
     private lateinit var exitGameButton: MaterialCardView
-
+    private val level: ProgressViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,6 +44,9 @@ class PixartFragment : Fragment() {
             onPressPause()
         }
 
+        val levelProgressViewModel = level.getMaxLevel("pix_art").toInt() -1
+        pixarteGame = PixarteModel(levelProgressViewModel)
+
         pixels = view.findViewById(R.id.pixels)
         colorPicker = view.findViewById(R.id.colorPicker)
         val pixarteLevels = pixarteGame.getLevel()
@@ -49,6 +54,9 @@ class PixartFragment : Fragment() {
         pixelsAdapter = PixelsAdapter(requireActivity(), pixarteLevels, pixarteGame.getPixels(), object: PixelsAdapter.PixelClickListener{
             override fun onPixelClicked(position: Int) {
                 updateGame(position)
+                if(pixarteGame.getHasWon()){
+                    //TODO: CHANGE OF LEVEL
+                }
             }
 
         })

@@ -2,18 +2,19 @@ package a01730311.tec.milam.games.findLetters
 
 import com.example.findnumber.LetterButon
 
-class FindLetterModel {
+class FindLetterModel(level : Int) {
     private val letterToFind : Char = ('A'..'Z').random()
     private val chosenLetters : List<LetterButon>
     private var correctLetters : Int
     private var objectiveLetters : Int
     private val letterLvl : FindLetterLevels
+    private var hasWon : Boolean = false
 
     init{
         val allowedLetters = ('A'..'Z' subtract listOf(letterToFind))
         val randomLetters: ArrayList<Char> = arrayListOf()
         correctLetters = 0
-        letterLvl = FindLetterLevels.values()[0] //determine level
+        letterLvl = FindLetterLevels.values()[level] //determine level
 
         val numPieces = letterLvl.getNumPieces()
         objectiveLetters = letterLvl.getObjectiveLetter()
@@ -39,6 +40,10 @@ class FindLetterModel {
         return letterLvl
     }
 
+    fun getHasWon(): Boolean{
+        return hasWon
+    }
+
     fun selectLetter(position : Int) {
         val letter = chosenLetters[position]
         if(letter.isSelected) return
@@ -55,7 +60,7 @@ class FindLetterModel {
     }
 
     fun winGame(){
-
+        hasWon = true
     }
 
     fun lostGame(){

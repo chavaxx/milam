@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
+import a01730311.tec.milam.screens.home.ProgressViewModel
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 
 class FindLetterFragment : Fragment() {
     private lateinit var matrixLetters : RecyclerView
@@ -16,6 +19,8 @@ class FindLetterFragment : Fragment() {
     private lateinit var punctuationTxt : TextView
     private lateinit var findLetterGame: FindLetterModel
     private lateinit var adapter: MatrixLettersAdapter
+    private val level: ProgressViewModel by activityViewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +37,7 @@ class FindLetterFragment : Fragment() {
         punctuationTxt = view.findViewById(R.id.punctuationTxt)
         matrixLetters = view.findViewById(R.id.matrixLetters)
 
-        findLetterGame = FindLetterModel()
+        findLetterGame = FindLetterModel(level.getMaxLevel("letters").toInt() -1)
 
         val txtToRender : String = findLetterGame.renderPunctuation()
         punctuationTxt.setText(txtToRender)
@@ -43,6 +48,9 @@ class FindLetterFragment : Fragment() {
         adapter = MatrixLettersAdapter(requireActivity(), findLetterGame.getLvl(), findLetterGame.getChosenLetters(), object : MatrixLettersAdapter.LetterClickListener{
             override fun onLetterClicked(position: Int) {
                 updateGame(position)
+                if(findLetterGame.getHasWon()){
+                    //TODO: CHANGE OF LEVEL
+                }
             }
 
         })

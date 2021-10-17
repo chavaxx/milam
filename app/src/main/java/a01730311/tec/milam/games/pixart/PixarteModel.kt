@@ -2,15 +2,17 @@ package a01730311.tec.milam.games.pixart
 
 import android.util.Log
 
-class PixarteModel {
+class PixarteModel(level : Int) {
     private val pixelsCollection : List<PixelState>
     private val colorNumber : Array<String>
-    private var pixarteLevels : PixarteLevels = PixarteLevels.LVL1
+    private var pixarteLevels : PixarteLevels
     private var color : String
     private val pixelsToSolve : Int
     private var correctPixels : Int = 0
+    private var hasWon : Boolean = false
 
     init {
+        pixarteLevels = PixarteLevels.values()[level]
         pixelsCollection = pixarteLevels.getPixelBoard().map { PixelState(it) }
         pixelsToSolve = pixelsCollection.filter { item -> item.identifier != -1 }.count()
         colorNumber = pixarteLevels.getColors()
@@ -23,6 +25,10 @@ class PixarteModel {
 
     fun getLevel() : PixarteLevels {
         return pixarteLevels
+    }
+
+    fun getHasWon() : Boolean {
+        return hasWon
     }
 
     fun changeColorPixel(position : Int) {
@@ -46,7 +52,7 @@ class PixarteModel {
     }
 
     fun endGame(){
-        Log.i("thingy1", "finished game :)")
+        hasWon = true
     }
 
 }

@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/border_button.xml" value="0.18020833333333333" />
         <entry key="..\:/android/milam/app/src/main/res/drawable/circle.xml" value="0.240625" />
         <entry key="..\:/android/milam/app/src/main/res/drawable/menu_card.xml" value="0.240625" />
         <entry key="..\:/android/milam/app/src/main/res/drawable/overbox.xml" value="0.240625" />
@@ -35,6 +34,7 @@
         <entry key="..\:/android/milam/app/src/main/res/layout/profile_card.xml" value="0.5" />
         <entry key="..\:/android/milam/app/src/main/res/layout/success_dialog.xml" value="0.1417763157894737" />
         <entry key="..\:/android/milam/app/src/main/res/layout/test.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/drawable/border_button.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/drawable/shapes.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/activity_find_letter.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
@@ -45,12 +45,13 @@
         <entry key="app/src/main/res/layout/find_number_main.xml" value="0.13043478260869565" />
         <entry key="app/src/main/res/layout/fragment_cargando.xml" value="0.10416666666666667" />
         <entry key="app/src/main/res/layout/fragment_confirmar_perfil.xml" value="0.10416666666666667" />
-        <entry key="app/src/main/res/layout/fragment_find_letter.xml" value="0.1496735308890005" />
+        <entry key="app/src/main/res/layout/fragment_find_letter.xml" value="0.75" />
         <entry key="app/src/main/res/layout/fragment_find_letter_preview.xml" value="0.2826086956521739" />
         <entry key="app/src/main/res/layout/fragment_find_number_preview.xml" value="0.2826086956521739" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_maze.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_memo.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_pixart.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_preview.xml" value="0.1118659420289855" />
         <entry key="app/src/main/res/layout/fragment_registro_elegir_icono.xml" value="0.25" />
