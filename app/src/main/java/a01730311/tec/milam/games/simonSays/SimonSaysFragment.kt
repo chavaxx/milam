@@ -120,7 +120,9 @@ class SimonSaysFragment : Fragment() {
                 executeSequence()
 
             } else if (!game.getInGame()) {
-                progressViewModel.setScore("simon_says",game.getMaxScore())
+                if (progressViewModel.getScore("simon_says")!! < game.getMaxScore()) {
+                    progressViewModel.setScore("simon_says",game.getMaxScore())
+                }
                 modal.showFailureMenu()
             }
 

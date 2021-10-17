@@ -111,6 +111,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_creditsFragment"
+            app:destination="@id/creditsFragment" />
     </fragment>
     <fragment
         android:id="@+id/editAvatarFragment"
@@ -142,4 +145,9 @@
         android:name="a01730311.tec.milam.games.memo.MemoFragment"
         android:label="fragment_memo"
         tools:layout="@layout/fragment_memo" />
+    <fragment
+        android:id="@+id/creditsFragment"
+        android:name="a01730311.tec.milam.CreditsFragment"
+        android:label="fragment_credits"
+        tools:layout="@layout/fragment_credits" />
 </navigation>

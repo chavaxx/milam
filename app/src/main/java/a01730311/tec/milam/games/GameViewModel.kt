@@ -24,7 +24,10 @@ class GameViewModel:ViewModel() {
     }
 
     fun getScore(progressViewModel: ProgressViewModel): String {
-        return "Puntuación máxima " + progressViewModel.getScore(selectedGameCard.gameID, progressViewModel.getMaxLevel(selectedGameCard.gameID))
+        val maxLevel = progressViewModel.getMaxLevel(selectedGameCard.gameID)
+        val highestScore = progressViewModel.getScore(selectedGameCard.gameID, maxLevel)
+        if (highestScore == 0) return ""
+        return "Puntaje más alto: " + highestScore
     }
 
     fun getName(): Int {
@@ -37,7 +40,7 @@ class GameViewModel:ViewModel() {
 
     fun getLevel(progressViewModel: ProgressViewModel): String {
         val maxLevel = progressViewModel.getMaxLevel(selectedGameCard.gameID)
-        if (maxLevel == "1") return "Juego actual"
+        if (maxLevel == "1") return "Nivel actual"
         return "Nivel " + progressViewModel.getMaxLevel(selectedGameCard.gameID)
     }
 }

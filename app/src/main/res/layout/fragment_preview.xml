@@ -193,7 +193,7 @@
             app:layout_constraintEnd_toStartOf="@+id/half_screen"
             app:layout_constraintStart_toStartOf="@+id/delimiter_guideline_left"
             app:layout_constraintTop_toTopOf="@+id/second_text_guideline"
-            app:srcCompat="@android:drawable/ic_dialog_info"
+            app:srcCompat="@drawable/question_mark"
             app:tint="@color/blue_buttons" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
