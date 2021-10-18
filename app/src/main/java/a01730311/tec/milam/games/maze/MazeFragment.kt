@@ -24,14 +24,17 @@ class MazeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        modal = Modal(requireContext(), R.id.mazeFragment, findNavController(), progress, 1)
+        modal = Modal(requireContext(), R.id.mazeFragment, findNavController(), progress, 5)
         pauseButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
             modal.showPauseMenu()
         }
 
+        val levelProgressViewModel = progress.getMaxLevel("maze").toInt() -1
+
         maze = view.findViewById(R.id.mazeBoard)
-        maze?.setMazeObjectListener(object: Maze.MazeListener{
+        maze.recreate(levelProgressViewModel)
+        maze.setMazeObjectListener(object: Maze.MazeListener{
             override fun onMazeListened(isFinished: Boolean) {
                 if(isFinished) {
                     modal.showSuccessMenu("maze", 0)
@@ -46,7 +49,9 @@ class MazeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_maze, container, false)
+        val view = inflater.inflate(R.layout.fragment_maze, container, false)
+
+        return view
     }
 
 }

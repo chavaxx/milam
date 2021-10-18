@@ -4,7 +4,7 @@ import android.util.DisplayMetrics
 import kotlin.math.*
 import kotlin.properties.Delegates
 
-class MazeModel(metrics: DisplayMetrics) {
+class MazeModel(metrics: DisplayMetrics, level: Int) {
     private lateinit var mazeMap : Array<IntArray>
     private var screenHeight by Delegates.notNull<Float>()
     private var screenWidth by Delegates.notNull<Float>()
@@ -26,7 +26,7 @@ class MazeModel(metrics: DisplayMetrics) {
         screenHeight = metrics.heightPixels.toFloat()
 
         //map of the maze
-        mazeMap = MazeMaps.values()[0].getLvl()
+        mazeMap = MazeMaps.values()[level].getLvl()
 
         //dimensions square and ball
         widthSquare = this.screenWidth / this.mazeMap[0].size

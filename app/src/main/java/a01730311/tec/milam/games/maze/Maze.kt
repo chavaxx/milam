@@ -1,6 +1,7 @@
 package a01730311.tec.milam.games.maze
 
 import a01730311.tec.milam.R
+import a01730311.tec.milam.screens.home.ProgressViewModel
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -15,6 +16,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
 import androidx.annotation.Nullable
+import androidx.fragment.app.activityViewModels
 
 class Maze(context: Context, @Nullable attributeSet: AttributeSet) : View(context, attributeSet), SensorEventListener {
     private var maze : MazeModel
@@ -23,7 +25,8 @@ class Maze(context: Context, @Nullable attributeSet: AttributeSet) : View(contex
     private var paintBall = Paint()
     private var paintLine = Paint()
     private var path = Path()
-    private var hasShowedModal = false
+    private var level : Int = 0
+    private lateinit var metrics : DisplayMetrics
 
     private var listener : MazeListener? = null
 
@@ -32,18 +35,16 @@ class Maze(context: Context, @Nullable attributeSet: AttributeSet) : View(contex
     }
 
     init {
-        //View.inflate(context, R.layout.fragment_maze, this)
         // get screen dimensions
-        val metrics : DisplayMetrics = this.resources.displayMetrics
+        metrics  = this.resources.displayMetrics
 
         //get mazeModel obj
-        maze = MazeModel(metrics)
+        maze = MazeModel(metrics, level)
 
         //map
         mazeMap = maze.getMazeMap()
 
         //ball
-
         val smAdministrator = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
         val snsRotation = smAdministrator.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         smAdministrator.registerListener(this, snsRotation, SensorManager.SENSOR_DELAY_FASTEST)
@@ -56,6 +57,13 @@ class Maze(context: Context, @Nullable attributeSet: AttributeSet) : View(contex
 
     fun setMazeObjectListener(listener: MazeListener){
         this.listener = listener
+    }
+
+
+    fun recreate(level : Int){
+        this.level = level
+        maze = MazeModel(metrics, level)
+        mazeMap = maze.getMazeMap()
     }
 
     override fun onDraw(canvas: Canvas) {
