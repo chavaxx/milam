@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.color.MaterialColors
 
 
@@ -30,6 +31,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val window = activity?.window
         window?.statusBarColor = MaterialColors.getColor(view, R.attr.statusBarBackground)
+        gameViewModel.init(progressViewModel)
         loadGameCards(view)
         setControls(view)
         progressViewModel.getDataFromPreferences(activity, userViewModel.getID())
@@ -50,7 +52,6 @@ class HomeFragment : Fragment() {
         val navController = findNavController()
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view_cards)
         recyclerView.adapter = GameCardAdapter(this, myGameCards, navController, gameViewModel)
-
 
         // Use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
