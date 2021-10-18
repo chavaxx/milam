@@ -6,6 +6,7 @@ import a01730311.tec.milam.components.Profile
 import a01730311.tec.milam.games.PreviewFragmentDirections
 
 class Datasource {
+    // returns data of every game card
     fun loadGameCards(): List<GameCard> {
         return listOf(
             GameCard("memorandum", R.string.game1, R.string.description1, R.color.game_card1, R.drawable.memory, PreviewFragmentDirections.actionPreviewFragmentToMemoFragment(), R.string.memo),
@@ -17,7 +18,7 @@ class Datasource {
         )
     }
 
-
+    // returns available profiles
     fun loadAvatars(): List<Int> {
         return listOf(
             R.drawable.pikachu,

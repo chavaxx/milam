@@ -11,6 +11,7 @@ import android.widget.ImageView
 import androidx.navigation.NavController
 import com.google.android.material.card.MaterialCardView
 
+// class to display modals in games
 class Modal(context: Context, val id: Int, val findNavController: NavController, private val scoreViewModel: ProgressViewModel, private val numberOfLevels: Int) {
     private val pauseDialog: Dialog = Dialog(context)
     private lateinit var closeDialogButton: ImageView
@@ -19,6 +20,7 @@ class Modal(context: Context, val id: Int, val findNavController: NavController,
     private lateinit var nextLevelButton: MaterialCardView
 
     private fun bindCommonButtons() {
+        // sets background and size
         pauseDialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         pauseDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
@@ -60,6 +62,7 @@ class Modal(context: Context, val id: Int, val findNavController: NavController,
 
         }
 
+        // shows dialog
         pauseDialog.show()
     }
 
@@ -85,6 +88,7 @@ class Modal(context: Context, val id: Int, val findNavController: NavController,
 
         bindCommonButtons()
 
+        // bind next level button
         nextLevelButton = pauseDialog.findViewById(R.id.success_game_button)
         nextLevelButton.setOnClickListener {
 
@@ -99,6 +103,7 @@ class Modal(context: Context, val id: Int, val findNavController: NavController,
 
         }
 
+        // exits game and store score
         exitGameButton.setOnClickListener {
 
             if(scoreViewModel.getMaxLevel(game).toInt() < numberOfLevels) {

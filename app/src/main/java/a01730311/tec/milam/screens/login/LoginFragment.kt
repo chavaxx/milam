@@ -45,15 +45,19 @@ class LoginFragment : Fragment() {
     private fun loadCards(view: View) {
 
 
+        // loads data from view model
         viewModel.setSharedPreferences(activity)
+
         val navController = findNavController()
         val myProfiles = viewModel.getProfiles()
 
+        // if there are no profiles, the user is sent to register
         if (myProfiles.isEmpty()) {
             val action = LoginFragmentDirections.actionLoginFragmentToRegistroUsuario()
             navController.navigate(action)
         }
 
+        // loads profiles to recycler view
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewProfiles)
         recyclerView.adapter = ProfileAdapter(this, myProfiles, viewModel, navController)
         recyclerView.setHasFixedSize(true)

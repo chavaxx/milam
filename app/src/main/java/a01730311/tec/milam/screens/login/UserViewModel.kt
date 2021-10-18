@@ -39,6 +39,7 @@ class UserViewModel: ViewModel() {
         return profile.id
     }
 
+    // get users from shared preferences
     fun setSharedPreferences(activity: FragmentActivity?) {
         profilesPreferences = activity?.getPreferences(Context.MODE_PRIVATE)!!
         identifiers = profilesPreferences.getStringSet("profiles", identifiers) as MutableSet<String>
@@ -52,9 +53,12 @@ class UserViewModel: ViewModel() {
         }
     }
 
+    // checks if the user is not already stored
     fun isValidUsername(user: String):Boolean {
         return !profilesSet.contains(user)
     }
+
+
 
     fun editAvatar(newAvatarID: Int) {
         edit()

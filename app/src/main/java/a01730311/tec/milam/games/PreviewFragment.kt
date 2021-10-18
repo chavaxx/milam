@@ -20,6 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class PreviewFragment : Fragment() {
 
+    // attributes
     private lateinit var imagePreview: ImageView
     private lateinit var gameTitle: TextView
     private lateinit var goBack: LinearLayout
@@ -40,27 +41,38 @@ class PreviewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // bind views and modals
         modal = ModalAbout(requireContext())
         bindViews(view)
     }
 
     private fun bindViews(view: View) {
+
+        // sets data for every label
+
         imagePreview = view.findViewById(R.id.game_preview_placeholder)
         imagePreview.setImageDrawable(ContextCompat.getDrawable(requireContext(), gameViewModel.getImage()))
+
         gameTitle = view.findViewById(R.id.game_title_preview)
         gameTitle.text = getString(gameViewModel.getName())
+
         goBack = view.findViewById(R.id.goBackHomeFromPreview)
         goBack.setOnClickListener {
             findNavController().popBackStack()
         }
+
         scoreLabel = view.findViewById(R.id.game_score_preview)
         scoreLabel.text = gameViewModel.getScore()
+
         levelLabel = view.findViewById(R.id.game_level_preview)
         levelLabel.text = gameViewModel.getLevel()
+
         helpButton = view.findViewById(R.id.help_button)
         helpButton.setOnClickListener {
             modal.showInfo(getString(gameViewModel.getDescription()), getString(gameViewModel.getName()))
         }
+
         playButton = view.findViewById(R.id.start_game)
         playButton.setOnClickListener {
             val window = activity?.window

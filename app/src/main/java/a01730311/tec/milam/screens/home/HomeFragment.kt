@@ -29,11 +29,19 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // status bar color
         val window = activity?.window
         window?.statusBarColor = MaterialColors.getColor(view, R.attr.statusBarBackground)
+
+        // starts view model
         gameViewModel.init(progressViewModel)
+
+        // binds interactions
         loadGameCards(view)
         setControls(view)
+
+        // starts view model
         progressViewModel.getDataFromPreferences(activity, userViewModel.getID())
     }
 
@@ -46,6 +54,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadGameCards(view: View) {
+        // display game cards in recycler view
 
         val myGameCards = Datasource().loadGameCards()
 
@@ -59,6 +68,8 @@ class HomeFragment : Fragment() {
     }
 
 
+
+    // manage interactions and binds data
     private fun setControls(view: View) {
         labelUsername = view.findViewById(R.id.labelUsername)
         labelUsername.text = "¡Hola de nuevo, " + userViewModel.getUsername() + "!"

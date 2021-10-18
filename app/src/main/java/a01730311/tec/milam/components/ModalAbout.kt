@@ -18,13 +18,13 @@ class ModalAbout(context: Context) {
 
 
     fun showInfo(description: String, title: String) {
-        //TODO : CHANGE NAME
+        // sets modal info
         infoDialog.setContentView(R.layout.info_dialog)
 
         infoDialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         infoDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        //TODO: MAKE BINDING
+        //binds buttons and text views
 
         closeDialogButton = infoDialog.findViewById(R.id.close_info_dialog)
         descriptionLabel = infoDialog.findViewById(R.id.modal_info_description)

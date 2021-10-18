@@ -13,6 +13,8 @@ class ProgressViewModel:ViewModel() {
     private lateinit var gamesPreferences : SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
 
+
+    // retrieve data from user preferences and stores it in view model class
     fun getDataFromPreferences(activity: FragmentActivity?, id: String) {
         gamesPreferences = activity?.getPreferences(Context.MODE_PRIVATE)!!
         userID = id
@@ -39,6 +41,8 @@ class ProgressViewModel:ViewModel() {
         return gamesScore[game]?.get(level.toInt() - 1)
     }
 
+
+    // set score if game has 1 level or more
     fun setScore(game: String, score: Int, level: String) {
 
         editor = gamesPreferences.edit()
@@ -60,10 +64,13 @@ class ProgressViewModel:ViewModel() {
         editor.apply()
     }
 
+
+    // return the max level of every game
     fun getMaxLevel(game: String): String {
         return gamesScore[game]?.size!!.toString()
     }
 
+    // set the score if the game only has 1 level
     fun setScore(game: String, score: Int) {
         editor = gamesPreferences.edit()
         editor.putInt(userID + "_" + game + "_" + "1", score)

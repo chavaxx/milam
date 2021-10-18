@@ -46,10 +46,14 @@ class ProgressFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_progress, container, false)
+
         setNavigation(view)
+
         return view
     }
 
+
+    // sets navigation controls
     private fun setNavigation(view: View) {
 
         goBackButton = view.findViewById(R.id.goBackHomeFromProgress)
