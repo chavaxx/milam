@@ -77,28 +77,29 @@ class MemoryAdapter(
 
         holder.button.setOnClickListener{
 
-            if (!card.isFaceUp) {
+            cardClickListener.onCardClicked(position)
 
-                Log.i("memory",  "posicion: $position")
+            //if (!card.isFaceUp) {
 
-                holder.image2.setImageResource(card.identifier)
 
-                holder.button.cameraDistance = 8000 * scale
-                holder.button2.cameraDistance = 8000 * scale
+              //  holder.image2.setImageResource(card.identifier)
 
-                frontAnimatorSet.setTarget(holder.button)
-                backAnimatorSet.setTarget(holder.button2)
+                //holder.button.cameraDistance = 8000 * scale
+                //holder.button2.cameraDistance = 8000 * scale
 
-                frontAnimatorSet.doOnEnd {
-                    cardClickListener.onCardClicked(position)
-                }
+                //frontAnimatorSet.setTarget(holder.button)
+                //backAnimatorSet.setTarget(holder.button2)
 
-                frontAnimatorSet.start()
-                backAnimatorSet.start()
+                //frontAnimatorSet.doOnEnd {
+                  //  cardClickListener.onCardClicked(position)
+                //}
 
-            } else {
-                cardClickListener.onCardClicked(position)
-            }
+                //frontAnimatorSet.start()
+                //backAnimatorSet.start()
+
+            //} else {
+              //  cardClickListener.onCardClicked(position)
+            //}
 
         }
     }
