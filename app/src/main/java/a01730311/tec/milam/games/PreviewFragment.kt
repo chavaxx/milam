@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
+import a01730311.tec.milam.components.ModalAbout
 import a01730311.tec.milam.screens.home.ProgressViewModel
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -27,8 +28,7 @@ class PreviewFragment : Fragment() {
     private lateinit var helpButton: FloatingActionButton
     private lateinit var playButton: FloatingActionButton
     private val gameViewModel: GameViewModel  by activityViewModels()
-    private val progressViewModel: ProgressViewModel by activityViewModels()
-
+    private lateinit var modal: ModalAbout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +40,7 @@ class PreviewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        modal = ModalAbout(requireContext())
         bindViews(view)
     }
 
@@ -53,10 +54,13 @@ class PreviewFragment : Fragment() {
             findNavController().popBackStack()
         }
         scoreLabel = view.findViewById(R.id.game_score_preview)
-        scoreLabel.text = gameViewModel.getScore(progressViewModel)
+        scoreLabel.text = gameViewModel.getScore()
         levelLabel = view.findViewById(R.id.game_level_preview)
-        levelLabel.text = gameViewModel.getLevel(progressViewModel)
+        levelLabel.text = gameViewModel.getLevel()
         helpButton = view.findViewById(R.id.help_button)
+        helpButton.setOnClickListener {
+            modal.showInfo(getString(gameViewModel.getDescription()), getString(gameViewModel.getName()))
+        }
         playButton = view.findViewById(R.id.start_game)
         playButton.setOnClickListener {
             val window = activity?.window
