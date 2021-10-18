@@ -12,6 +12,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -27,6 +28,8 @@ class PixartFragment : Fragment() {
     private lateinit var pixarteGame : PixarteModel
     private lateinit var pixelsAdapter : PixelsAdapter
     private lateinit var colorPickerAdapter : ColorPickerAdapter
+    private lateinit var currentLevel: TextView
+
 
     private lateinit var pauseButton: FloatingActionButton
     private lateinit var modal: Modal
@@ -37,10 +40,19 @@ class PixartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        currentLevel = view.findViewById(R.id.levelLabel)
+
         modal = Modal(requireContext(), R.id.pixartFragment, findNavController(), progress, 4)
         pauseButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
             modal.showPauseMenu()
+        }
+
+        if (progress.getMaxLevel("pix_art").toInt() < 4) {
+            currentLevel.text = "Nivel: " + (progress.getMaxLevel("pix_art").toInt()).toString()
+        } else {
+            currentLevel.text = "Nivel max"
         }
 
         val levelProgressViewModel = progress.getMaxLevel("pix_art").toInt() -1
@@ -55,7 +67,7 @@ class PixartFragment : Fragment() {
                 updateGame(position)
 
                 if(pixarteGame.getHasWon()){
-                    modal.showSuccessMenu("pix_art", 12)
+                    modal.showSuccessMenu("pix_art", 0)
                 }
             }
 

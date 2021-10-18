@@ -15,7 +15,7 @@
         <entry key="..\:/android/milam/app/src/main/res/layout/failure_dialog.xml" value="0.22447916666666667" />
         <entry key="..\:/android/milam/app/src/main/res/layout/fragment_confirmar_perfil.xml" value="0.18" />
         <entry key="..\:/android/milam/app/src/main/res/layout/fragment_credits.xml" value="0.22447916666666667" />
-        <entry key="..\:/android/milam/app/src/main/res/layout/fragment_edit_avatar.xml" value="0.33" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/fragment_edit_avatar.xml" value="0.22447916666666667" />
         <entry key="..\:/android/milam/app/src/main/res/layout/fragment_find_letter.xml" value="0.22447916666666667" />
         <entry key="..\:/android/milam/app/src/main/res/layout/fragment_find_number_preview.xml" value="0.22447916666666667" />
         <entry key="..\:/android/milam/app/src/main/res/layout/fragment_home.xml" value="0.25" />
@@ -31,13 +31,10 @@
         <entry key="..\:/android/milam/app/src/main/res/layout/fragment_settings.xml" value="0.25" />
         <entry key="..\:/android/milam/app/src/main/res/layout/fragment_simon_says.xml" value="0.1417763157894737" />
         <entry key="..\:/android/milam/app/src/main/res/layout/game_card.xml" value="0.33" />
-        <entry key="..\:/android/milam/app/src/main/res/layout/game_card_back.xml" value="0.22447916666666667" />
-        <entry key="..\:/android/milam/app/src/main/res/layout/game_card_mem.xml" value="0.22447916666666667" />
-        <entry key="..\:/android/milam/app/src/main/res/layout/info_dialog.xml" value="0.25" />
         <entry key="..\:/android/milam/app/src/main/res/layout/inicio_sesion.xml" value="0.22447916666666667" />
         <entry key="..\:/android/milam/app/src/main/res/layout/letter_space.xml" value="0.22447916666666667" />
         <entry key="..\:/android/milam/app/src/main/res/layout/menu_card.xml" value="0.33" />
-        <entry key="..\:/android/milam/app/src/main/res/layout/pause_dialog.xml" value="0.25" />
+        <entry key="..\:/android/milam/app/src/main/res/layout/pause_dialog.xml" value="0.18" />
         <entry key="..\:/android/milam/app/src/main/res/layout/pixel_color.xml" value="0.1417763157894737" />
         <entry key="..\:/android/milam/app/src/main/res/layout/profile_card.xml" value="0.5" />
         <entry key="..\:/android/milam/app/src/main/res/layout/success_dialog.xml" value="0.21" />
@@ -56,6 +53,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_maze.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_memo.xml" value="0.3104166666666667" />
         <entry key="app/src/main/res/layout/fragment_preview.xml" value="0.1118659420289855" />
         <entry key="app/src/main/res/layout/fragment_registro_elegir_icono.xml" value="0.10416666666666667" />
         <entry key="app/src/main/res/layout/fragment_registro_list.xml" value="0.10416666666666667" />
