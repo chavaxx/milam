@@ -6,60 +6,49 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
+import a01730311.tec.milam.components.Modal
+import a01730311.tec.milam.screens.home.ProgressViewModel
 import android.animation.*
-import android.content.Context
-import android.content.SharedPreferences
 import android.media.MediaPlayer
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.runBlocking
+import org.w3c.dom.Text
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SimonSaysFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SimonSaysFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
 
     private var data : HashMap<Int, Pair<ImageView, MediaPlayer>> = HashMap()
     private lateinit var turnLabel : TextView
     private var game : SimonSaysModel = SimonSaysModel()
-    private lateinit var maxScore : SharedPreferences
     private var animationsRunning: Int = 0
+    private lateinit var modal: Modal
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    // TODO: MANEJA EL PROGRESO DE LOS USUARIOS
+    private val progressViewModel: ProgressViewModel by activityViewModels()
+    private lateinit var currentScore: TextView
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
         val view: View =  inflater.inflate(R.layout.fragment_simon_says, container, false)
 
+
+        modal = Modal(requireContext(), R.id.simonSaysFragment, findNavController(), progressViewModel, 1)
         turnLabel = view.findViewById(R.id.turnLabel)
         turnLabel.text = "Espera..."
+        currentScore = view.findViewById(R.id.simon_current_score)
         loadData(view)
-        maxScore = activity?.getPreferences(Context.MODE_PRIVATE)!!
-        game.setScore(maxScore.getInt("savedScore",0))
+
+        game.setMaxScore(progressViewModel.getScore("simon_says")!!)
+
         enableButtons(false)
 
         initGame()
@@ -67,36 +56,17 @@ class SimonSaysFragment : Fragment() {
 
 
 
-        val pauseButton : ImageButton = view.findViewById(R.id.pauseButton)
+        val pauseButton : FloatingActionButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener{
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Pausa")
-                .setNegativeButton("Salir del juego") { dialog, which ->
-                    findNavController().popBackStack()
-                }
-                .setNeutralButton("Reintentar")  { dialog, which ->
-                    initGame()
-                }
-                .show()
+
+            modal.showPauseMenu()
 
         }
 
         return view
     }
 
-    fun onFailSequence() {
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Intenta de nuevo")
-            .setNegativeButton("Salir del juego") { dialog, which ->
-                findNavController().popBackStack()
-            }
-            .setPositiveButton("Reintentar") { dialog, which ->
-                initGame()
-            }
-            .show()
-    }
-
-    fun loadData(view : View) {
+    private fun loadData(view : View) {
         data[R.id.greenBtn] = Pair(view.findViewById(R.id.greenBtn), MediaPlayer.create(activity, R.raw.green))
         data[R.id.blueBtn] = Pair(view.findViewById(R.id.blueBtn), MediaPlayer.create(activity, R.raw.blue))
         data[R.id.yellowBtn] =
@@ -133,7 +103,7 @@ class SimonSaysFragment : Fragment() {
         enableButtons(true)
     }
 
-    fun onTap(buttonID : Int) {
+    private fun onTap(buttonID : Int) {
 
             data[buttonID]?.let {
                 flashAndPlay(
@@ -142,13 +112,18 @@ class SimonSaysFragment : Fragment() {
                     0
                 )
             }
+
             game.validateButton(buttonID)
+
             if (game.getIsCorrect()) {
+                currentScore.text = "Puntuación actual: " + game.getCurrentScore()
                 executeSequence()
+
             } else if (!game.getInGame()) {
-                SaveState()
-                onFailSequence()
-                //scoreLbl.text = "Has pérdido..."
+                if (progressViewModel.getScore("simon_says")!! < game.getMaxScore()) {
+                    progressViewModel.setScore("simon_says",game.getMaxScore())
+                }
+                modal.showFailureMenu()
             }
 
     }
@@ -169,11 +144,7 @@ class SimonSaysFragment : Fragment() {
 
     }
 
-    fun SaveState() {
-        val editor: SharedPreferences.Editor = maxScore.edit()
-        editor.putInt("savedScore", game.getScore())
-        editor.apply()
-    }
+
 
     private fun executeSequence() {
 
@@ -238,23 +209,4 @@ class SimonSaysFragment : Fragment() {
     }
 
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SimonSaysFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SimonSaysFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

@@ -17,8 +17,12 @@ class SimonSaysModel {
         return inGame
     }
 
-    fun getScore(): Int {
-        return score
+    fun getMaxScore(): Int {
+        return score - 1
+    }
+
+    fun getCurrentScore(): Int {
+        return sequence.size - 1
     }
 
     fun getIsCorrect(): Boolean {
@@ -31,7 +35,7 @@ class SimonSaysModel {
     }
 
 
-    fun setScore(newScore: Int) {
+    fun setMaxScore(newScore: Int) {
         score = newScore
     }
 
@@ -52,6 +56,7 @@ class SimonSaysModel {
     }
 
     fun validateButton(buttonID: Int) {
+
         if (!inGame) return
         if (currentButton < sequence.size && buttonID == sequence[currentButton]) {
             currentButton++

@@ -6,28 +6,51 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import a01730311.tec.milam.R
+import a01730311.tec.milam.components.Modal
+import a01730311.tec.milam.screens.home.ProgressViewModel
+import android.util.Log
+import android.widget.TextView
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MazeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MazeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private lateinit var pauseButton: FloatingActionButton
+    private lateinit var modal: Modal
+    private lateinit var maze: Maze
+    private lateinit var currentLevel: TextView
+    private val progress: ProgressViewModel by activityViewModels()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        currentLevel = view.findViewById(R.id.levelLabel)
+
+        modal = Modal(requireContext(), R.id.mazeFragment, findNavController(), progress, 5)
+        pauseButton = view.findViewById(R.id.pauseButton)
+        pauseButton.setOnClickListener {
+            modal.showPauseMenu()
         }
+
+        if (progress.getMaxLevel("maze").toInt() < 5) {
+            currentLevel.text = "Nivel: " + (progress.getMaxLevel("maze").toInt()).toString()
+        } else {
+            currentLevel.text = "Nivel max"
+        }
+
+        val levelProgressViewModel = progress.getMaxLevel("maze").toInt() -1
+
+        maze = view.findViewById(R.id.mazeBoard)
+        maze.recreate(levelProgressViewModel)
+        maze.setMazeObjectListener(object: Maze.MazeListener{
+            override fun onMazeListened(isFinished: Boolean) {
+                if(isFinished) {
+                    modal.showSuccessMenu("maze", 0)
+                }
+            }
+        })
     }
 
     override fun onCreateView(
@@ -35,26 +58,10 @@ class MazeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_maze, container, false)
+
+        val view = inflater.inflate(R.layout.fragment_maze, container, false)
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MazeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MazeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

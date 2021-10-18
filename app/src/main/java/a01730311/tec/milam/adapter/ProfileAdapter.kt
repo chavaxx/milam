@@ -42,8 +42,7 @@ class ProfileAdapter(private val context: LoginFragment, private val dataset: Li
         holder.avatar.setImageDrawable(context.resources.getDrawable(card.iconID))
         holder.username.text = card.username
         holder.card.setOnClickListener {
-            viewModel.setAvatarID(card.iconID)
-            viewModel.setUsername(card.username)
+            viewModel.login(card.id)
             val navOptions = NavOptions.Builder().setPopUpTo(navController.graph.startDestination, true).build()
             val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
             navController.navigate(action, navOptions)

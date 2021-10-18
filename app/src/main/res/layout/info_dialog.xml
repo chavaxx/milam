@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/close_info_dialog"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="?android:selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                app:layout_constraintBottom_toTopOf="@+id/abouttop1"
+                app:layout_constraintEnd_toStartOf="@+id/aboutright3"
+                app:layout_constraintStart_toStartOf="@+id/aboutright4"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/blue_buttons" />
+
+            <TextView
+                android:id="@+id/modal_info_description"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                android:fontFamily="@font/lato_bolditalic"
+                android:text=""
+                android:textAlignment="textStart"
+                android:textColor="@color/blue_buttons"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintBottom_toTopOf="@+id/abouttop6"
+                app:layout_constraintEnd_toStartOf="@+id/aboutright2"
+                app:layout_constraintStart_toStartOf="@+id/aboutleft1"
+                app:layout_constraintTop_toTopOf="@+id/abouttop4" />
+
+            <TextView
+                android:id="@+id/modal_info_title"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:fontFamily="@font/lato_bold"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/blue_buttons"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintBottom_toTopOf="@+id/abouttop3"
+                app:layout_constraintEnd_toStartOf="@+id/aboutright1"
+                app:layout_constraintStart_toStartOf="@+id/aboutleft2"
+                app:layout_constraintTop_toTopOf="@+id/abouttop2" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/abouttop1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.08" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/abouttop2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.15
+" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/abouttop3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.27
+" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/abouttop4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.38" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/abouttop5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.42" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/abouttop6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.80" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/aboutleft1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/aboutleft2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.20" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/aboutright1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.80" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/aboutright2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.90" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/aboutright3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.98" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/aboutright4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.88" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

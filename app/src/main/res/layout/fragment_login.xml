@@ -69,7 +69,21 @@
             android:id="@+id/right2_guideline"
             app:layout_constraintGuide_percent=".95"
             android:orientation="vertical"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/left_button_guideline"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".25"
+            />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/right_button_guideline"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".75"
+            />
 
         <TextView
             android:id="@+id/textView"
@@ -81,8 +95,7 @@
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center"
             app:layout_constraintStart_toStartOf="@+id/left_guideline"
             app:layout_constraintTop_toTopOf="@+id/guideline1" />
 
@@ -90,6 +103,8 @@
             android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:lines="1"
+            android:gravity="center"
             android:fontFamily="@font/lato_black"
             android:text="@string/welcomeMessage2"
             android:textColor="?attr/colorSecondary"
@@ -99,50 +114,80 @@
             app:layout_constraintStart_toStartOf="@+id/left2_guideline"
             app:layout_constraintTop_toBottomOf="@+id/guideline2" />
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewProfiles"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:scrollbarSize="0dp"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:scrollbars="vertical"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/middle_guideline"
-            app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-            app:layout_constraintStart_toStartOf="@+id/left_guideline"
-            app:layout_constraintTop_toTopOf="@+id/top_guideline"
-            app:spanCount="2" />
-
-        <Button
-            android:id="@+id/signup_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shapes"
-            android:fontFamily="@font/lato_black"
-            android:text="@string/imNotHere"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/middle_guideline" />
+            app:layout_constraintTop_toTopOf="@+id/top_guideline">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewProfiles"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:scrollbarSize="0dp"
+                android:scrollbars="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2" />
+        </LinearLayout>
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/signup_button"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:background="@drawable/shapes"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/right_button_guideline"
+            app:layout_constraintStart_toStartOf="@+id/left_button_guideline"
+            app:layout_constraintTop_toTopOf="@+id/middle_guideline">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/imNotHere"
+                    android:gravity="center"
+                    android:layout_weight="3"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/lato_black"
+                    android:textColor="@color/blue_buttons"/>
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/add_user"
+                    app:tint="@color/blue_buttons" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/save_new_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="16dp"
-            android:layout_marginTop="13dp"
             android:contentDescription="Ayuda"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/signup_button"
             app:layout_constraintTop_toBottomOf="@+id/signup_button"
-            app:srcCompat="@drawable/about_icon"
+            app:srcCompat="@drawable/question_mark"
             app:tint="@color/blue_buttons" />
 
 

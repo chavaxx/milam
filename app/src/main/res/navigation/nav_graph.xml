@@ -42,7 +42,9 @@
             app:destination="@id/registro_usuario" />
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -56,23 +58,34 @@
             android:id="@+id/action_homeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_simonSaysFragment"
-            app:destination="@id/simonSaysFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_mazeFragment"
-            app:destination="@id/mazeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_magicNumberFragment"
-            app:destination="@id/magicNumberFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_findLetterFragment"
-            app:destination="@id/findLetterFragment" />
+            android:id="@+id/action_homeFragment_to_previewFragment"
+            app:destination="@id/previewFragment" />
     </fragment>
     <fragment
         android:id="@+id/previewFragment"
         android:name="a01730311.tec.milam.games.PreviewFragment"
         android:label="fragment_preview"
-        tools:layout="@layout/fragment_preview" />
+
+        tools:layout="@layout/fragment_preview" >
+        <action
+            android:id="@+id/action_previewFragment_to_simonSaysFragment"
+            app:destination="@id/simonSaysFragment" />
+        <action
+            android:id="@+id/action_previewFragment_to_findLetterFragment"
+            app:destination="@id/findLetterFragment" />
+        <action
+            android:id="@+id/action_previewFragment_to_magicNumberFragment"
+            app:destination="@id/magicNumberFragment" />
+        <action
+            android:id="@+id/action_previewFragment_to_mazeFragment"
+            app:destination="@id/mazeFragment" />
+        <action
+            android:id="@+id/action_previewFragment_to_pixartFragment"
+            app:destination="@id/pixartFragment" />
+        <action
+            android:id="@+id/action_previewFragment_to_memoFragment"
+            app:destination="@id/memoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/simonSaysFragment"
         android:name="a01730311.tec.milam.games.simonSays.SimonSaysFragment"
@@ -95,6 +108,12 @@
         <action
             android:id="@+id/action_settingsFragment_to_editAvatarFragment"
             app:destination="@id/editAvatarFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_creditsFragment"
+            app:destination="@id/creditsFragment" />
     </fragment>
     <fragment
         android:id="@+id/editAvatarFragment"
@@ -108,7 +127,7 @@
         tools:layout="@layout/fragment_maze" />
     <fragment
         android:id="@+id/magicNumberFragment"
-        android:name="a01730311.tec.milam.games.magicNumber.magicNumberFragment"
+        android:name="a01730311.tec.milam.games.magicNumber.MagicNumberFragment"
         android:label="fragment_magic_number"
         tools:layout="@layout/fragment_magic_number" />
     <fragment
@@ -116,4 +135,19 @@
         android:name="a01730311.tec.milam.games.findLetters.FindLetterFragment"
         android:label="fragment_find_letter"
         tools:layout="@layout/fragment_find_letter" />
+    <fragment
+        android:id="@+id/pixartFragment"
+        android:name="a01730311.tec.milam.games.pixart.PixartFragment"
+        android:label="fragment_pixart"
+        tools:layout="@layout/fragment_pixart" />
+    <fragment
+        android:id="@+id/memoFragment"
+        android:name="a01730311.tec.milam.games.memo.MemoFragment"
+        android:label="fragment_memo"
+        tools:layout="@layout/fragment_memo" />
+    <fragment
+        android:id="@+id/creditsFragment"
+        android:name="a01730311.tec.milam.CreditsFragment"
+        android:label="fragment_credits"
+        tools:layout="@layout/fragment_credits" />
 </navigation>

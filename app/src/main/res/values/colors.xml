@@ -6,8 +6,10 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="night">#121212</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#6D8586</color>
+    <color name="color_gray">#E0E0E0</color>
     <color name="aboutButtonGrey">#B6CECF</color>
     <color name="game_card1">#F95F62</color>
     <color name="game_card2">#FFBA5C</color>
@@ -16,5 +18,13 @@
     <color name="game_card5">#F879EB</color>
     <color name="game_card6">#77D353</color>
     <color name="blue_buttons">#74CFD0</color>
-    <color name="gray_background">#F6F6F6</color>
+    <color name="gray_background">#F4F4F4</color>
+    <color name="black_2">#1C1E27</color>
+    <color name="black_3">#2F323E</color>
+    <color name="black_4">#353535</color>
+    <color name="black_5">#3D3F47</color>
+    <color name="orange">#D98A29</color>
+    <color name="green_cool">#0CB485</color>
+    <color name="cool_orange">#FFBA5C</color>
+    <color name="success_green">#77D353</color>
 </resources>

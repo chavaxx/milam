@@ -4,5 +4,5 @@
     <solid android:color="@color/blue_buttons" />
     <stroke
         android:width="3dp"
-        android:color="@color/black" />
+        android:color="?attr/font" />
 </shape>

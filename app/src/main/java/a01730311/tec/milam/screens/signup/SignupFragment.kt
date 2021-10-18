@@ -49,8 +49,8 @@ class SignupFragment : Fragment() {
         button.setOnClickListener{
             val username = usernameInput.text
             if (username.length > 1) {
-                viewModel.setUsername(username.toString())
-                if (viewModel.isValidUsername()) {
+                if (viewModel.isValidUsername(username.toString())) {
+                    viewModel.userChosen = username.toString()
                     val action = SignupFragmentDirections.actionRegistroUsuarioToRegistroElegirIcono()
                     findNavController().navigate(action)
                 } else {

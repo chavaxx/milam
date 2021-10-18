@@ -9,7 +9,7 @@
         android:layout_gravity="center"
         app:strokeColor="?attr/font"
         app:cardCornerRadius="25dp"
-        app:cardElevation="10dp">
+        app:cardElevation="12dp">
 
         <ImageView
             android:id="@+id/avatar_image"
