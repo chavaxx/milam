@@ -4,7 +4,7 @@ import android.util.DisplayMetrics
 import kotlin.math.*
 import kotlin.properties.Delegates
 
-class MazeModel(metrics: DisplayMetrics) {
+class MazeModel(metrics: DisplayMetrics, level: Int) {
     private lateinit var mazeMap : Array<IntArray>
     private var screenHeight by Delegates.notNull<Float>()
     private var screenWidth by Delegates.notNull<Float>()
@@ -26,7 +26,7 @@ class MazeModel(metrics: DisplayMetrics) {
         screenHeight = metrics.heightPixels.toFloat()
 
         //map of the maze
-        mazeMap = MazeMaps.values()[3].getLvl()
+        mazeMap = MazeMaps.values()[level].getLvl()
 
         //dimensions square and ball
         widthSquare = this.screenWidth / this.mazeMap[0].size
@@ -46,10 +46,6 @@ class MazeModel(metrics: DisplayMetrics) {
         return this.screenWidth
     }
 
-    fun getCellsHighlighted(): List<Int> {
-        return listOf<Int>(xAreaTL, yAreaTL, xAreaBR, yAreaBR)
-    }
-
     fun getWidthSquare() : Float {
         return this.widthSquare
     }
@@ -64,6 +60,10 @@ class MazeModel(metrics: DisplayMetrics) {
 
     fun getYBall() : Float {
         return yAxisBall
+    }
+
+    fun getIsFinished() : Boolean {
+        return isFinished
     }
 
     fun setVelocity(xVelBall : Float, yVelBall : Float){
