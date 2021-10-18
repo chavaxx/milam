@@ -2,7 +2,7 @@ package a01730311.tec.milam.games.memo.utils
 
 import a01730311.tec.milam.R
 
-
+//list of all the icons used for the memory game
 val DEFAULT_ICONS = listOf(
         R.drawable.apple,
         R.drawable.ball,

@@ -21,28 +21,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import kotlin.math.min
 
+//the adapter of the memory fragment
 class MemoryAdapter(
+    //required parameters to initialize the class
     private val context: Context,
     private val board: MemoryLevels,
     private val cards: List<MemoryCard>,
     private val cardClickListener: CardClickListener
 ) : RecyclerView.Adapter<MemoryAdapter.ViewHolder>() {
-
+    //initialize the parameters
     private lateinit var frontAnimatorSet: AnimatorSet
     private lateinit var backAnimatorSet: AnimatorSet
     private val scale: Float = context.resources.displayMetrics.density
-
+    //viewHolder inner clas that manages the card images in the recyclerView
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val button: MaterialCardView = itemView.findViewById(R.id.game_card_memo_button)
         val image: ImageView = itemView.findViewById(R.id.game_card_memo_image)
         val button2 : MaterialCardView = itemView.findViewById(R.id.game_card_memo_copy)
         val image2: ImageView = itemView.findViewById(R.id.game_card_memo_copy_image)
     }
-
+    //function that adds to the interface the onCardClick based on its current position
     interface CardClickListener{
         fun onCardClicked(position: Int)
     }
-
+    //function that creates the board based on level
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view= LayoutInflater.from(context).inflate(R.layout.game_card_mem,parent,false)
         val viewHeight = parent.height/board.getHeight() - 2*10
@@ -52,7 +54,7 @@ class MemoryAdapter(
 
         frontAnimatorSet = AnimatorInflater.loadAnimator(context, R.animator.front_card_animation) as AnimatorSet
         backAnimatorSet = AnimatorInflater.loadAnimator(context, R.animator.back_card_animator) as AnimatorSet
-
+        //create the cards, set witdth, height and margins
         val layoutParams = view.findViewById<MaterialCardView>(R.id.game_card_memo_button).layoutParams as ViewGroup.MarginLayoutParams
         val layoutParams2 = view.findViewById<MaterialCardView>(R.id.game_card_memo_copy).layoutParams as ViewGroup.MarginLayoutParams
         layoutParams.width = side
@@ -64,6 +66,7 @@ class MemoryAdapter(
         return ViewHolder(view)
     }
 
+    //the logic of the game, check if the cards is matched or not, change its state and its color to reflect if already matched
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val card = cards[position]
 
@@ -103,7 +106,7 @@ class MemoryAdapter(
 
         }
     }
-
+    //function to get the number of cards in the board
     override fun getItemCount(): Int = board.cardNumber
 
 

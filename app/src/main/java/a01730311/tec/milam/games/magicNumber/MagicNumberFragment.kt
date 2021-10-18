@@ -16,20 +16,20 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
-
+//magic number class fragment
 class MagicNumberFragment : Fragment() {
+    //initialize the variables (val game is of type MagicNumber Model, MVVM approach)
     private val game = MagicNumberModel()
     private lateinit var question: TextView
     private lateinit var score: TextView
-
-
     private lateinit var pauseButton: FloatingActionButton
-
     private lateinit var modal: Modal
-
     private val progress: ProgressViewModel by activityViewModels()
 
+    //function that handles the change of state, is called when the activity initalizes and as the
+    //user passes levels
     private fun startGame(view: View){
+        //initialize the operation and the variables to use later on the fun
         game.getOperationToSolve()
         val correctNumber = game.getCorrectNumber(game.getNumber1(),game.getNumber2(),game.getOperation())
         val correctButton = game.getRandom().nextInt(0,8)
@@ -39,6 +39,8 @@ class MagicNumberFragment : Fragment() {
         if(game.getOperation()) sign = "+"
         else sign = "-"
         question.text = game.getNumber1().toString() + " " + sign + " " + game.getNumber2().toString() + " = ___"
+
+        //for loop that asigns to each button its value, on click and color
         for(i in game.getButtonID().indices){
             val currentButton: Button = view.findViewById(game.getButtonID()[i])
             if(i == correctButton){
@@ -53,6 +55,7 @@ class MagicNumberFragment : Fragment() {
         }
     }
 
+    //function that gives feedback to the user via a toast, adds 1 point to user progress and starts a new game
     private fun correctAnswer(view: View){
         Toast.makeText(activity, "Respuesta correcta, muy bien!", Toast.LENGTH_SHORT).show()
         if (progress.getScore("magic_number")!! < game.getLevel()) {
@@ -62,11 +65,12 @@ class MagicNumberFragment : Fragment() {
         startGame(view)
     }
 
+    //function that shows a modal when the user clicks the wrong button
     private fun wrongAnswer(){
         modal.showFailureMenu()
     }
 
-
+    //override function for the pause button
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -78,6 +82,7 @@ class MagicNumberFragment : Fragment() {
         }
     }
 
+    //override function that executes the game when it is started
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
