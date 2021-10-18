@@ -19,6 +19,7 @@ enum class PixarteLevels(val numPixels : Int) {
         return numPixels / getWidth()
     }
 
+    //it defines the drawing to make
     fun getPixelBoard(): IntArray {
         return when (this) {
             LVL1 -> intArrayOf(
@@ -87,21 +88,11 @@ enum class PixarteLevels(val numPixels : Int) {
                 -1,-1,-1,-1,-1,-1, 2, 2, 2, 2, 2, 2, 2, 2,-1,-1,-1,-1, 2,-1,-1,
                 -1,-1,-1,-1,-1,-1,-1,-1, 2, 2, 2, 2,-1,-1, 2, 2, 2, 2,-1,-1,-1,
 
-
-
-
-
-
-
-
-
-
-
-
                 )
         }
     }
 
+    //it defines the colors that will appear in colorPickerAdapter
     fun getColors(): Array<String> {
         return when (this) {
             LVL1 -> arrayOf("#000000", "#FF0000")

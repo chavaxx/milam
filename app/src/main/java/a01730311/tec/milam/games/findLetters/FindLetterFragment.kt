@@ -25,7 +25,6 @@ class FindLetterFragment : Fragment() {
 
 
     private lateinit var pauseButton: FloatingActionButton
-
     private lateinit var modal: Modal
 
     private val progress: ProgressViewModel by activityViewModels()
@@ -33,7 +32,6 @@ class FindLetterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //TODO: DEFINE NUMBER OF LEVELS
         modal = Modal(requireContext(), R.id.findLetterFragment, findNavController(), progress, 5)
         pauseButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {

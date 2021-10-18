@@ -41,10 +41,10 @@ class Maze(context: Context, @Nullable attributeSet: AttributeSet) : View(contex
         //get mazeModel obj
         maze = MazeModel(metrics, level)
 
-        //map
+        //create map according to level
         mazeMap = maze.getMazeMap()
 
-        //ball
+        //functions for accelerometer
         val smAdministrator = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
         val snsRotation = smAdministrator.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         smAdministrator.registerListener(this, snsRotation, SensorManager.SENSOR_DELAY_FASTEST)
@@ -55,11 +55,14 @@ class Maze(context: Context, @Nullable attributeSet: AttributeSet) : View(contex
 
     }
 
+    //to set the listener that comes from MazeFragment
     fun setMazeObjectListener(listener: MazeListener){
         this.listener = listener
     }
 
 
+    //function to recreate the object after it has received
+    //the level
     fun recreate(level : Int){
         this.level = level
         maze = MazeModel(metrics, level)
@@ -73,14 +76,15 @@ class Maze(context: Context, @Nullable attributeSet: AttributeSet) : View(contex
         //draw maze map
         for(i in mazeMap.indices){
             for(j in mazeMap[0].indices){
+                //if position is 1, it draws an obstacle
                 if(mazeMap[i][j] == 1){
+                    //you get where the square is going to start drawing
                     val(left, top, right, bottom) = arrayOf(j*maze.getWidthSquare(), i*maze.getWidthSquare(), (j+1)*maze.getWidthSquare(), (i+1)*maze.getWidthSquare())
-                    // fill
-                    //paintSquare.setAlpha(255)
                     paintSquare.setStyle(Paint.Style.FILL);
                     paintSquare.setColor(Color.parseColor("#68b4e7"));
                     canvas.drawRect(left, top, right, bottom, paintSquare)
                 }
+                //if position is 2, draws the objective
                 else if(mazeMap[i][j] == 2){
                     val(left, top, right, bottom) = arrayOf(j*maze.getWidthSquare(), i*maze.getWidthSquare(), (j+1)*maze.getWidthSquare(), (i+1)*maze.getWidthSquare())
                     paintSquare.setColor(Color.parseColor("#fdd99f"));
@@ -91,6 +95,7 @@ class Maze(context: Context, @Nullable attributeSet: AttributeSet) : View(contex
                     val verticalPlace : Float = i*maze.getWidthSquare()
                     val half: Float = maze.getWidthSquare() / 2
 
+                    //functions to draw a star
                     path.moveTo(horizontalPlace + half * 0.5f, verticalPlace + half * 0.84f)
                     path.lineTo(horizontalPlace + half * 1.5f, verticalPlace + half * 0.84f)
                     path.lineTo(horizontalPlace + half * 0.68f, verticalPlace + half * 1.45f)
@@ -110,6 +115,7 @@ class Maze(context: Context, @Nullable attributeSet: AttributeSet) : View(contex
         paintBall.color = Color.parseColor("#ff914d")
         canvas.drawCircle(maze.getXBall(), maze.getYBall(), maze.getRadiusBall(), paintBall)
 
+        //if it is not finished, it invalidates the canvas, if not it calls the listener
         if(maze.getIsFinished()){
             listener?.onMazeListened(maze.getIsFinished())
         }
@@ -119,6 +125,7 @@ class Maze(context: Context, @Nullable attributeSet: AttributeSet) : View(contex
 
     }
 
+    //function to update velocity and position
     override fun onSensorChanged(change: SensorEvent?) {
 
         val xVelBall : Float = change!!.values[0] * -1f

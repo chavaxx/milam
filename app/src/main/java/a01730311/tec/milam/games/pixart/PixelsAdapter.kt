@@ -23,6 +23,7 @@ class PixelsAdapter(
         fun onPixelClicked(position: Int)
     }
 
+    //gives a length to every pixel
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val pixelWidth = parent.width / pixarteLevels.getWidth()
         val pixelHeight = parent.height / pixarteLevels.getHeight()
@@ -38,27 +39,34 @@ class PixelsAdapter(
         holder.bind(position)
     }
 
+    //it indicates how many pixels has to render
     override fun getItemCount(): Int = pixarteLevels.numPixels
 
+    //it changes the state of every single element
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val pixelColor = itemView.findViewById<LinearLayout>(R.id.pixelButton)
         private val textPixelColor = itemView.findViewById<TextView>(R.id.numberPixel)
 
         fun bind(position: Int){
+            //if the pixel is not valid, it doesn't have border or a color
             if(pixelsCollection[position].identifier == -1) {
                 pixelColor.setBackgroundResource(0)
                 return
             }
+            //if the pixel has a color it renders it
             if(pixelsCollection[position].hasColor) {
                 textPixelColor.setTextColor(Color.parseColor("#ffffff"))
                 pixelColor.setBackgroundColor(Color.parseColor(pixelsCollection[position].color))
             }
+            //if it has the correct color the text becomes empty
             if(pixelsCollection[position].hasCorrectColor) {
                 textPixelColor.text = ""
             }
+            //if not it receives its identifier
             else{
                 textPixelColor.text = pixelsCollection[position].identifier.toString()
             }
+            //it sets the click listener
             pixelColor.setOnClickListener{
                 pixelClickListener.onPixelClicked(position)
             }

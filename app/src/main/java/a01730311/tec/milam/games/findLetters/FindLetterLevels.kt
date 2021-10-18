@@ -7,6 +7,8 @@ enum class FindLetterLevels(val level : Int) {
     LVL4(4),
     LVL5(5);
 
+    //it determines the width of the board
+    //width * height must be equal to getNumPieces
     fun getWidth(): Int {
         return when(this) {
             LVL1 -> 4
@@ -17,6 +19,7 @@ enum class FindLetterLevels(val level : Int) {
         }
     }
 
+    //it determines the height of the board
     fun getHeight(): Int {
         return when(this) {
             LVL1 -> 7
@@ -27,6 +30,7 @@ enum class FindLetterLevels(val level : Int) {
         }
     }
 
+    //it determines how many letter the level will have
     fun getNumPieces(): Int {
         return when(this) {
             LVL1 -> 28
@@ -37,6 +41,8 @@ enum class FindLetterLevels(val level : Int) {
         }
     }
 
+    //it determines how many letters it has to found
+    //this number has to be lower than getNumPieces
     fun getObjectiveLetter(): Int {
         return when(this) {
             LVL1 -> 11
