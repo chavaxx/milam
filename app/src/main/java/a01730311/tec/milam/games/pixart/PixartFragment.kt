@@ -37,7 +37,7 @@ class PixartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        modal = Modal(requireContext(), R.id.pixartFragment, findNavController(), progress, 1)
+        modal = Modal(requireContext(), R.id.pixartFragment, findNavController(), progress, 4)
         pauseButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
             modal.showPauseMenu()
