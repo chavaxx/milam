@@ -28,13 +28,13 @@ class MazeFragment : Fragment() {
 
         currentLevel = view.findViewById(R.id.levelLabel)
 
-        modal = Modal(requireContext(), R.id.mazeFragment, findNavController(), progress, 5)
+        modal = Modal(requireContext(), R.id.mazeFragment, findNavController(), progress, 10)
         pauseButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
             modal.showPauseMenu()
         }
 
-        if (progress.getMaxLevel("maze").toInt() < 5) {
+        if (progress.getMaxLevel("maze").toInt() < 10) {
             currentLevel.text = "Nivel: " + (progress.getMaxLevel("maze").toInt()).toString()
         } else {
             currentLevel.text = "Nivel max"
