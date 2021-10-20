@@ -1,5 +1,5 @@
 # milam
 Proyecto milam para usuarios con TDAH
 
-
-Última release v1.0.1
+# Important
+El archivo APK y el código se encuentra en la última release v1.0.1
