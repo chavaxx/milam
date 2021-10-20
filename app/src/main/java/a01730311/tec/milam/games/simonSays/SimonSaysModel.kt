@@ -39,6 +39,9 @@ class SimonSaysModel {
         score = newScore
     }
 
+
+    // start the game
+
     fun startGame(): Int {
         inGame = true
         sequence = ArrayList()

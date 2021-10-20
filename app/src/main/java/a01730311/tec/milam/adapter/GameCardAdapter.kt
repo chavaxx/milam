@@ -19,8 +19,11 @@ import androidx.navigation.NavDirections
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 
+
+// adapter in charge of cards of every game in home fragment
 class GameCardAdapter(private val context: HomeFragment, private val dataset: List<GameCard>, private val findNavController: NavController, private val viewModel: GameViewModel):RecyclerView.Adapter<GameCardAdapter.GameCardViewHolder>() {
 
+    // set of animations
     private lateinit var frontAnimatorSet: AnimatorSet
     private lateinit var backAnimatorSet: AnimatorSet
     private val scale: Float = context.resources.displayMetrics.density
@@ -63,10 +66,13 @@ class GameCardAdapter(private val context: HomeFragment, private val dataset: Li
         val nameOfGame = context.resources.getString(card.labelText)
 
 
+
+        // animates the interaction of the card
         holder.cardView.setOnClickListener {
 
             holder.cardView.cameraDistance = 8000 * scale
             holder.cardView2.cameraDistance = 8000 * scale
+
             if (holder.isFront) {
                 frontAnimatorSet.setTarget(holder.cardView)
                 backAnimatorSet.setTarget(holder.cardView2)
@@ -85,15 +91,21 @@ class GameCardAdapter(private val context: HomeFragment, private val dataset: Li
         }
 
         if (holder.isFront) {
+
+            // sets the data to every card
             holder.cardView.setCardBackgroundColor(context.resources.getInteger(card.backgroundColor))
             holder.imagePlaceholder.setImageDrawable(context.resources.getDrawable(card.srcCompat))
             holder.description.text = context.resources.getString(card.descriptionText)
             holder.title.text = nameOfGame
+
+            // send data to preview page
             holder.button.setOnClickListener {
                 viewModel.setGame(card)
                 val action = HomeFragmentDirections.actionHomeFragmentToPreviewFragment()
                 findNavController.navigate(action)
             }
+
+
             holder.cardView2.setCardBackgroundColor(context.resources.getInteger(card.backgroundColor))
             holder.imagePlaceholder2.setImageDrawable(context.resources.getDrawable(card.srcCompat))
             holder.title2.text = nameOfGame

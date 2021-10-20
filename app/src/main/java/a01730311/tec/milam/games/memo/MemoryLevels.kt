@@ -1,6 +1,7 @@
 package a01730311.tec.milam.games.memo
-
+//enum class for the board and game, reicibes the amount of game cards
 enum class MemoryLevels(val cardNumber: Int) {
+    //enums for amount of cards based on level
     Level1(4),
     Level2(6),
     Level3(8),
@@ -13,6 +14,7 @@ enum class MemoryLevels(val cardNumber: Int) {
     Level10(22),
     Level11(24);
 
+    //function to get the width of the board based on level
     fun getWidth():Int{
         return when(this){
             Level1->2
@@ -28,9 +30,11 @@ enum class MemoryLevels(val cardNumber: Int) {
             Level11->4
         }
     }
+    //function to get the height of the board based on level
     fun getHeight():Int{
         return cardNumber/getWidth()
     }
+    //function to get the number of pairs that the game has (number of cards/2)
     fun getPairs(): Int{
         return cardNumber/2
     }

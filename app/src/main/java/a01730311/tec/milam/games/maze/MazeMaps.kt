@@ -12,8 +12,7 @@ enum class MazeMaps(val level : Int) {
     LVL9(9),
     LVL10(10);
 
-
-
+    //layout of the levels
     fun getLvl(): Array<IntArray> {
         return when(this){
             LVL1 -> arrayOf(

@@ -1,11 +1,7 @@
 package a01730311.tec.milam.games
 
-import a01730311.tec.milam.R
-import a01730311.tec.milam.components.Game
 import a01730311.tec.milam.components.GameCard
 import a01730311.tec.milam.screens.home.ProgressViewModel
-import android.content.Context
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDirections
 
@@ -15,6 +11,7 @@ class GameViewModel:ViewModel() {
     private lateinit var progressViewModel: ProgressViewModel
 
 
+    // initialize the class
     fun init(progressView: ProgressViewModel) {
         progressViewModel = progressView
     }
@@ -48,9 +45,11 @@ class GameViewModel:ViewModel() {
     }
 
     fun getImage(): Int {
-        return selectedGameCard.srcCompat
+        return selectedGameCard.preview
     }
 
+
+    // returns the score as a string to display in progress cards
     fun getDescriptionScore(game: String): String {
         val maxLevel = progressViewModel.getMaxLevel(game)
         val highestScore = progressViewModel.getScore(game, maxLevel)
@@ -67,6 +66,7 @@ class GameViewModel:ViewModel() {
         }
     }
 
+    // returns the current level as a string
     fun getLevel(): String {
         val maxLevel = progressViewModel.getMaxLevel(selectedGameCard.gameID)
         if (maxLevel == "1") return "Nivel actual"

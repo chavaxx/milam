@@ -53,6 +53,8 @@ class SettingsFragment : Fragment() {
         return view
     }
 
+
+    // binds interactions
     private fun setControls(view: View) {
         usernameEditText = view.findViewById(R.id.edit_username)
         editTextLayout = view.findViewById(R.id.text_field_user)
@@ -86,6 +88,7 @@ class SettingsFragment : Fragment() {
         }
 
         deleteProfileButton.setOnClickListener {
+            // asks to the user if it's sure about deleting profile
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle("Eliminar perfil ")
                 .setMessage("Tus datos serán eliminados")

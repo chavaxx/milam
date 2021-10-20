@@ -11,13 +11,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import kotlin.reflect.KMutableProperty0
 
+// Avatar Adapter used in EditAvatarFragment and ChooseAvatarFragment
 class AvatarAdapter(private val context: Fragment, private val dataset: List<Int>, private val intReference: KMutableProperty0<Int> ):RecyclerView.Adapter<AvatarAdapter.AvatarViewHolder>() {
 
-
+    //Pointer to get user preference
     private var selectedAvatar: Int = intReference.get()
 
 
     class AvatarViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        // holds avatar image
         val avatar: ImageView = view.findViewById(R.id.avatar_image)
         val card: MaterialCardView = view.findViewById(R.id.avatar_card)
     }
@@ -33,9 +35,14 @@ class AvatarAdapter(private val context: Fragment, private val dataset: List<Int
     }
 
     override fun onBindViewHolder(holder: AvatarViewHolder, position: Int) {
+
         val card = dataset[position]
+
+
         holder.avatar.setImageDrawable(
             ContextCompat.getDrawable(context.requireContext(), card ))
+
+        // checks if an avatar is selected to show user feedback
         if (selectedAvatar == position) {
             holder.card.strokeWidth = 5
         } else {
@@ -43,6 +50,8 @@ class AvatarAdapter(private val context: Fragment, private val dataset: List<Int
         }
 
         holder.card.setOnClickListener{
+
+            // changes selected avatar on click
             if (selectedAvatar >= 0)
                 notifyItemChanged(selectedAvatar)
             if (position == selectedAvatar) {
@@ -53,6 +62,8 @@ class AvatarAdapter(private val context: Fragment, private val dataset: List<Int
                 selectedAvatar = holder.adapterPosition
                 notifyItemChanged(selectedAvatar)
             }
+
+            // set the valueto the external reference
             intReference.set(selectedAvatar)
         }
 

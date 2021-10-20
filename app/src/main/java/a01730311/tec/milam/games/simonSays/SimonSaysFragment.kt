@@ -66,6 +66,8 @@ class SimonSaysFragment : Fragment() {
         return view
     }
 
+    // load buttons and media players, then stores it on a hash map
+
     private fun loadData(view : View) {
         data[R.id.greenBtn] = Pair(view.findViewById(R.id.greenBtn), MediaPlayer.create(activity, R.raw.green))
         data[R.id.blueBtn] = Pair(view.findViewById(R.id.blueBtn), MediaPlayer.create(activity, R.raw.blue))
@@ -88,7 +90,10 @@ class SimonSaysFragment : Fragment() {
         }
     }
 
-    fun initGame() {
+
+    // starts game
+
+    private fun initGame() {
 
         val buttonID: Int = game.startGame()
 
@@ -102,6 +107,8 @@ class SimonSaysFragment : Fragment() {
         animationsRunning = 0
         enableButtons(true)
     }
+
+    // manage on tap interactions
 
     private fun onTap(buttonID : Int) {
 
@@ -146,6 +153,8 @@ class SimonSaysFragment : Fragment() {
 
 
 
+    // executes the sequence in matter
+
     private fun executeSequence() {
 
         runBlocking {
@@ -171,6 +180,8 @@ class SimonSaysFragment : Fragment() {
     }
 
 
+
+    // makes the animation
     private fun flashAndPlay(newPlayer: MediaPlayer, newButton: ImageView, delay: Int) {
         val player: MediaPlayer = newPlayer
 

@@ -202,7 +202,7 @@
             android:layout_height="0dp"
             android:fontFamily="@font/lato_regular"
             android:gravity="center"
-            android:lines="1"
+            android:lines="2"
             android:text="@string/high_score"
             android:textAlignment="center"
             android:textColor="#FFFFFF"

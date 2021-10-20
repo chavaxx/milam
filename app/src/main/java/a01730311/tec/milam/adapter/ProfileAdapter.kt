@@ -17,10 +17,11 @@ import androidx.navigation.NavOptions
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 
+// adapter in charge of display profiles in login fragment
 class ProfileAdapter(private val context: LoginFragment, private val dataset: List<Profile>, private val viewModel: UserViewModel, private val navController: NavController):RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder>() {
 
 
-
+    // stores avatar and username to change its values
     class ProfileViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val avatar: ImageView = view.findViewById(R.id.profile_image)
         val username: TextView = view.findViewById(R.id.profile_text)
@@ -39,9 +40,14 @@ class ProfileAdapter(private val context: LoginFragment, private val dataset: Li
 
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
         val card = dataset[position]
+
+        // binds data
         holder.avatar.setImageDrawable(context.resources.getDrawable(card.iconID))
         holder.username.text = card.username
+
+
         holder.card.setOnClickListener {
+            // access to home by clicking on a profile
             viewModel.login(card.id)
             val navOptions = NavOptions.Builder().setPopUpTo(navController.graph.startDestination, true).build()
             val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()

@@ -28,15 +28,10 @@ class MemoryAdapter(
     private val cardClickListener: CardClickListener
 ) : RecyclerView.Adapter<MemoryAdapter.ViewHolder>() {
 
-    private lateinit var frontAnimatorSet: AnimatorSet
-    private lateinit var backAnimatorSet: AnimatorSet
-    private val scale: Float = context.resources.displayMetrics.density
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val button: MaterialCardView = itemView.findViewById(R.id.game_card_memo_button)
         val image: ImageView = itemView.findViewById(R.id.game_card_memo_image)
-        val button2 : MaterialCardView = itemView.findViewById(R.id.game_card_memo_copy)
-        val image2: ImageView = itemView.findViewById(R.id.game_card_memo_copy_image)
     }
 
     interface CardClickListener{
@@ -49,25 +44,14 @@ class MemoryAdapter(
         val viewWidth = parent.width/board.getWidth() -2*10
         val side = min(viewHeight,viewWidth)
 
-
-        frontAnimatorSet = AnimatorInflater.loadAnimator(context, R.animator.front_card_animation) as AnimatorSet
-        backAnimatorSet = AnimatorInflater.loadAnimator(context, R.animator.back_card_animator) as AnimatorSet
-
         val layoutParams = view.findViewById<MaterialCardView>(R.id.game_card_memo_button).layoutParams as ViewGroup.MarginLayoutParams
-        val layoutParams2 = view.findViewById<MaterialCardView>(R.id.game_card_memo_copy).layoutParams as ViewGroup.MarginLayoutParams
         layoutParams.width = side
         layoutParams.height = side
-        layoutParams2.width = side
-        layoutParams2.height = side
         layoutParams.setMargins(0,10,0,10)
-        layoutParams2.setMargins(0,10,0,10)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val card = cards[position]
-
-        println(cards)
         holder.image.setImageResource(if (cards[position].isFaceUp) cards[position].identifier else R.drawable.milam_logo)
 
         holder.image.alpha = if(cards[position].isMatched) 0.4f else 1.0f
@@ -78,28 +62,6 @@ class MemoryAdapter(
         holder.button.setOnClickListener{
 
             cardClickListener.onCardClicked(position)
-
-            //if (!card.isFaceUp) {
-
-
-              //  holder.image2.setImageResource(card.identifier)
-
-                //holder.button.cameraDistance = 8000 * scale
-                //holder.button2.cameraDistance = 8000 * scale
-
-                //frontAnimatorSet.setTarget(holder.button)
-                //backAnimatorSet.setTarget(holder.button2)
-
-                //frontAnimatorSet.doOnEnd {
-                  //  cardClickListener.onCardClicked(position)
-                //}
-
-                //frontAnimatorSet.start()
-                //backAnimatorSet.start()
-
-            //} else {
-              //  cardClickListener.onCardClicked(position)
-            //}
 
         }
     }

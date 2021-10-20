@@ -43,7 +43,7 @@ class ChooseAvatarFragment : Fragment() {
 
     private fun loadAvatars(view: View) {
 
-
+        // loads avatars to recycler view
         myAvatars = Datasource().loadAvatars()
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewAvatars)
@@ -54,6 +54,7 @@ class ChooseAvatarFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
     }
 
+    // sets navigation interactions
     private fun setNavigation(view: View) {
         val button: Button = view.findViewById(R.id.button_next_confirm)
         val backButton: Button = view.findViewById(R.id.button_back_icons)

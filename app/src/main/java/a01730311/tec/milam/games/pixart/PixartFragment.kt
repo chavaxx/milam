@@ -43,12 +43,14 @@ class PixartFragment : Fragment() {
 
         currentLevel = view.findViewById(R.id.levelLabel)
 
+        //declares Modal object and the pause button
         modal = Modal(requireContext(), R.id.pixartFragment, findNavController(), progress, 4)
         pauseButton = view.findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener {
             modal.showPauseMenu()
         }
 
+        //gets the current level of the game from the ProgressViewModel
         if (progress.getMaxLevel("pix_art").toInt() < 4) {
             currentLevel.text = "Nivel: " + (progress.getMaxLevel("pix_art").toInt()).toString()
         } else {
@@ -62,6 +64,7 @@ class PixartFragment : Fragment() {
         colorPicker = view.findViewById(R.id.colorPicker)
         val pixarteLevels = pixarteGame.getLevel()
 
+        //recycler view of the pixels that the user is oing to color
         pixelsAdapter = PixelsAdapter(requireActivity(), pixarteLevels, pixarteGame.getPixels(), object: PixelsAdapter.PixelClickListener{
             override fun onPixelClicked(position: Int) {
                 updateGame(position)
@@ -77,6 +80,7 @@ class PixartFragment : Fragment() {
         pixels.layoutManager = GridLayoutManager(activity, pixarteLevels.getWidth())
 
 
+        //recycler view of the colors the user is going to pick
         colorPickerAdapter = ColorPickerAdapter(requireActivity(), pixarteLevels, pixarteLevels.getColors(), object: ColorPickerAdapter.ColorPickerClickListener{
             override fun onColorPickerClicked(position: Int) {
                 updateColor(position)
@@ -97,11 +101,13 @@ class PixartFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_pixart, container, false)
     }
 
+    //update the state of the pixels
     fun updateGame(position: Int){
         pixarteGame.changeColorPixel(position)
         pixelsAdapter.notifyItemChanged(position)
     }
 
+    //update which color you are choosing
     fun updateColor(position: Int){
         pixarteGame.changePickerColor(position)
     }

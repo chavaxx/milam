@@ -51,6 +51,8 @@ class ConfirmProfileFragment : Fragment() {
         }
     }
 
+
+    // display info entered by the user
     private fun setProfileInfo(view: View) {
         avatar = view.findViewById(R.id.confirm_profile_avatar)
         username = view.findViewById(R.id.confirm_profile_username)
