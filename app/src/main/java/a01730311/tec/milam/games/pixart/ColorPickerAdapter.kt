@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import kotlin.math.min
 
 class ColorPickerAdapter(
@@ -16,6 +17,8 @@ class ColorPickerAdapter(
     private val colors: Array<String>,
     private val colorPickerClickListener: ColorPickerAdapter.ColorPickerClickListener) :
     RecyclerView.Adapter<ColorPickerAdapter.ViewHolder>(){
+
+    private var selectedColor: Int = 0
 
     interface ColorPickerClickListener {
         fun onColorPickerClicked(position: Int)
@@ -30,12 +33,12 @@ class ColorPickerAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val colorPickWidth = parent.width / colors.size - (2 * MARGIN_SIZE)
         val colorPickHeight = parent.height / 1
-        val colorPickLength = min(colorPickHeight, colorPickWidth)
+        val colorPickLength = min(colorPickHeight.toUInt(), colorPickWidth.toUInt())
         val view = LayoutInflater.from(context).inflate(R.layout.color_pick, parent, false)
         val layoutParams = view.findViewById<TextView>(R.id.colorText).layoutParams as ViewGroup.MarginLayoutParams
         layoutParams.setMargins(MARGIN_SIZE, 0, MARGIN_SIZE, 0)
-        layoutParams.width = colorPickLength
-        layoutParams.height = colorPickLength
+        layoutParams.width = colorPickLength.toInt()
+        layoutParams.height = colorPickLength.toInt()
 
         return ViewHolder(view)
     }
@@ -49,15 +52,28 @@ class ColorPickerAdapter(
 
     //it changes the state of every single element
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        private val picker = itemView.findViewById<TextView>(R.id.colorText)
+        private val picker = itemView.findViewById<MaterialCardView>(R.id.colorPick)
+        private val text = itemView.findViewById<TextView>(R.id.colorText)
 
         fun bind(position: Int){
             //it gives the position and background color according to the string in the array colors
-            picker.setBackgroundColor(Color.parseColor(colors[position]))
-            picker.setText("${position+1}")
+            picker.setCardBackgroundColor(Color.parseColor(colors[position]))
+            text.text ="${position + 1}"
             //when picker is clicked, it calls its listener and it makes the cells of
             //the pixels becomes of its color
+
+            if (selectedColor == position) {
+                picker.strokeWidth = 5
+            } else {
+                picker.strokeWidth = 0
+            }
+
+
             picker.setOnClickListener{
+                if (selectedColor >= 0) notifyItemChanged(selectedColor)
+                selectedColor = position
+                notifyItemChanged(selectedColor)
+
                 colorPickerClickListener.onColorPickerClicked(position)
             }
         }

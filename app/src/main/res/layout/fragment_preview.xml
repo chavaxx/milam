@@ -151,8 +151,8 @@
             android:scaleType="fitCenter"
             android:src="@drawable/simon_says"
             app:layout_constraintBottom_toTopOf="@+id/middle_guideline"
-            app:layout_constraintEnd_toStartOf="@+id/delimiter_guideline_right"
-            app:layout_constraintStart_toStartOf="@+id/delimiter_guideline_left"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/top_guideline" />
 
         <TextView

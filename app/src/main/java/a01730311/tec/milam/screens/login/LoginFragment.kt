@@ -2,6 +2,7 @@ package a01730311.tec.milam.screens.login
 
 import a01730311.tec.milam.adapter.ProfileAdapter
 import a01730311.tec.milam.R
+import a01730311.tec.milam.components.ModalAbout
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 /**
@@ -23,6 +25,7 @@ import com.google.android.material.card.MaterialCardView
 class LoginFragment : Fragment() {
 
     private val viewModel: UserViewModel by activityViewModels()
+    private lateinit var modal: ModalAbout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,10 +67,19 @@ class LoginFragment : Fragment() {
     }
 
     private fun setNavigation(view: View) {
+
         val signupButton: MaterialCardView = view.findViewById(R.id.signup_button)
+        val loginInfoButton: FloatingActionButton = view.findViewById(R.id.login_info_button)
+        modal = ModalAbout(requireContext())
+
+
         signupButton.setOnClickListener{
             val action = LoginFragmentDirections.actionLoginFragmentToRegistroUsuario()
             findNavController().navigate(action)
+        }
+
+        loginInfoButton.setOnClickListener {
+            modal.showInfo(getString(R.string.log_in_help), getString(R.string.log_in))
         }
     }
 

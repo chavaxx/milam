@@ -45,7 +45,7 @@ class GameViewModel:ViewModel() {
     }
 
     fun getImage(): Int {
-        return selectedGameCard.srcCompat
+        return selectedGameCard.preview
     }
 
 

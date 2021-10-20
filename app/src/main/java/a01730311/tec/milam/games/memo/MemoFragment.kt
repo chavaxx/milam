@@ -22,9 +22,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
-//fragment of the memory game
 class MemoFragment : Fragment() {
-    //initialize all the variables
     private lateinit var adapter: MemoryAdapter
     private lateinit var memoryGame: MemoryGame
     private lateinit var board:RecyclerView
@@ -36,10 +34,8 @@ class MemoFragment : Fragment() {
 
     private val level: ProgressViewModel by activityViewModels()
 
-    //function that executes when the fragment starts
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //initialize variables for game
         val memoryLevels: MemoryLevels= MemoryLevels.values()[level.getMaxLevel("memorandum").toInt() - 1]
         currentLevel = view.findViewById(R.id.levelLabel)
 
@@ -50,7 +46,6 @@ class MemoFragment : Fragment() {
             modal.showPauseMenu()
         }
 
-        //display current level and if level > 11 display max level
         if (level.getMaxLevel("memorandum").toInt() <11) {
             currentLevel.text = "Nivel: " + (level.getMaxLevel("memorandum").toInt()).toString()
         } else {
@@ -61,14 +56,14 @@ class MemoFragment : Fragment() {
         board = view.findViewById(R.id.board)
         board.setHasFixedSize(true)
 
-        //initialize an instance of memory game
+
         memoryGame = MemoryGame(memoryLevels)
-        //add parameters to the adapter
+        //currentLevel.setText("Nivel de Memorama: $memoryGame.")
         adapter = MemoryAdapter(requireContext(), memoryLevels, memoryGame.cards, object: MemoryAdapter.CardClickListener{
-            //override fun to update the game with the flip positions and check if the user has already won
             override fun onCardClicked(position: Int) {
                 updateGameWithFlip(position)
                 if(memoryGame.haveWonGame()){
+                    //Snackbar.make(clRoot, "¡Ganaste, Felicidades!",Snackbar.LENGTH_SHORT).show()
                     modal.showSuccessMenu("memorandum", 0)
                 }
 
@@ -79,7 +74,7 @@ class MemoFragment : Fragment() {
         board.layoutManager = GridLayoutManager(requireContext(),memoryLevels.getWidth())
     }
 
-    //function to check if the game is won, if the card is already turned or to turn the card
+
     private fun updateGameWithFlip(position: Int) {
 
         if(memoryGame.haveWonGame()){

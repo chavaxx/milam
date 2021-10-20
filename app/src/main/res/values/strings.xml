@@ -76,9 +76,13 @@
     <string name="initial_score">Puntuación actual: 0</string>
     <string name="high_score">Puntaje más alto:</string>
     <string name="pix_art">Selecciona un color dependiendo de su número, pinta las casillas con ese número y descubre la figura oculta.</string>
-    <string name="letters">Busca dentro de la sopa de letra las letras que sean iguales a la que te pide el juego, ¡una vez que encuentres todas habrás ganado!</string>
-    <string name="memo">Voltea una tarjeta, busca su pareja y repite esto hasta ganar, (si aparentemente no hay mas tarjetas arrastra hacia abajo el juego de memorama, ¡pueden haber tajetas ocultas!).</string>
-    <string name="magic_number"> Da click sobre el número que sea la solución al problema, ¡mientras más ejercicios resuelvas más difíciles serán las preguntas!</string>
-    <string name="maze"> ¡Tú controlas la pelota con tu celular!, mueve tu celular para mover la pelota y encuentra la salida del laberinto.</string>
-    <string name="simon_says"> Escucha lo que dice simón y repite la secuencia, ¡por cada secuencia que tengas correcta simón agregará un nuevo botón al azar!</string>
+    <string name="letters">Busca dentro de la sopa de letra las letras que sean iguales a la que te pide el juego. ¡Una vez que encuentres todas habrás ganado!</string>
+    <string name="memo">Voltea una tarjeta, busca su pareja y repite esto hasta ganar. (Si aparentemente no hay más tarjetas, arrastra hacia abajo el juego de memorama. ¡Puede haber tarjetas ocultas!)</string>
+    <string name="magic_number"> Da click sobre el número que sea la solución al problema. ¡Mientras más ejercicios resuelvas, más difíciles serán las preguntas!</string>
+    <string name="maze"> ¡Tú controlas la pelota con tu celular! Mueve tu celular para mover la pelota y encuentra la salida del laberinto.</string>
+    <string name="simon_says"> Escucha lo que dice Simón y repite la secuencia. ¡Por cada secuencia que tengas correcta simón agregará un nuevo botón al azar!</string>
+    <string name="log_in">Inicio de sesión</string>
+    <string name="log_in_help">Presiona tu perfil si está en la lista, si no presion el botón "No estoy yo" para crear tu propio perfil</string>
+    <string name="has_completado_este_nivel">Has completado este nivel</string>
+    <string name="felicidades">¡FELICIDADES!</string>
 </resources>

@@ -227,7 +227,7 @@
                 android:layout_weight="2"
                 android:fontFamily="@font/lato_black"
                 android:gravity="center"
-                android:text="¡FELICIDADES!"
+                android:text="@string/felicidades"
                 android:lines="1"
                 android:textColor="?statusBarBackground"
                 app:autoSizeTextType="uniform" />
@@ -240,7 +240,7 @@
                 app:autoSizeTextType="uniform"
                 android:fontFamily="@font/lato_black"
                 android:gravity="center"
-                android:text="Has completado este nivel"
+                android:text="@string/has_completado_este_nivel"
                 android:lines="1"
                 android:textColor="?statusBarBackground" />
 
